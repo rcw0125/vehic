@@ -1,0 +1,1941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0F355C61-1209-4AA8-A0FD-7228DAA0AED3}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>VehIC_WF</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>D:\IC\Web\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://192.168.2.122/setup/</InstallUrl>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>VehIC_WF.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>AB3F0C08DC9CF996D147E23E705CC7FCB2B65EC7</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>shouquan\zhaohechao.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>che2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Device\DeviceConfigManager.cs" />
+    <Compile Include="VehIC_WF\DlgClassWord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\DlgClassWord.Designer.cs">
+      <DependentUpon>DlgClassWord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\QC_Hbcx.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\QC_SampleMix_ChaXun.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\QC_Sample_Lab_ChaXun.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\QC_SCNCcx.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\QC_Shcx.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\QC_Zhkcx.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\QC_Zycx.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Cgcx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Cgcx.Designer.cs">
+      <DependentUpon>WP_Cgcx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Hycx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Hycx.Designer.cs">
+      <DependentUpon>WP_Hycx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Qycx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Qycx.Designer.cs">
+      <DependentUpon>WP_Qycx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Shcx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Shcx.Designer.cs">
+      <DependentUpon>WP_Shcx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Zhkcx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Zhkcx.Designer.cs">
+      <DependentUpon>WP_Zhkcx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Zycx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_Zycx.Designer.cs">
+      <DependentUpon>WP_Zycx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_hbcx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_hbcx.Designer.cs">
+      <DependentUpon>WP_hbcx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_SCNCcx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\chaxun\WP_SCNCcx.Designer.cs">
+      <DependentUpon>WP_SCNCcx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\Class\BD_CUBASDOC.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\Class\QC_BD_CUBASDOC.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\Class\QC_HJZP.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\Class\QC_Material_wl.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\HJ\koushuikouza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\HJ\koushuikouza.Designer.cs">
+      <DependentUpon>koushuikouza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JT\UC_JTQualityJudge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JT\UC_JTQualityJudge.Designer.cs">
+      <DependentUpon>UC_JTQualityJudge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JT\WP_JTJianyan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JT\WP_JTJianyan.Designer.cs">
+      <DependentUpon>WP_JTJianyan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JT\WP_JTShenhe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JT\WP_JTShenhe.Designer.cs">
+      <DependentUpon>WP_JTShenhe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JT\WP_JTzupi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JT\WP_JTzupi.Designer.cs">
+      <DependentUpon>WP_JTzupi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JT\WP_JTZhiyang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JT\WP_JTZhiyang.Designer.cs">
+      <DependentUpon>WP_JTZhiyang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\RJ\UC_RJQualityJudge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\RJ\UC_RJQualityJudge.Designer.cs">
+      <DependentUpon>UC_RJQualityJudge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\RJ\WP_RJJianyan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\RJ\WP_RJJianyan.Designer.cs">
+      <DependentUpon>WP_RJJianyan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\RJ\WP_RJShenhe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\RJ\WP_RJShenhe.Designer.cs">
+      <DependentUpon>WP_RJShenhe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\RJ\WP_RJZhiyang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\RJ\WP_RJZhiyang.Designer.cs">
+      <DependentUpon>WP_RJZhiyang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\RJ\WP_RJzupi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\RJ\WP_RJzupi.Designer.cs">
+      <DependentUpon>WP_RJzupi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WK\UC_WKQualityJudge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WK\UC_WKQualityJudge.Designer.cs">
+      <DependentUpon>UC_WKQualityJudge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WK\WP_WKzupi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WK\WP_WKzupi.Designer.cs">
+      <DependentUpon>WP_WKzupi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WK\WP_WKJianyan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WK\WP_WKJianyan.Designer.cs">
+      <DependentUpon>WP_WKJianyan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WK\WP_WKShenhe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WK\WP_WKShenhe.Designer.cs">
+      <DependentUpon>WP_WKShenhe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WK\WP_WKZhiyang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WK\WP_WKZhiyang.Designer.cs">
+      <DependentUpon>WP_WKZhiyang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\SZ\WP_SZZhiyang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\SZ\WP_SZZhiyang.Designer.cs">
+      <DependentUpon>WP_SZZhiyang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\portConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\portConfig.Designer.cs">
+      <DependentUpon>portConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\QC_Gys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\QC_Gys.Designer.cs">
+      <DependentUpon>QC_Gys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\QC_Wuliao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\QC_Wuliao.Designer.cs">
+      <DependentUpon>QC_Wuliao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\SZ\UC_SZQualityJudge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\SZ\UC_SZQualityJudge.Designer.cs">
+      <DependentUpon>UC_SZQualityJudge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\UC_Zdpdyj.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\UC_Zdpdyj.Designer.cs">
+      <DependentUpon>UC_Zdpdyj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JF\WP_JFShenhe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JF\WP_JFShenhe.Designer.cs">
+      <DependentUpon>WP_JFShenhe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JF\WP_JFZhiyang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JF\WP_JFZhiyang.Designer.cs">
+      <DependentUpon>WP_JFZhiyang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\WP_Shangchuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\WP_Shangchuan.Designer.cs">
+      <DependentUpon>WP_Shangchuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\SZ\WP_SZzupi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\SZ\WP_SZzupi.Designer.cs">
+      <DependentUpon>WP_SZzupi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JF\WP_JFJianyan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JF\WP_JFJianyan.Designer.cs">
+      <DependentUpon>WP_JFJianyan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\yingGuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\yingGuan.Designer.cs">
+      <DependentUpon>yingGuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\SZ\WP_SZJianyan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\SZ\WP_SZJianyan.Designer.cs">
+      <DependentUpon>WP_SZJianyan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\SZ\WP_SZShenhe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\SZ\WP_SZShenhe.Designer.cs">
+      <DependentUpon>WP_SZShenhe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\HJ\WP_HJZhiyang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\HJ\WP_HJZhiyang.Designer.cs">
+      <DependentUpon>WP_HJZhiyang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\HJ\WP_HJJianyan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\HJ\WP_HJJianyan.Designer.cs">
+      <DependentUpon>WP_HJJianyan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\HJ\WP_HJShenhe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\HJ\WP_HJShenhe.Designer.cs">
+      <DependentUpon>WP_HJShenhe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\Xuanze.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\Xuanze.Designer.cs">
+      <DependentUpon>Xuanze.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgChe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgChe.Designer.cs">
+      <DependentUpon>DlgChe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgRecheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgRecheck.Designer.cs">
+      <DependentUpon>DlgRecheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgUpdateCheckVal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgUpdateCheckVal.Designer.cs">
+      <DependentUpon>DlgUpdateCheckVal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgZyInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgZyInfo.Designer.cs">
+      <DependentUpon>DlgZyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\chaxunlhl\glcx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\chaxunlhl\glcx.Designer.cs">
+      <DependentUpon>glcx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\chaxunlhl\QC_CX_BS.cs" />
+    <Compile Include="VehIC_WF\Sampling\lhl\chaxunlhl\QC_XG_CX.cs" />
+    <Compile Include="VehIC_WF\Sampling\lhl\chaxunlhl\WP_ChaXun.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\chaxunlhl\WP_ChaXun.Designer.cs">
+      <DependentUpon>WP_ChaXun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\chaxunlhl\xgcx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\chaxunlhl\xgcx.Designer.cs">
+      <DependentUpon>xgcx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\ICardMessage.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\Class\QC_CheckItem_View.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\Class\QC_SampleMix_ZhiYang.cs" />
+    <Compile Include="VehIC_WF\Sampling\DlgQualityRule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgQualityRule.Designer.cs">
+      <DependentUpon>DlgQualityRule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\BC_DT_State.cs" />
+    <Compile Include="VehIC_WF\Sampling\lhl\JFHunyang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\JFHunyang.Designer.cs">
+      <DependentUpon>JFHunyang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\Nc\TelComm1.cs" />
+    <Compile Include="VehIC_WF\Sampling\lhl\qyts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\qyts.Designer.cs">
+      <DependentUpon>qyts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\HJHeyang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\HJHeyang.Designer.cs">
+      <DependentUpon>HJHeyang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\WP_Hcqy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\WP_Hcqy.Designer.cs">
+      <DependentUpon>WP_Hcqy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\WP_JFSampling.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\QC_SAMPLE_TRAIN.cs" />
+    <Compile Include="VehIC_WF\Sampling\rcw\sampleNum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\sampleNum.Designer.cs">
+      <DependentUpon>sampleNum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\trainGouDui.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\trainGouDui.Designer.cs">
+      <DependentUpon>trainGouDui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\UC_HYQualityJudge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\UC_HYQualityJudge.Designer.cs">
+      <DependentUpon>UC_HYQualityJudge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\View_train_to_sample.cs" />
+    <Compile Include="VehIC_WF\Sampling\rcw\WP_HYJianyan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\WP_HYJianyan.Designer.cs">
+      <DependentUpon>WP_HYJianyan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\WP_HYZhiyang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\WP_HYZhiyang.Designer.cs">
+      <DependentUpon>WP_HYZhiyang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\WP_HYShenhe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\rcw\WP_HYShenhe.Designer.cs">
+      <DependentUpon>WP_HYShenhe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\ReCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\ReCheck.Designer.cs">
+      <DependentUpon>ReCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\Sample\Doc\QC_MatAllCheckItem.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_CheckGroupLab.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_ChgWater.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_MixCheckGroup.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_MixCheckItem.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\QC_Sample_Mix_1.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\UC_AddCheckItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\UC_AddCheckItem.Designer.cs">
+      <DependentUpon>UC_AddCheckItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgCheckGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgCheckGroup.Designer.cs">
+      <DependentUpon>DlgCheckGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgQueryVerifSample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgQueryVerifSample.Designer.cs">
+      <DependentUpon>DlgQueryVerifSample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\WP_Tbzd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\WP_Tbzd.Designer.cs">
+      <DependentUpon>WP_Tbzd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\QC_MixLab.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_LabRule.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Log.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_MatCheckGroup.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\AdvanceQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\query\AdvanceQueryForm.Designer.cs">
+      <DependentUpon>AdvanceQueryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\Cls_EnumHandle.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\Class\BD_INVBASDOC.cs" />
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\AddCheckItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\WorkPoint\AddCheckItem.Designer.cs">
+      <DependentUpon>AddCheckItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JM\WP_Jianyan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JM\WP_Jianyan.Designer.cs">
+      <DependentUpon>WP_Jianyan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JM\WP_Shenhe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JM\WP_Shenhe.Designer.cs">
+      <DependentUpon>WP_Shenhe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JM\WP_Zhiyang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\czl\JM\WP_Zhiyang.Designer.cs">
+      <DependentUpon>WP_Zhiyang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgCheckItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgCheckItem.Designer.cs">
+      <DependentUpon>DlgCheckItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgMaterial.Designer.cs">
+      <DependentUpon>DlgMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgQueryExamineSample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgQueryExamineSample.Designer.cs">
+      <DependentUpon>DlgQueryExamineSample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgQueryMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgQueryMaterial.Designer.cs">
+      <DependentUpon>DlgQueryMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgQuerySample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgQuerySample.Designer.cs">
+      <DependentUpon>DlgQuerySample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgWorkPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgWorkPoint.Designer.cs">
+      <DependentUpon>DlgWorkPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\cheshu.cs" />
+    <Compile Include="VehIC_WF\Sampling\lhl\Hunyang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\Hunyang.Designer.cs">
+      <DependentUpon>Hunyang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\WP_Sampling.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\lhl\Nc\bill_head.cs" />
+    <Compile Include="VehIC_WF\Sampling\lhl\Nc\CheckValItem.cs" />
+    <Compile Include="VehIC_WF\Sampling\lhl\Nc\header.cs" />
+    <Compile Include="VehIC_WF\Sampling\lhl\Nc\TelComm.cs" />
+    <Compile Include="VehIC_WF\Sampling\lhl\Nc\ufinterface.cs" />
+    <Compile Include="VehIC_WF\Sampling\lhl\Nc\VehItem.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\ComposeCondition.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\Condition.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\ConditionManager.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\DateTimeSealedCondition.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\EntityField.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\IntSealedCondition.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\LogicOpType.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\NumericSealedCondition.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\OpItem.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\OpState.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\QueryEntity.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\QueryTemplate.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\RelationOpType.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\SealedCondition.cs" />
+    <Compile Include="VehIC_WF\Sampling\query\StringSealedCondition.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_CheckGroup.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_CheckItem.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_CheckStandard.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\Doc\QC_DeptDoc.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_IC_Info.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\Doc\QC_Material.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_MixRule.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_QualityLevel.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_QualityRule.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_QualityRuleContent.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Qyxx.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Sample_Inspect.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Sample_Jyjg.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Sample_Lab.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Sample_Lab_Jy.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Sample_Mix.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Sample_Qyd.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Sample_Value.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Sample_Value_log.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Sample_Value_Pd.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Sample_Veh.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\Doc\QC_SupplierDoc.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Sample_zdpdyj.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_WpRoute.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\Doc\QC_PersonDoc.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\QC_Xyfjdh.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\SampleManager.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\TB_TaskFlow.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_CardUseType.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_CheckItemSelect_View.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_CheckMaxMinVal.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_MatCheckGroup_View.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_MatCheckItem_View.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_Material_View.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_MatFl_View.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_MatQualityLevel_View.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_NoticeDhdItem_View.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_NoticeDhdItem_View_WLLX.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_NoticeItemDoor_View.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\Doc\QC_WorkPoint_View.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\QC_QualityRule_View.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\Tb_IC.cs" />
+    <Compile Include="VehIC_WF\Sampling\UC_Batching.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_Batching.Designer.cs">
+      <DependentUpon>UC_Batching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_CheckGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_CheckGroup.Designer.cs">
+      <DependentUpon>UC_CheckGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_ExamineSample.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_ExamineSample.Designer.cs">
+      <DependentUpon>UC_ExamineSample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_ICReg.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_ICReg.Designer.cs">
+      <DependentUpon>UC_ICReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_JFQualityJudge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_JFQualityJudge.Designer.cs">
+      <DependentUpon>UC_JFQualityJudge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_ManageExamineSample.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_ManageExamineSample.Designer.cs">
+      <DependentUpon>UC_ManageExamineSample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_QualityJudge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_QualityJudge.Designer.cs">
+      <DependentUpon>UC_QualityJudge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_QualityRule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_QualityRule.Designer.cs">
+      <DependentUpon>UC_QualityRule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_ReCheck.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_ReCheck.Designer.cs">
+      <DependentUpon>UC_ReCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_VerifSam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_VerifSam.Designer.cs">
+      <DependentUpon>UC_VerifSam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_VerifSample.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_VerifSample.Designer.cs">
+      <DependentUpon>UC_VerifSample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_WpRoute.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_WpRoute.Designer.cs">
+      <DependentUpon>UC_WpRoute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_Zupi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_Zupi.Designer.cs">
+      <DependentUpon>UC_Zupi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_CheckItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_CheckItem.Designer.cs">
+      <DependentUpon>UC_CheckItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_MatCheckStandard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_MatCheckStandard.Designer.cs">
+      <DependentUpon>UC_MatCheckStandard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgSupplier.Designer.cs">
+      <DependentUpon>DlgSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgQyxx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\DlgQyxx.Designer.cs">
+      <DependentUpon>DlgQyxx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_HJQualityJudge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\UC_HJQualityJudge.Designer.cs">
+      <DependentUpon>UC_HJQualityJudge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Tools\ExcelTool.cs" />
+    <Compile Include="VehIC_WF\Tools\MouseKeyHook.cs" />
+    <Compile Include="VehIC_WF\Tools\RawInput.cs" />
+    <Compile Include="VehIC_WF\Tools\SingleApplication.cs" />
+    <Compile Include="VehIC_WF\Tools\StringTool.cs" />
+    <Compile Include="VehIC_WF\Tools\UsbDevice.cs" />
+    <Compile Include="VehIC_WF\Utility\FC_Loading.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Utility\FC_Loading.Designer.cs">
+      <DependentUpon>FC_Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Utility\ServerConfigManager.cs" />
+    <Compile Include="VehIC_WF\Utility\XtraControlLocalizer.cs" />
+    <Compile Include="VehIC_WF\Utility\XtraGridLocalizer.cs" />
+    <Compile Include="Web References\VehIC_WF.AuthService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\VehIC_WF.CommonService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\VehIC_WF.DoorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\VehIC_WF.ICCardManageService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\VehIC_WF.SamplingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\VehIC_WF.ScaleService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Reference Include="AxInterop.SHDocVw, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\AxInterop.SHDocVw.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.CodeParser.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.TreeMap.v17.2.Core, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeMap.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v17.2.Core, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v17.2.Win, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v17.2.UI, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Map.v17.2.Core, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Office.v17.2.Core, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v17.2.Core, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v17.2.Core, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v17.2.Export, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v17.2.Core, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v17.2.Core, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v17.2.UI, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v17.2.Core, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v17.2.Extensions, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v17.2.UI, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v17.2.Wizard, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v17.2.Core, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v17.2.Win, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraMap.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v17.2.Extensions, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v17.2.Extensions, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraWizard.v17.2, Version=17.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\dotnet4\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.FastReport">
+      <HintPath>lib\Interop.FastReport.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="IrisSkin2, Version=2006.3.22.45, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\IrisSkin2.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\dotnet4\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\dotnet4\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.1.3.1, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PrintHelper, Version=2.5.3285.16387, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\PrintHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Microsoft.mshtml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="VehIC_WF\Device\CardReader.cs" />
+    <Compile Include="VehIC_WF\Device\CommonRoadBrakeWrapper.cs" />
+    <Compile Include="VehIC_WF\Device\DeviceManager.cs" />
+    <Compile Include="VehIC_WF\Device\FixRFIDReaderWrapper.cs" />
+    <Compile Include="VehIC_WF\Device\HardwareInfo.cs" />
+    <Compile Include="VehIC_WF\Device\MoblieReaderWrapper.cs" />
+    <Compile Include="VehIC_WF\Device\RoadBrake.cs" />
+    <Compile Include="VehIC_WF\Device\SY230NT.cs" />
+    <Compile Include="VehIC_WF\Device\SyrisControlWrapper.cs" />
+    <Compile Include="VehIC_WF\Device\SyrisReaderWrapper.cs" />
+    <Compile Include="VehIC_WF\ExcelFile.cs" />
+    <Compile Include="VehIC_WF\IRoadBrake.cs" />
+    <Compile Include="LFY\AGauge.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Setting\TaskItemView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Setting\ItemProperty.cs" />
+    <Compile Include="VehIC_WF\Setting\ItemPropertyList.cs" />
+    <Compile Include="VehIC_WF\Setting\Common.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Search\FC_Search_RFFYD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\Properties\Resources.cs" />
+    <Compile Include="VehIC_WF\ICManage\FrmWebDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\ICManage\FC_RFBarcodeEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\ICManage\FC_MatVehCardEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\ICManage\FC_FixVehCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Sampling\Properties\Settings.cs" />
+    <Compile Include="VehIC_WF\ICManage\FC_RFBarcode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\ICManage\FC_CardRegistry.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Setting\RoadBrake.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\ICManage\FrmRFCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\ICManage\Card.cs" />
+    <Compile Include="VehIC_WF\ICManage\CardList.cs" />
+    <Compile Include="VehIC_WF\FrmTaskBillInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LFY\Controls\AquaButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LFY\Controls\FastBitmap.cs" />
+    <Compile Include="LFY\Controls\Blur.cs" />
+    <Compile Include="LFY\Controls\Layer.cs" />
+    <Compile Include="LFY\Controls\Layers.cs" />
+    <Compile Include="LFY\Controls\SelectionMode.cs" />
+    <Compile Include="LFY\Controls\Selection.cs" />
+    <Compile Include="LFY\Controls\FillType.cs" />
+    <Compile Include="LFY\Controls\LayeredImage.cs" />
+    <Compile Include="VehIC_WF\GoodsSite\GoodsSite.cs" />
+    <Compile Include="VehIC_WF\GoodsSite\HaveNectRecCompletedEventHandler.cs" />
+    <Compile Include="VehIC_WF\GoodsSite\HaveNectRecCompletedEventArgs.cs" />
+    <Compile Include="VehIC_WF\GoodsSite\CancelTaskFlowInitRecCompletedEventHandler.cs" />
+    <Compile Include="VehIC_WF\GoodsSite\CancelTaskFlowInitRecCompletedEventArgs.cs" />
+    <Compile Include="VehIC_WF\FrmSetServerConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\FrmDoorInvAdjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Utility\Regedit.cs" />
+    <Compile Include="VehIC_WF\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\BaseData\FrmRoute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Utility\RouteNodes.cs" />
+    <Compile Include="VehIC_WF\Search\FC_Search_Task.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\LocalInfo.cs" />
+    <Compile Include="VehIC_WF\UserInfo.cs" />
+    <Compile Include="VehIC_WF\WorkPointInfo.cs" />
+    <Compile Include="VehIC_WF\WorkPointList.cs" />
+    <Compile Include="VehIC_WF\Authority.cs" />
+    <Compile Include="VehIC_WF\AuthorityList.cs" />
+    <Compile Include="VehIC_WF\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\FrmChangePassWord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\ICManage\UIDUNAME.cs" />
+    <Compile Include="VehIC_WF\ICManage\UIDUNAMES.cs" />
+    <Compile Include="VehIC_WF\BaseData\FrmMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Utility\FrxDataTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Search\FC_Search.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Device\UC_DeviceManage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Utility\NoticeItem.cs" />
+    <Compile Include="VehIC_WF\Utility\NoticeItems.cs" />
+    <Compile Include="VehIC_WF\Utility\FC_Head.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Setting\ICReader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\ICManage\FC_OperaterCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\ICManage\FC_MatVehCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Setting\Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Device\ScalesDeviceSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Utility\FC_Locked.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Setting\ScaleDevice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\FrmTaskSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\FrmBillTypeSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Setting\SettingHelper.cs" />
+    <Compile Include="VehIC_WF\Program.cs" />
+    <Compile Include="VehIC_WF\Page.cs" />
+    <Compile Include="VehIC_WF\ViewPage.cs" />
+    <Compile Include="VehIC_WF\Device\ScalesAsst.cs" />
+    <Compile Include="VehIC_WF\Utility\ProgressControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\FrmWorkPointRegistry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehIC_WF\Utility\Common.cs" />
+    <Compile Include="VehIC_WF\Utility\KeyValueItem.cs" />
+    <Compile Include="VehIC_WF\Utility\KeyValue.cs" />
+    <Compile Include="VehIC_WF\Device\System\Windows\Forms\LabelWithDivider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LFY\Windows\Controls\BevelLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LFY\Windows\Controls\Design\BevelLineDesigner.cs" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\DlgClassWord.resx">
+      <DependentUpon>DlgClassWord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\chaxun\WP_Cgcx.resx">
+      <DependentUpon>WP_Cgcx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\chaxun\WP_Hycx.resx">
+      <DependentUpon>WP_Hycx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\chaxun\WP_Qycx.resx">
+      <DependentUpon>WP_Qycx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\chaxun\WP_Shcx.resx">
+      <DependentUpon>WP_Shcx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\chaxun\WP_Zhkcx.resx">
+      <DependentUpon>WP_Zhkcx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\chaxun\WP_Zycx.resx">
+      <DependentUpon>WP_Zycx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\chaxun\WP_hbcx.resx">
+      <DependentUpon>WP_hbcx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\chaxun\WP_SCNCcx.resx">
+      <DependentUpon>WP_SCNCcx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\HJ\koushuikouza.resx">
+      <DependentUpon>koushuikouza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\JT\UC_JTQualityJudge.resx">
+      <DependentUpon>UC_JTQualityJudge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\JT\WP_JTJianyan.resx">
+      <DependentUpon>WP_JTJianyan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\JT\WP_JTShenhe.resx">
+      <DependentUpon>WP_JTShenhe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\JT\WP_JTzupi.resx">
+      <DependentUpon>WP_JTzupi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\JT\WP_JTZhiyang.resx">
+      <DependentUpon>WP_JTZhiyang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\RJ\UC_RJQualityJudge.resx">
+      <DependentUpon>UC_RJQualityJudge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\RJ\WP_RJJianyan.resx">
+      <DependentUpon>WP_RJJianyan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\RJ\WP_RJShenhe.resx">
+      <DependentUpon>WP_RJShenhe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\RJ\WP_RJZhiyang.resx">
+      <DependentUpon>WP_RJZhiyang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\RJ\WP_RJzupi.resx">
+      <DependentUpon>WP_RJzupi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WK\UC_WKQualityJudge.resx">
+      <DependentUpon>UC_WKQualityJudge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WK\WP_WKzupi.resx">
+      <DependentUpon>WP_WKzupi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WK\WP_WKJianyan.resx">
+      <DependentUpon>WP_WKJianyan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WK\WP_WKShenhe.resx">
+      <DependentUpon>WP_WKShenhe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WK\WP_WKZhiyang.resx">
+      <DependentUpon>WP_WKZhiyang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\SZ\WP_SZZhiyang.resx">
+      <DependentUpon>WP_SZZhiyang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WorkPoint\portConfig.resx">
+      <DependentUpon>portConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WorkPoint\QC_Gys.resx">
+      <DependentUpon>QC_Gys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WorkPoint\QC_Wuliao.resx">
+      <DependentUpon>QC_Wuliao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\SZ\UC_SZQualityJudge.resx">
+      <DependentUpon>UC_SZQualityJudge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WorkPoint\UC_Zdpdyj.resx">
+      <DependentUpon>UC_Zdpdyj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\JF\WP_JFShenhe.resx">
+      <DependentUpon>WP_JFShenhe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\JF\WP_JFZhiyang.resx">
+      <DependentUpon>WP_JFZhiyang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WorkPoint\WP_Shangchuan.resx">
+      <DependentUpon>WP_Shangchuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\SZ\WP_SZzupi.resx">
+      <DependentUpon>WP_SZzupi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\JF\WP_JFJianyan.resx">
+      <DependentUpon>WP_JFJianyan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WorkPoint\yingGuan.resx">
+      <DependentUpon>yingGuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\SZ\WP_SZJianyan.resx">
+      <DependentUpon>WP_SZJianyan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\SZ\WP_SZShenhe.resx">
+      <DependentUpon>WP_SZShenhe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\HJ\WP_HJZhiyang.resx">
+      <DependentUpon>WP_HJZhiyang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\HJ\WP_HJJianyan.resx">
+      <DependentUpon>WP_HJJianyan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\HJ\WP_HJShenhe.resx">
+      <DependentUpon>WP_HJShenhe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\Xuanze.resx">
+      <DependentUpon>Xuanze.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgChe.resx">
+      <DependentUpon>DlgChe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgRecheck.resx">
+      <DependentUpon>DlgRecheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgUpdateCheckVal.resx">
+      <DependentUpon>DlgUpdateCheckVal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgZyInfo.resx">
+      <DependentUpon>DlgZyInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\chaxunlhl\glcx.resx">
+      <DependentUpon>glcx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\chaxunlhl\WP_ChaXun.resx">
+      <DependentUpon>WP_ChaXun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\chaxunlhl\xgcx.resx">
+      <DependentUpon>xgcx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\FrmTaskBillInfo.resx">
+      <DependentUpon>FrmTaskBillInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WorkPoint\UC_AddCheckItem.resx">
+      <DependentUpon>UC_AddCheckItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgCheckGroup.resx">
+      <DependentUpon>DlgCheckGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgQualityRule.resx">
+      <DependentUpon>DlgQualityRule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgQueryVerifSample.resx">
+      <DependentUpon>DlgQueryVerifSample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\HJHeyang.resx">
+      <DependentUpon>HJHeyang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\JFHunyang.resx">
+      <DependentUpon>JFHunyang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\WP_JFSampling.resx">
+      <DependentUpon>WP_JFSampling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\WP_Tbzd.resx">
+      <DependentUpon>WP_Tbzd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\qyts.resx">
+      <DependentUpon>qyts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\WP_Hcqy.resx">
+      <DependentUpon>WP_Hcqy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\query\AdvanceQueryForm.resx">
+      <DependentUpon>AdvanceQueryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\WorkPoint\AddCheckItem.resx">
+      <DependentUpon>AddCheckItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\JM\WP_Jianyan.resx">
+      <DependentUpon>WP_Jianyan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\JM\WP_Shenhe.resx">
+      <DependentUpon>WP_Shenhe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\czl\JM\WP_Zhiyang.resx">
+      <DependentUpon>WP_Zhiyang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgCheckItem.resx">
+      <DependentUpon>DlgCheckItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgMaterial.resx">
+      <DependentUpon>DlgMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgQueryExamineSample.resx">
+      <DependentUpon>DlgQueryExamineSample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgQueryMaterial.resx">
+      <DependentUpon>DlgQueryMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgQuerySample.resx">
+      <DependentUpon>DlgQuerySample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgWorkPoint.resx">
+      <DependentUpon>DlgWorkPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\Hunyang.resx">
+      <DependentUpon>Hunyang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\lhl\WP_Sampling.resx">
+      <DependentUpon>WP_Sampling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\rcw\sampleNum.resx">
+      <DependentUpon>sampleNum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\rcw\trainGouDui.resx">
+      <DependentUpon>trainGouDui.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\rcw\UC_HYQualityJudge.resx">
+      <DependentUpon>UC_HYQualityJudge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\rcw\WP_HYJianyan.resx">
+      <DependentUpon>WP_HYJianyan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\rcw\WP_HYZhiyang.resx">
+      <DependentUpon>WP_HYZhiyang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\rcw\WP_HYShenhe.resx">
+      <DependentUpon>WP_HYShenhe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\ReCheck.resx">
+      <DependentUpon>ReCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_Batching.resx">
+      <DependentUpon>UC_Batching.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_CheckGroup.resx">
+      <DependentUpon>UC_CheckGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_ExamineSample.resx">
+      <DependentUpon>UC_ExamineSample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_ICReg.resx">
+      <DependentUpon>UC_ICReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_JFQualityJudge.resx">
+      <DependentUpon>UC_JFQualityJudge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_ManageExamineSample.resx">
+      <DependentUpon>UC_ManageExamineSample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_MatCheckStandard.resx">
+      <DependentUpon>UC_MatCheckStandard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_QualityJudge.resx">
+      <DependentUpon>UC_QualityJudge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_QualityRule.resx">
+      <DependentUpon>UC_QualityRule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_ReCheck.resx">
+      <DependentUpon>UC_ReCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_VerifSam.resx">
+      <DependentUpon>UC_VerifSam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_VerifSample.resx">
+      <DependentUpon>UC_VerifSample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_WpRoute.resx">
+      <DependentUpon>UC_WpRoute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_Zupi.resx">
+      <DependentUpon>UC_Zupi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_CheckItem.resx">
+      <DependentUpon>UC_CheckItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgSupplier.resx">
+      <DependentUpon>DlgSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\DlgQyxx.resx">
+      <DependentUpon>DlgQyxx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\UC_HJQualityJudge.resx">
+      <DependentUpon>UC_HJQualityJudge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Setting\TaskItemView.resx">
+      <DependentUpon>TaskItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Search\FC_Search_RFFYD.resx">
+      <DependentUpon>FC_Search_RFFYD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\ICManage\FC_MatVehCard.resx">
+      <DependentUpon>FC_MatVehCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Utility\FC_Loading.resx">
+      <DependentUpon>FC_Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\FrmTaskSearch.resx">
+      <DependentUpon>FrmTaskSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Device\ScalesDeviceSetting.resx">
+      <DependentUpon>ScalesDeviceSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Search\FC_Search_Task.resx">
+      <DependentUpon>FC_Search_Task.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Search\FC_Search.resx">
+      <DependentUpon>FC_Search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\FrmChangePassWord.resx">
+      <DependentUpon>FrmChangePassWord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Device\UC_DeviceManage.resx">
+      <DependentUpon>UC_DeviceManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Utility\FC_Locked.resx">
+      <DependentUpon>FC_Locked.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\ICManage\FrmWebDialog.resx">
+      <DependentUpon>FrmWebDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\FrmBillTypeSelect.resx">
+      <DependentUpon>FrmBillTypeSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\ICManage\FC_MatVehCardEx.resx">
+      <DependentUpon>FC_MatVehCardEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\FrmSetServerConnection.resx">
+      <DependentUpon>FrmSetServerConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Setting\ICReader.resx">
+      <DependentUpon>ICReader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\BaseData\FrmMaterial.resx">
+      <DependentUpon>FrmMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\FrmWorkPointRegistry.resx">
+      <DependentUpon>FrmWorkPointRegistry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\ICManage\FC_CardRegistry.resx">
+      <DependentUpon>FC_CardRegistry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Setting\ScaleDevice.resx">
+      <DependentUpon>ScaleDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\ICManage\FC_RFBarcode.resx">
+      <DependentUpon>FC_RFBarcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\BaseData\FrmRoute.resx">
+      <DependentUpon>FrmRoute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Setting\Setting.resx">
+      <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Utility\FC_Head.resx">
+      <DependentUpon>FC_Head.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\ICManage\FC_RFBarcodeEx.resx">
+      <DependentUpon>FC_RFBarcodeEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\ICManage\FC_OperaterCard.resx">
+      <DependentUpon>FC_OperaterCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\FrmDoorInvAdjust.resx">
+      <DependentUpon>FrmDoorInvAdjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Setting\RoadBrake.resx">
+      <DependentUpon>RoadBrake.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Setting\Common.resx">
+      <DependentUpon>Common.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\ICManage\FC_FixVehCard.resx">
+      <DependentUpon>FC_FixVehCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\ICManage\FrmRFCancel.resx">
+      <DependentUpon>FrmRFCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VehIC_WF\Sampling\Properties\Resources.resx">
+      <DependentUpon>Resources.cs</DependentUpon>
+    </EmbeddedResource>
+    <Reference Include="VehIC_BL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\VehIC_BL.dll</HintPath>
+    </Reference>
+    <Reference Include="VehIC_Device, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\VehIC_Device.dll</HintPath>
+    </Reference>
+    <Reference Include="Zhc">
+      <HintPath>..\..\..\..\..\VehIC_WFNEW20170706新\VehIC_WFNEW20170706\VehIC_WFNEW\bin\Release\Zhc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\VehIC_WF.Sampling.czl.chaxun.QC_SCNCcx.datasource" />
+    <None Include="Properties\DataSources\VehIC_WF.Sampling.czl.Class.QC_BD_CUBASDOC.datasource" />
+    <None Include="Properties\DataSources\VehIC_WF.Sampling.czl.Class.QC_HJZP.datasource" />
+    <None Include="Properties\DataSources\VehIC_WF.Sampling.czl.Class.QC_Material_wl.datasource" />
+    <None Include="Properties\DataSources\VehIC_WF.Sampling.czl.Class.QC_MixCheckGroup.datasource" />
+    <None Include="Properties\DataSources\VehIC_WF.Sampling.czl.Class.QC_MixCheckItem.datasource" />
+    <None Include="Properties\DataSources\VehIC_WF.Sampling.Sample.QC_Qyxx.datasource" />
+    <None Include="Properties\DataSources\VehIC_WF.Sampling.Sample.QC_Sample_Qyd.datasource" />
+    <None Include="Properties\DataSources\VehIC_WF.Sampling.Sample.QC_Sample_zdpdyj.datasource" />
+    <None Include="Properties\DataSources\VehIC_WF.Sampling.Sample.QC_Xyfjdh.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_CheckGroup.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_CX_BS.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_MatCheckGroup.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_Material.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_MixRule.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_SampleMix_ZhiYang.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_Sample_Lab.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_Sample_Lab_Jy.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_Sample_Mix.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_Sample_Veh.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_SupplierDoc.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.QC_WpRoute.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.View.QC_MatQualityLevel_View.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.View.QC_NoticeItemDoor_View.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.Sample.View.QC_QualityRule_View.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.ViewModel.VM_QualityJudge.datasource" />
+    <None Include="Properties\DataSources\Xg.Lab.ViewModel.VM_VerifSample.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\VehIC_WF.AuthService\AuthService.wsdl" />
+    <None Include="Web References\VehIC_WF.AuthService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\VehIC_WF.AuthService\UserInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.CommonService\CommonService.wsdl" />
+    <None Include="Web References\VehIC_WF.CommonService\IrdaRecord.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.CommonService\NoticeBill.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.CommonService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\VehIC_WF.CommonService\Result.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.CommonService\RFFYD.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.CommonService\RouteNode.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.CommonService\TaskFlow.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.DoorService\DoorService.wsdl" />
+    <None Include="Web References\VehIC_WF.DoorService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\VehIC_WF.DoorService\Result.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ICCardManageService\AvailableBillInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ICCardManageService\Bill_Available.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ICCardManageService\Bill_FixVehCard.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ICCardManageService\Bill_OperCard.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ICCardManageService\ICCard.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ICCardManageService\ICCardManageService.wsdl" />
+    <None Include="Web References\VehIC_WF.ICCardManageService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\VehIC_WF.ICCardManageService\Result.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ICCardManageService\Vehic.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.SamplingService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\VehIC_WF.SamplingService\SamplingService.wsdl" />
+    <None Include="Web References\VehIC_WF.ScaleService\DaySum.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ScaleService\DaySumEx.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ScaleService\KeyValueItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ScaleService\Material.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ScaleService\MTSumEx.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ScaleService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\VehIC_WF.ScaleService\RepItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ScaleService\Result.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ScaleService\Route.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ScaleService\ScaleService.wsdl" />
+    <None Include="Web References\VehIC_WF.ScaleService\Task.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VehIC_WF.ScaleService\WLResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://192.168.2.33/VehIC_WS/AuthService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\VehIC_WF.AuthService\</RelPath>
+      <UpdateFromURL>http://192.168.2.33/VehIC_WS/AuthService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>VehIC_WF_VehIC_WF_AuthService_AuthService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.2.33/VehIC_WS/CommonService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\VehIC_WF.CommonService\</RelPath>
+      <UpdateFromURL>http://192.168.2.33/VehIC_WS/CommonService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>VehIC_WF_VehIC_WF_CommonService_CommonService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.2.33/VehIC_WS/DoorService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\VehIC_WF.DoorService\</RelPath>
+      <UpdateFromURL>http://192.168.2.33/VehIC_WS/DoorService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>VehIC_WF_VehIC_WF_DoorService_DoorService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.2.33/VehIC_WS/ICCardManageService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\VehIC_WF.ICCardManageService\</RelPath>
+      <UpdateFromURL>http://192.168.2.33/VehIC_WS/ICCardManageService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>VehIC_WF_VehIC_WF_ICCardManageService_ICCardManageService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.2.33/VehIC_WS/SamplingService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\VehIC_WF.SamplingService\</RelPath>
+      <UpdateFromURL>http://192.168.2.33/VehIC_WS/SamplingService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>VehIC_WF_VehIC_WF_SamplingService_SamplingService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.2.33/VehIC_WS/ScaleService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\VehIC_WF.ScaleService\</RelPath>
+      <UpdateFromURL>http://192.168.2.33/VehIC_WS/ScaleService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>VehIC_WF_VehIC_WF_ScaleService_ScaleService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\VehIC_WF.ICCardManageService\ICCardManageService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\VehIC_WF.CommonService\CommonService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\VehIC_WF.AuthService\AuthService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\VehIC_WF.DoorService\DoorService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\VehIC_WF.SamplingService\SamplingService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\VehIC_WF.ScaleService\ScaleService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huayan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtnLogin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtnChgPsw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtnLock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtnBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtnDeviceManage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtnWpReg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtnCardReg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtn_WpSelect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\faka.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtnNoticeBillQuery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtnGetDeviceAuth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtnQuit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tsBtnHelp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wi0124.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\che1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="che2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="VehIC_WF\Sampling\rcw\ViewModel\" />
+  </ItemGroup>
+</Project>

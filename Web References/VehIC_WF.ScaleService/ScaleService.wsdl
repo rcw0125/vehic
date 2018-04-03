@@ -1,0 +1,1570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.lfy.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.lfy.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.lfy.com/">
+      <s:element name="HaveNectRec">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="curitemid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HaveNectRecResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HaveNectRecResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelTaskFlowInitRec">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="curitemid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelTaskFlowInitRecResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CancelTaskFlowInitRecResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_GetRouteList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="route" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_GetRouteListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_GetRouteListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TurnOver_GetMaterialList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_GetMaterialListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_GetMaterialListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_GetTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_GetTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_GetTaskResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Task">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RouteID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RouteName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaterialID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaterialName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TareWeigh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCCode1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCCode2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCName1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCName2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="W1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="W2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperTime1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperTime2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorID1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorID2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorName1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorName2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TurnOver_GetVehNoList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_GetVehNoListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_GetVehNoListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_GetVehicInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_GetVehicInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_GetVehicInfoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_Excute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="routename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="materialname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehtype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="w1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_ExcuteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_ExcuteResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_ExcuteEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="w2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_ExcuteExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_ExcuteExResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_MaterialSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bsm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_MaterialSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_MaterialSearchResult" type="tns:ArrayOfMaterial" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMaterial">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Material" nillable="true" type="tns:Material" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Material">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BSM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TurnOver_RouteSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bsm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_RouteSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_RouteSearchResult" type="tns:ArrayOfRoute" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRoute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Route" nillable="true" type="tns:Route" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Route">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BSM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TurnOver_NewMaterialSave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_NewMaterialSaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_NewMaterialSaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_NewRouteSave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_NewRouteSaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_NewRouteSaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_MaterialUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mt" type="tns:Material" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newbm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_MaterialUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_MaterialUpdateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_MaterialDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mt" type="tns:Material" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_MaterialDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_MaterialDeleteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_RouteUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rt" type="tns:Route" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newbm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_RouteUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_RouteUpdateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_Query">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="time" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_QueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_QueryResult" type="tns:ArrayOfTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTask">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Task" nillable="true" type="tns:Task" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TurnOver_FetchWPList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wptype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_FetchWPListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_FetchWPListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_FetchDaySum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="time" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_FetchDaySumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_FetchDaySumResult" type="tns:ArrayOfDaySum" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDaySum">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DaySum" nillable="true" type="tns:DaySum" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DaySum">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Material" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RouteName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WeighSum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehSum" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TurnOver_DeleteRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_DeleteRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_DeleteRecordResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Flag" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TurnOver_UpdateRecordEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_UpdateRecordExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_UpdateRecordExResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_UpdateRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehtype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="materialname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="routename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="w1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="w2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dt1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dt2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_UpdateRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_UpdateRecordResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_GetTaskEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_GetTaskExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_GetTaskExResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_FetchNewBillNoAndServerTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="TurnOver_FetchNewBillNoAndServerTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_FetchNewBillNoAndServerTimeResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_InsertTurnOverRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="task" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_InsertTurnOverRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_InsertTurnOverRecordResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_FetchWPUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TurnOver_FetchWPUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TurnOver_FetchWPUsersResult" type="tns:ArrayOfKeyValueItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfKeyValueItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="KeyValueItem" nillable="true" type="tns:KeyValueItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="KeyValueItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WorkLoad_FetchSum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dt1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dt2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WorkLoad_FetchSumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WorkLoad_FetchSumResult" type="tns:WLResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WLResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dt1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dt2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUMOfVehSum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfWL_Item" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfWL_Item">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WL_Item" nillable="true" type="tns:WL_Item" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WL_Item">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehSum" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchDaySum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FetchDaySumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FetchDaySumResult" type="tns:ArrayOfDaySumEx" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDaySumEx">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DaySumEx" nillable="true" type="tns:DaySumEx" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DaySumEx">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Material" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeptName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WeighSum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehSum" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMTSum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DT1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DT2" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Option" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FetchMTSumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FetchMTSumResult" type="tns:ArrayOfMTSumEx" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMTSumEx">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MTSumEx" nillable="true" type="tns:MTSumEx" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MTSumEx">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WPName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Material" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeptName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WeighSum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehSum" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="billtype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vendor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DT1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DT2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FetchItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FetchItemResult" type="tns:ArrayOfRepItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRepItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RepItem" nillable="true" type="tns:RepItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RepItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TaskID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BillType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaterialID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaterialName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Weigh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="W1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Time1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCCode1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCName1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorID1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorName1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="W2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Time2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCCode2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCName2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorID2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorName2" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="task" type="tns:RepItem" />
+            <s:element minOccurs="0" maxOccurs="1" name="w1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="w2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateItemResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HaveNectRecSoapIn">
+    <wsdl:part name="parameters" element="tns:HaveNectRec" />
+  </wsdl:message>
+  <wsdl:message name="HaveNectRecSoapOut">
+    <wsdl:part name="parameters" element="tns:HaveNectRecResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelTaskFlowInitRecSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelTaskFlowInitRec" />
+  </wsdl:message>
+  <wsdl:message name="CancelTaskFlowInitRecSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelTaskFlowInitRecResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetRouteListSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetRouteList" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetRouteListSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetRouteListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetMaterialListSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetMaterialList" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetMaterialListSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetMaterialListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetTask" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetVehNoListSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetVehNoList" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetVehNoListSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetVehNoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetVehicInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetVehicInfo" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetVehicInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetVehicInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_ExcuteSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_Excute" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_ExcuteSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_ExcuteResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_ExcuteExSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_ExcuteEx" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_ExcuteExSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_ExcuteExResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_MaterialSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_MaterialSearch" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_MaterialSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_MaterialSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_RouteSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_RouteSearch" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_RouteSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_RouteSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_NewMaterialSaveSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_NewMaterialSave" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_NewMaterialSaveSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_NewMaterialSaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_NewRouteSaveSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_NewRouteSave" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_NewRouteSaveSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_NewRouteSaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_MaterialUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_MaterialUpdate" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_MaterialUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_MaterialUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_MaterialDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_MaterialDelete" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_MaterialDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_MaterialDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_RouteUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_RouteUpdate" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_RouteUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_RouteUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_QuerySoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_Query" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_QuerySoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_QueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_FetchWPListSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_FetchWPList" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_FetchWPListSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_FetchWPListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_FetchDaySumSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_FetchDaySum" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_FetchDaySumSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_FetchDaySumResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_DeleteRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_DeleteRecord" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_DeleteRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_DeleteRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_UpdateRecordExSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_UpdateRecordEx" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_UpdateRecordExSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_UpdateRecordExResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_UpdateRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_UpdateRecord" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_UpdateRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_UpdateRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetTaskExSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetTaskEx" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_GetTaskExSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_GetTaskExResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_FetchNewBillNoAndServerTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_FetchNewBillNoAndServerTime" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_FetchNewBillNoAndServerTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_FetchNewBillNoAndServerTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_InsertTurnOverRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_InsertTurnOverRecord" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_InsertTurnOverRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_InsertTurnOverRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_FetchWPUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:TurnOver_FetchWPUsers" />
+  </wsdl:message>
+  <wsdl:message name="TurnOver_FetchWPUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:TurnOver_FetchWPUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="WorkLoad_FetchSumSoapIn">
+    <wsdl:part name="parameters" element="tns:WorkLoad_FetchSum" />
+  </wsdl:message>
+  <wsdl:message name="WorkLoad_FetchSumSoapOut">
+    <wsdl:part name="parameters" element="tns:WorkLoad_FetchSumResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchDaySumSoapIn">
+    <wsdl:part name="parameters" element="tns:FetchDaySum" />
+  </wsdl:message>
+  <wsdl:message name="FetchDaySumSoapOut">
+    <wsdl:part name="parameters" element="tns:FetchDaySumResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMTSumSoapIn">
+    <wsdl:part name="parameters" element="tns:FetchMTSum" />
+  </wsdl:message>
+  <wsdl:message name="FetchMTSumSoapOut">
+    <wsdl:part name="parameters" element="tns:FetchMTSumResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchItemSoapIn">
+    <wsdl:part name="parameters" element="tns:FetchItem" />
+  </wsdl:message>
+  <wsdl:message name="FetchItemSoapOut">
+    <wsdl:part name="parameters" element="tns:FetchItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateItemSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateItem" />
+  </wsdl:message>
+  <wsdl:message name="UpdateItemSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateItemResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ScaleServiceSoap">
+    <wsdl:operation name="HaveNectRec">
+      <wsdl:input message="tns:HaveNectRecSoapIn" />
+      <wsdl:output message="tns:HaveNectRecSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelTaskFlowInitRec">
+      <wsdl:input message="tns:CancelTaskFlowInitRecSoapIn" />
+      <wsdl:output message="tns:CancelTaskFlowInitRecSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetRouteList">
+      <wsdl:input message="tns:TurnOver_GetRouteListSoapIn" />
+      <wsdl:output message="tns:TurnOver_GetRouteListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetMaterialList">
+      <wsdl:input message="tns:TurnOver_GetMaterialListSoapIn" />
+      <wsdl:output message="tns:TurnOver_GetMaterialListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetTask">
+      <wsdl:input message="tns:TurnOver_GetTaskSoapIn" />
+      <wsdl:output message="tns:TurnOver_GetTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetVehNoList">
+      <wsdl:input message="tns:TurnOver_GetVehNoListSoapIn" />
+      <wsdl:output message="tns:TurnOver_GetVehNoListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetVehicInfo">
+      <wsdl:input message="tns:TurnOver_GetVehicInfoSoapIn" />
+      <wsdl:output message="tns:TurnOver_GetVehicInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_Excute">
+      <wsdl:input message="tns:TurnOver_ExcuteSoapIn" />
+      <wsdl:output message="tns:TurnOver_ExcuteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_ExcuteEx">
+      <wsdl:input message="tns:TurnOver_ExcuteExSoapIn" />
+      <wsdl:output message="tns:TurnOver_ExcuteExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_MaterialSearch">
+      <wsdl:input message="tns:TurnOver_MaterialSearchSoapIn" />
+      <wsdl:output message="tns:TurnOver_MaterialSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_RouteSearch">
+      <wsdl:input message="tns:TurnOver_RouteSearchSoapIn" />
+      <wsdl:output message="tns:TurnOver_RouteSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_NewMaterialSave">
+      <wsdl:input message="tns:TurnOver_NewMaterialSaveSoapIn" />
+      <wsdl:output message="tns:TurnOver_NewMaterialSaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_NewRouteSave">
+      <wsdl:input message="tns:TurnOver_NewRouteSaveSoapIn" />
+      <wsdl:output message="tns:TurnOver_NewRouteSaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_MaterialUpdate">
+      <wsdl:input message="tns:TurnOver_MaterialUpdateSoapIn" />
+      <wsdl:output message="tns:TurnOver_MaterialUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_MaterialDelete">
+      <wsdl:input message="tns:TurnOver_MaterialDeleteSoapIn" />
+      <wsdl:output message="tns:TurnOver_MaterialDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_RouteUpdate">
+      <wsdl:input message="tns:TurnOver_RouteUpdateSoapIn" />
+      <wsdl:output message="tns:TurnOver_RouteUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_Query">
+      <wsdl:input message="tns:TurnOver_QuerySoapIn" />
+      <wsdl:output message="tns:TurnOver_QuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchWPList">
+      <wsdl:input message="tns:TurnOver_FetchWPListSoapIn" />
+      <wsdl:output message="tns:TurnOver_FetchWPListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchDaySum">
+      <wsdl:input message="tns:TurnOver_FetchDaySumSoapIn" />
+      <wsdl:output message="tns:TurnOver_FetchDaySumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_DeleteRecord">
+      <wsdl:input message="tns:TurnOver_DeleteRecordSoapIn" />
+      <wsdl:output message="tns:TurnOver_DeleteRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_UpdateRecordEx">
+      <wsdl:input message="tns:TurnOver_UpdateRecordExSoapIn" />
+      <wsdl:output message="tns:TurnOver_UpdateRecordExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_UpdateRecord">
+      <wsdl:input message="tns:TurnOver_UpdateRecordSoapIn" />
+      <wsdl:output message="tns:TurnOver_UpdateRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetTaskEx">
+      <wsdl:input message="tns:TurnOver_GetTaskExSoapIn" />
+      <wsdl:output message="tns:TurnOver_GetTaskExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchNewBillNoAndServerTime">
+      <wsdl:input message="tns:TurnOver_FetchNewBillNoAndServerTimeSoapIn" />
+      <wsdl:output message="tns:TurnOver_FetchNewBillNoAndServerTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_InsertTurnOverRecord">
+      <wsdl:input message="tns:TurnOver_InsertTurnOverRecordSoapIn" />
+      <wsdl:output message="tns:TurnOver_InsertTurnOverRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchWPUsers">
+      <wsdl:input message="tns:TurnOver_FetchWPUsersSoapIn" />
+      <wsdl:output message="tns:TurnOver_FetchWPUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WorkLoad_FetchSum">
+      <wsdl:input message="tns:WorkLoad_FetchSumSoapIn" />
+      <wsdl:output message="tns:WorkLoad_FetchSumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchDaySum">
+      <wsdl:input message="tns:FetchDaySumSoapIn" />
+      <wsdl:output message="tns:FetchDaySumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMTSum">
+      <wsdl:input message="tns:FetchMTSumSoapIn" />
+      <wsdl:output message="tns:FetchMTSumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchItem">
+      <wsdl:input message="tns:FetchItemSoapIn" />
+      <wsdl:output message="tns:FetchItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <wsdl:input message="tns:UpdateItemSoapIn" />
+      <wsdl:output message="tns:UpdateItemSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ScaleServiceSoap" type="tns:ScaleServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HaveNectRec">
+      <soap:operation soapAction="http://www.lfy.com/HaveNectRec" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelTaskFlowInitRec">
+      <soap:operation soapAction="http://www.lfy.com/CancelTaskFlowInitRec" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetRouteList">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_GetRouteList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetMaterialList">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_GetMaterialList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetTask">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_GetTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetVehNoList">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_GetVehNoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetVehicInfo">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_GetVehicInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_Excute">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_Excute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_ExcuteEx">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_ExcuteEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_MaterialSearch">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_MaterialSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_RouteSearch">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_RouteSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_NewMaterialSave">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_NewMaterialSave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_NewRouteSave">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_NewRouteSave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_MaterialUpdate">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_MaterialUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_MaterialDelete">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_MaterialDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_RouteUpdate">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_RouteUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_Query">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_Query" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchWPList">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_FetchWPList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchDaySum">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_FetchDaySum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_DeleteRecord">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_DeleteRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_UpdateRecordEx">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_UpdateRecordEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_UpdateRecord">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_UpdateRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetTaskEx">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_GetTaskEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchNewBillNoAndServerTime">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_FetchNewBillNoAndServerTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_InsertTurnOverRecord">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_InsertTurnOverRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchWPUsers">
+      <soap:operation soapAction="http://www.lfy.com/TurnOver_FetchWPUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WorkLoad_FetchSum">
+      <soap:operation soapAction="http://www.lfy.com/WorkLoad_FetchSum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchDaySum">
+      <soap:operation soapAction="http://www.lfy.com/FetchDaySum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMTSum">
+      <soap:operation soapAction="http://www.lfy.com/FetchMTSum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchItem">
+      <soap:operation soapAction="http://www.lfy.com/FetchItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <soap:operation soapAction="http://www.lfy.com/UpdateItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ScaleServiceSoap12" type="tns:ScaleServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HaveNectRec">
+      <soap12:operation soapAction="http://www.lfy.com/HaveNectRec" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelTaskFlowInitRec">
+      <soap12:operation soapAction="http://www.lfy.com/CancelTaskFlowInitRec" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetRouteList">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_GetRouteList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetMaterialList">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_GetMaterialList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetTask">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_GetTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetVehNoList">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_GetVehNoList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetVehicInfo">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_GetVehicInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_Excute">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_Excute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_ExcuteEx">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_ExcuteEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_MaterialSearch">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_MaterialSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_RouteSearch">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_RouteSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_NewMaterialSave">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_NewMaterialSave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_NewRouteSave">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_NewRouteSave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_MaterialUpdate">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_MaterialUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_MaterialDelete">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_MaterialDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_RouteUpdate">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_RouteUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_Query">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_Query" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchWPList">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_FetchWPList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchDaySum">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_FetchDaySum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_DeleteRecord">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_DeleteRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_UpdateRecordEx">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_UpdateRecordEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_UpdateRecord">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_UpdateRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_GetTaskEx">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_GetTaskEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchNewBillNoAndServerTime">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_FetchNewBillNoAndServerTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_InsertTurnOverRecord">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_InsertTurnOverRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TurnOver_FetchWPUsers">
+      <soap12:operation soapAction="http://www.lfy.com/TurnOver_FetchWPUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WorkLoad_FetchSum">
+      <soap12:operation soapAction="http://www.lfy.com/WorkLoad_FetchSum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchDaySum">
+      <soap12:operation soapAction="http://www.lfy.com/FetchDaySum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMTSum">
+      <soap12:operation soapAction="http://www.lfy.com/FetchMTSum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchItem">
+      <soap12:operation soapAction="http://www.lfy.com/FetchItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <soap12:operation soapAction="http://www.lfy.com/UpdateItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ScaleService">
+    <wsdl:port name="ScaleServiceSoap" binding="tns:ScaleServiceSoap">
+      <soap:address location="http://192.168.2.33/VehIC_WS/ScaleService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ScaleServiceSoap12" binding="tns:ScaleServiceSoap12">
+      <soap12:address location="http://192.168.2.33/VehIC_WS/ScaleService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,248 @@
+﻿namespace VehIC_WF.Search
+{
+    using System;
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.Windows.Forms;
+
+    public class FC_Search_RFFYD : UserControl
+    {
+        private Button btn_task_cancel;
+        private IContainer components = null;
+        private Label label1;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        private Label label15;
+        private Label label4;
+        private Label label7;
+        private Label label8;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox txt_billstatus;
+        private TextBox txt_Date;
+        private TextBox txt_fkr;
+        private TextBox txt_fksj;
+        private TextBox txt_vendor;
+
+        public FC_Search_RFFYD()
+        {
+            this.InitializeComponent();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (this.components != null))
+            {
+                this.components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
+            this.panel1 = new Panel();
+            this.label8 = new Label();
+            this.panel2 = new Panel();
+            this.label7 = new Label();
+            this.panel3 = new Panel();
+            this.btn_task_cancel = new Button();
+            this.txt_fksj = new TextBox();
+            this.txt_billstatus = new TextBox();
+            this.label10 = new Label();
+            this.label11 = new Label();
+            this.txt_fkr = new TextBox();
+            this.label12 = new Label();
+            this.textBox1 = new TextBox();
+            this.label15 = new Label();
+            this.txt_vendor = new TextBox();
+            this.textBox2 = new TextBox();
+            this.label1 = new Label();
+            this.txt_Date = new TextBox();
+            this.label4 = new Label();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            base.SuspendLayout();
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Dock = DockStyle.Top;
+            this.panel1.Location = new Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new Size(0x3fc, 0x24);
+            this.panel1.TabIndex = 0;
+            this.label8.BackColor = Color.Transparent;
+            this.label8.Dock = DockStyle.Fill;
+            this.label8.Font = new System.Drawing.Font("宋体", 14.25f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.label8.ForeColor = Color.Blue;
+            this.label8.Location = new Point(0, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new Size(0x3fc, 0x24);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "RF发运作业单";
+            this.label8.TextAlign = ContentAlignment.MiddleCenter;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.txt_Date);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.txt_vendor);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.txt_fksj);
+            this.panel2.Controls.Add(this.txt_billstatus);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.txt_fkr);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Dock = DockStyle.Fill;
+            this.panel2.Location = new Point(0, 0x24);
+            this.panel2.Margin = new Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new Size(0x3fc, 0x1b1);
+            this.panel2.TabIndex = 0xf3;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.label7.Location = new Point(0x3f, 0x95);
+            this.label7.Margin = new Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new Size(0x23, 14);
+            this.label7.TabIndex = 220;
+            this.label7.Text = "客商";
+            this.panel3.Controls.Add(this.btn_task_cancel);
+            this.panel3.Dock = DockStyle.Right;
+            this.panel3.Location = new Point(0x357, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new Size(0xa3, 0x1af);
+            this.panel3.TabIndex = 0xb7;
+            this.btn_task_cancel.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Bold, GraphicsUnit.Point, 0x86);
+            this.btn_task_cancel.Location = new Point(0x12, 0x25);
+            this.btn_task_cancel.Name = "btn_task_cancel";
+            this.btn_task_cancel.Size = new Size(0x72, 0x75);
+            this.btn_task_cancel.TabIndex = 0x90;
+            this.btn_task_cancel.Text = "　撤销单据　［收回磁卡］";
+            this.btn_task_cancel.UseVisualStyleBackColor = true;
+            this.txt_fksj.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.txt_fksj.Location = new Point(340, 0x41);
+            this.txt_fksj.Margin = new Padding(4);
+            this.txt_fksj.Name = "txt_fksj";
+            this.txt_fksj.ReadOnly = true;
+            this.txt_fksj.Size = new Size(0x90, 0x17);
+            this.txt_fksj.TabIndex = 0xb3;
+            this.txt_fksj.TextAlign = HorizontalAlignment.Right;
+            this.txt_billstatus.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.txt_billstatus.Location = new Point(340, 0x16);
+            this.txt_billstatus.Margin = new Padding(4);
+            this.txt_billstatus.Name = "txt_billstatus";
+            this.txt_billstatus.ReadOnly = true;
+            this.txt_billstatus.Size = new Size(0x90, 0x17);
+            this.txt_billstatus.TabIndex = 0xb5;
+            this.txt_billstatus.TextAlign = HorizontalAlignment.Right;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.label10.Location = new Point(280, 0x1a);
+            this.label10.Margin = new Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new Size(0x3f, 14);
+            this.label10.TabIndex = 180;
+            this.label10.Text = "单据状态";
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.label11.Location = new Point(280, 70);
+            this.label11.Margin = new Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new Size(0x3f, 14);
+            this.label11.TabIndex = 0xb2;
+            this.label11.Text = "发卡时间";
+            this.txt_fkr.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.txt_fkr.Location = new Point(0x60, 0x41);
+            this.txt_fkr.Margin = new Padding(4);
+            this.txt_fkr.Name = "txt_fkr";
+            this.txt_fkr.ReadOnly = true;
+            this.txt_fkr.Size = new Size(0x90, 0x17);
+            this.txt_fkr.TabIndex = 0xb1;
+            this.txt_fkr.TextAlign = HorizontalAlignment.Right;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.label12.Location = new Point(0x31, 0x45);
+            this.label12.Margin = new Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new Size(0x31, 14);
+            this.label12.TabIndex = 0xb0;
+            this.label12.Text = "发卡人";
+            this.textBox1.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.textBox1.Location = new Point(0x60, 0x16);
+            this.textBox1.Margin = new Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new Size(0x90, 0x17);
+            this.textBox1.TabIndex = 0x93;
+            this.textBox1.TextAlign = HorizontalAlignment.Right;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.label15.Location = new Point(0x23, 0x1a);
+            this.label15.Margin = new Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new Size(0x3f, 14);
+            this.label15.TabIndex = 0x92;
+            this.label15.Text = "作业单号";
+            this.txt_vendor.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.txt_vendor.Location = new Point(0x60, 0x92);
+            this.txt_vendor.Margin = new Padding(4);
+            this.txt_vendor.Name = "txt_vendor";
+            this.txt_vendor.ReadOnly = true;
+            this.txt_vendor.Size = new Size(650, 0x17);
+            this.txt_vendor.TabIndex = 0xf3;
+            this.txt_vendor.TextAlign = HorizontalAlignment.Right;
+            this.textBox2.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.textBox2.Location = new Point(0x60, 0x6a);
+            this.textBox2.Margin = new Padding(4);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new Size(0x90, 0x17);
+            this.textBox2.TabIndex = 0xfd;
+            this.textBox2.TextAlign = HorizontalAlignment.Right;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.label1.Location = new Point(0x15, 110);
+            this.label1.Margin = new Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new Size(0x4d, 14);
+            this.label1.TabIndex = 0xfc;
+            this.label1.Text = "RF发运单号";
+            this.txt_Date.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.txt_Date.Location = new Point(0x25a, 0x16);
+            this.txt_Date.Margin = new Padding(4);
+            this.txt_Date.Name = "txt_Date";
+            this.txt_Date.ReadOnly = true;
+            this.txt_Date.Size = new Size(0x90, 0x17);
+            this.txt_Date.TabIndex = 0xf9;
+            this.txt_Date.TextAlign = HorizontalAlignment.Right;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            this.label4.Location = new Point(540, 0x1a);
+            this.label4.Margin = new Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new Size(0x3f, 14);
+            this.label4.TabIndex = 0xf8;
+            this.label4.Text = "制单时间";
+            base.AutoScaleDimensions = new SizeF(7f, 14f);
+            base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            base.Controls.Add(this.panel2);
+            base.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
+            base.Name = "FC_Search_RFFYD";
+            base.Size = new Size(0x3fc, 0x1d5);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            base.ResumeLayout(false);
+        }
+    }
+}
+

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.lfy.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.lfy.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.lfy.com/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcuteEnter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="billtype" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="billtypecode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="needweigh" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcuteEnterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExcuteEnterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SteelDoor_Out">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SteelDoor_OutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SteelDoor_OutResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SteelDoor_Enter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SteelDoor_EnterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SteelDoor_EnterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TaskCancel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TaskCancelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TaskCancelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckAuthCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckAuthCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckAuthCodeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SteelDoor_EnterCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SteelDoor_EnterCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SteelDoor_EnterCheckResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Flag" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Door_DirectionCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ywdesc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="toin" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Door_DirectionCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Door_DirectionCheckResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcuteEnterSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcuteEnter" />
+  </wsdl:message>
+  <wsdl:message name="ExcuteEnterSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcuteEnterResponse" />
+  </wsdl:message>
+  <wsdl:message name="SteelDoor_OutSoapIn">
+    <wsdl:part name="parameters" element="tns:SteelDoor_Out" />
+  </wsdl:message>
+  <wsdl:message name="SteelDoor_OutSoapOut">
+    <wsdl:part name="parameters" element="tns:SteelDoor_OutResponse" />
+  </wsdl:message>
+  <wsdl:message name="SteelDoor_EnterSoapIn">
+    <wsdl:part name="parameters" element="tns:SteelDoor_Enter" />
+  </wsdl:message>
+  <wsdl:message name="SteelDoor_EnterSoapOut">
+    <wsdl:part name="parameters" element="tns:SteelDoor_EnterResponse" />
+  </wsdl:message>
+  <wsdl:message name="TaskCancelSoapIn">
+    <wsdl:part name="parameters" element="tns:TaskCancel" />
+  </wsdl:message>
+  <wsdl:message name="TaskCancelSoapOut">
+    <wsdl:part name="parameters" element="tns:TaskCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckAuthCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckAuthCode" />
+  </wsdl:message>
+  <wsdl:message name="CheckAuthCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckAuthCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SteelDoor_EnterCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:SteelDoor_EnterCheck" />
+  </wsdl:message>
+  <wsdl:message name="SteelDoor_EnterCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:SteelDoor_EnterCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="Door_DirectionCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:Door_DirectionCheck" />
+  </wsdl:message>
+  <wsdl:message name="Door_DirectionCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:Door_DirectionCheckResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DoorServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcuteEnter">
+      <wsdl:input message="tns:ExcuteEnterSoapIn" />
+      <wsdl:output message="tns:ExcuteEnterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SteelDoor_Out">
+      <wsdl:input message="tns:SteelDoor_OutSoapIn" />
+      <wsdl:output message="tns:SteelDoor_OutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SteelDoor_Enter">
+      <wsdl:input message="tns:SteelDoor_EnterSoapIn" />
+      <wsdl:output message="tns:SteelDoor_EnterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TaskCancel">
+      <wsdl:input message="tns:TaskCancelSoapIn" />
+      <wsdl:output message="tns:TaskCancelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckAuthCode">
+      <wsdl:input message="tns:CheckAuthCodeSoapIn" />
+      <wsdl:output message="tns:CheckAuthCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SteelDoor_EnterCheck">
+      <wsdl:input message="tns:SteelDoor_EnterCheckSoapIn" />
+      <wsdl:output message="tns:SteelDoor_EnterCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Door_DirectionCheck">
+      <wsdl:input message="tns:Door_DirectionCheckSoapIn" />
+      <wsdl:output message="tns:Door_DirectionCheckSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DoorServiceSoap" type="tns:DoorServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://www.lfy.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcuteEnter">
+      <soap:operation soapAction="http://www.lfy.com/ExcuteEnter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SteelDoor_Out">
+      <soap:operation soapAction="http://www.lfy.com/SteelDoor_Out" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SteelDoor_Enter">
+      <soap:operation soapAction="http://www.lfy.com/SteelDoor_Enter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TaskCancel">
+      <soap:operation soapAction="http://www.lfy.com/TaskCancel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAuthCode">
+      <soap:operation soapAction="http://www.lfy.com/CheckAuthCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SteelDoor_EnterCheck">
+      <soap:operation soapAction="http://www.lfy.com/SteelDoor_EnterCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Door_DirectionCheck">
+      <soap:operation soapAction="http://www.lfy.com/Door_DirectionCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DoorServiceSoap12" type="tns:DoorServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://www.lfy.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcuteEnter">
+      <soap12:operation soapAction="http://www.lfy.com/ExcuteEnter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SteelDoor_Out">
+      <soap12:operation soapAction="http://www.lfy.com/SteelDoor_Out" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SteelDoor_Enter">
+      <soap12:operation soapAction="http://www.lfy.com/SteelDoor_Enter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TaskCancel">
+      <soap12:operation soapAction="http://www.lfy.com/TaskCancel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAuthCode">
+      <soap12:operation soapAction="http://www.lfy.com/CheckAuthCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SteelDoor_EnterCheck">
+      <soap12:operation soapAction="http://www.lfy.com/SteelDoor_EnterCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Door_DirectionCheck">
+      <soap12:operation soapAction="http://www.lfy.com/Door_DirectionCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DoorService">
+    <wsdl:port name="DoorServiceSoap" binding="tns:DoorServiceSoap">
+      <soap:address location="http://192.168.2.33/VehIC_WS/DoorService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DoorServiceSoap12" binding="tns:DoorServiceSoap12">
+      <soap12:address location="http://192.168.2.33/VehIC_WS/DoorService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

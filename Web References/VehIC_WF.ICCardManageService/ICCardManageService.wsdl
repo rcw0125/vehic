@@ -1,0 +1,1852 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ISFixVeh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ISFixVehResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ISFixVehResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RFVehCardAssign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourbillno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vendor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehtype" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isfix" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RFVehCardAssignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RFVehCardAssignResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Flag" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRegOperList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRegOperListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRegOperListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVehTypeByVehNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehTypeByVehNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehTypeByVehNoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardOwnerList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCardOwnerListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardOwnerListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistryCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistryCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistryCardResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCardNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCardNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateCardNoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistryLost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistryLostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistryLostResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistryOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistryOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistryOutResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CardInit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CardInitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CardInitResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OneCardInit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OneCardInitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OneCardInitResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="icno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardResult" type="tns:ICCard" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ICCard">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ICNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reguser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Regtime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ictype" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DJH" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cardno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardExResult" type="tns:ICCard" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryCardEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="regoper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="begintime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="endtime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="astatus" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="atype" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryCardExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryCardExResult" type="tns:ArrayOfICCard" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfICCard">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ICCard" nillable="true" type="tns:ICCard" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOperCardBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IDNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOperCardBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOperCardBillResult" type="tns:ArrayOfBill_OperCard" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBill_OperCard">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Bill_OperCard" nillable="true" type="tns:Bill_OperCard" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Bill_OperCard">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BillNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BeginTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EndTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDCardNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZDR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZDRQ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHRQ" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ISZLK" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="flag" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOperCardBillEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOperCardBillExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOperCardBillExResult" type="tns:Bill_OperCard" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OperCardAssign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ictype" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="djh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OperCardAssignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OperCardAssignResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFixVehCardBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFixVehCardBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFixVehCardBillResult" type="tns:ArrayOfBill_FixVehCard" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBill_FixVehCard">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Bill_FixVehCard" nillable="true" type="tns:Bill_FixVehCard" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Bill_FixVehCard">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BillNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDCardNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BeginTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EndTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OutTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Memo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="reason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZDR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZDRQ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHRQ" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ISMulti" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="flag" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFixVehCardBillEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFixVehCardBillExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFixVehCardBillExResult" type="tns:Bill_FixVehCard" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixVehCardAssign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ictype" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehinfo" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="dept" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixVehCardAssignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FixVehCardAssignResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehTypeList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVehTypeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehTypeListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAvailableVehNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAvailableVehNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAvailableVehNoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLoseCardVehNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLoseCardVehNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLoseCardVehNoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAvailableBillInfos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAvailableBillInfosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAvailableBillInfosResult" type="tns:ArrayOfAvailableBillInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAvailableBillInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AvailableBillInfo" nillable="true" type="tns:AvailableBillInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AvailableBillInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillTypeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillNum" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="wzlx" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NeedWeigh" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBill_Arrives">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wzlx" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBill_ArrivesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBill_ArrivesResult" type="tns:ArrayOfBill_Available" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBill_Available">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Bill_Available" nillable="true" type="tns:Bill_Available" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Bill_Available">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BillNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DHTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="needweigh" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="outdate" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfInvItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInvItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InvItem" nillable="true" type="tns:InvItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InvItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RowID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RowNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CBaseID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpecTypeGraphID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlanNum" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="property" type="tns:INVProperty" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="INVProperty">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="available" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="routecode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="allowmix" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="needweigh" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="monitorweigh" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="overweight" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBill_ArrivesEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noticebillid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBill_ArrivesExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBill_ArrivesExResult" type="tns:ArrayOfBill_Available" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBill_FYD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wzlx" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBill_FYDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBill_FYDResult" type="tns:ArrayOfBill_Available" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBill_QTWZ">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="billtype" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="needweigh" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBill_QTWZResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBill_QTWZResult" type="tns:ArrayOfBill_Available" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBill_XHWZ">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="billtype" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="needweigh" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBill_XHWZResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBill_XHWZResult" type="tns:ArrayOfBill_Available" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenNoticeBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehinfo" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="billinfo" type="tns:AvailableBillInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenNoticeBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenNoticeBillResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehNoFromICID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehNoFromICIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehNoFromICIDResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryAvailableVehNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryAvailableVehNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryAvailableVehNoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryBillByUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="uid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryBillByUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryBillByUserIDResult" type="tns:ArrayOfBill_OperCard" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryAvailableVehNoOfRFFYD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryAvailableVehNoOfRFFYDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryAvailableVehNoOfRFFYDResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TTCardInit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TTCardInitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TTCardInitResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ISExistTaskOfVehNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ISExistTaskOfVehNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ISExistTaskOfVehNoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehicInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehicInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehicInfoResult" type="tns:Vehic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Vehic">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Vehno" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isfix" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Enable" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Alarm" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="InDoor" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CancelFlag" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RFVehCardCancel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isfix" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RFVehCardCancelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RFVehCardCancelResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RoadBrakeLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="roadbrake" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RoadBrakeLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RoadBrakeLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ISFixVehSoapIn">
+    <wsdl:part name="parameters" element="tns:ISFixVeh" />
+  </wsdl:message>
+  <wsdl:message name="ISFixVehSoapOut">
+    <wsdl:part name="parameters" element="tns:ISFixVehResponse" />
+  </wsdl:message>
+  <wsdl:message name="RFVehCardAssignSoapIn">
+    <wsdl:part name="parameters" element="tns:RFVehCardAssign" />
+  </wsdl:message>
+  <wsdl:message name="RFVehCardAssignSoapOut">
+    <wsdl:part name="parameters" element="tns:RFVehCardAssignResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRegOperListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRegOperList" />
+  </wsdl:message>
+  <wsdl:message name="GetRegOperListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRegOperListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehTypeByVehNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehTypeByVehNo" />
+  </wsdl:message>
+  <wsdl:message name="GetVehTypeByVehNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehTypeByVehNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardOwnerListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardOwnerList" />
+  </wsdl:message>
+  <wsdl:message name="GetCardOwnerListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardOwnerListResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistryCardSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistryCard" />
+  </wsdl:message>
+  <wsdl:message name="RegistryCardSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistryCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCardNoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCardNo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCardNoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCardNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistryLostSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistryLost" />
+  </wsdl:message>
+  <wsdl:message name="RegistryLostSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistryLostResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistryOutSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistryOut" />
+  </wsdl:message>
+  <wsdl:message name="RegistryOutSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistryOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardInitSoapIn">
+    <wsdl:part name="parameters" element="tns:CardInit" />
+  </wsdl:message>
+  <wsdl:message name="CardInitSoapOut">
+    <wsdl:part name="parameters" element="tns:CardInitResponse" />
+  </wsdl:message>
+  <wsdl:message name="OneCardInitSoapIn">
+    <wsdl:part name="parameters" element="tns:OneCardInit" />
+  </wsdl:message>
+  <wsdl:message name="OneCardInitSoapOut">
+    <wsdl:part name="parameters" element="tns:OneCardInitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCard" />
+  </wsdl:message>
+  <wsdl:message name="GetCardSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardExSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardEx" />
+  </wsdl:message>
+  <wsdl:message name="GetCardExSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardExResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryCardExSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryCardEx" />
+  </wsdl:message>
+  <wsdl:message name="QueryCardExSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryCardExResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOperCardBillSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOperCardBill" />
+  </wsdl:message>
+  <wsdl:message name="GetOperCardBillSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOperCardBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOperCardBillExSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOperCardBillEx" />
+  </wsdl:message>
+  <wsdl:message name="GetOperCardBillExSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOperCardBillExResponse" />
+  </wsdl:message>
+  <wsdl:message name="OperCardAssignSoapIn">
+    <wsdl:part name="parameters" element="tns:OperCardAssign" />
+  </wsdl:message>
+  <wsdl:message name="OperCardAssignSoapOut">
+    <wsdl:part name="parameters" element="tns:OperCardAssignResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFixVehCardBillSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFixVehCardBill" />
+  </wsdl:message>
+  <wsdl:message name="GetFixVehCardBillSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFixVehCardBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFixVehCardBillExSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFixVehCardBillEx" />
+  </wsdl:message>
+  <wsdl:message name="GetFixVehCardBillExSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFixVehCardBillExResponse" />
+  </wsdl:message>
+  <wsdl:message name="FixVehCardAssignSoapIn">
+    <wsdl:part name="parameters" element="tns:FixVehCardAssign" />
+  </wsdl:message>
+  <wsdl:message name="FixVehCardAssignSoapOut">
+    <wsdl:part name="parameters" element="tns:FixVehCardAssignResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehTypeListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehTypeList" />
+  </wsdl:message>
+  <wsdl:message name="GetVehTypeListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableVehNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAvailableVehNo" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableVehNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAvailableVehNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLoseCardVehNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLoseCardVehNo" />
+  </wsdl:message>
+  <wsdl:message name="GetLoseCardVehNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLoseCardVehNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableBillInfosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAvailableBillInfos" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableBillInfosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAvailableBillInfosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBill_ArrivesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBill_Arrives" />
+  </wsdl:message>
+  <wsdl:message name="GetBill_ArrivesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBill_ArrivesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBill_ArrivesExSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBill_ArrivesEx" />
+  </wsdl:message>
+  <wsdl:message name="GetBill_ArrivesExSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBill_ArrivesExResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBill_FYDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBill_FYD" />
+  </wsdl:message>
+  <wsdl:message name="GetBill_FYDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBill_FYDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBill_QTWZSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBill_QTWZ" />
+  </wsdl:message>
+  <wsdl:message name="GetBill_QTWZSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBill_QTWZResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBill_XHWZSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBill_XHWZ" />
+  </wsdl:message>
+  <wsdl:message name="GetBill_XHWZSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBill_XHWZResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenNoticeBillSoapIn">
+    <wsdl:part name="parameters" element="tns:GenNoticeBill" />
+  </wsdl:message>
+  <wsdl:message name="GenNoticeBillSoapOut">
+    <wsdl:part name="parameters" element="tns:GenNoticeBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehNoFromICIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehNoFromICID" />
+  </wsdl:message>
+  <wsdl:message name="GetVehNoFromICIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehNoFromICIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryAvailableVehNoSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryAvailableVehNo" />
+  </wsdl:message>
+  <wsdl:message name="QueryAvailableVehNoSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryAvailableVehNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryBillByUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryBillByUserID" />
+  </wsdl:message>
+  <wsdl:message name="QueryBillByUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryBillByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryAvailableVehNoOfRFFYDSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryAvailableVehNoOfRFFYD" />
+  </wsdl:message>
+  <wsdl:message name="QueryAvailableVehNoOfRFFYDSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryAvailableVehNoOfRFFYDResponse" />
+  </wsdl:message>
+  <wsdl:message name="TTCardInitSoapIn">
+    <wsdl:part name="parameters" element="tns:TTCardInit" />
+  </wsdl:message>
+  <wsdl:message name="TTCardInitSoapOut">
+    <wsdl:part name="parameters" element="tns:TTCardInitResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISExistTaskOfVehNoSoapIn">
+    <wsdl:part name="parameters" element="tns:ISExistTaskOfVehNo" />
+  </wsdl:message>
+  <wsdl:message name="ISExistTaskOfVehNoSoapOut">
+    <wsdl:part name="parameters" element="tns:ISExistTaskOfVehNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehicInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehicInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RFVehCardCancelSoapIn">
+    <wsdl:part name="parameters" element="tns:RFVehCardCancel" />
+  </wsdl:message>
+  <wsdl:message name="RFVehCardCancelSoapOut">
+    <wsdl:part name="parameters" element="tns:RFVehCardCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="RoadBrakeLogSoapIn">
+    <wsdl:part name="parameters" element="tns:RoadBrakeLog" />
+  </wsdl:message>
+  <wsdl:message name="RoadBrakeLogSoapOut">
+    <wsdl:part name="parameters" element="tns:RoadBrakeLogResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICCardManageServiceSoap">
+    <wsdl:operation name="ISFixVeh">
+      <wsdl:input message="tns:ISFixVehSoapIn" />
+      <wsdl:output message="tns:ISFixVehSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RFVehCardAssign">
+      <wsdl:input message="tns:RFVehCardAssignSoapIn" />
+      <wsdl:output message="tns:RFVehCardAssignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRegOperList">
+      <wsdl:input message="tns:GetRegOperListSoapIn" />
+      <wsdl:output message="tns:GetRegOperListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehTypeByVehNo">
+      <wsdl:input message="tns:GetVehTypeByVehNoSoapIn" />
+      <wsdl:output message="tns:GetVehTypeByVehNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardOwnerList">
+      <wsdl:input message="tns:GetCardOwnerListSoapIn" />
+      <wsdl:output message="tns:GetCardOwnerListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistryCard">
+      <wsdl:input message="tns:RegistryCardSoapIn" />
+      <wsdl:output message="tns:RegistryCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCardNo">
+      <wsdl:input message="tns:UpdateCardNoSoapIn" />
+      <wsdl:output message="tns:UpdateCardNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistryLost">
+      <wsdl:input message="tns:RegistryLostSoapIn" />
+      <wsdl:output message="tns:RegistryLostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistryOut">
+      <wsdl:input message="tns:RegistryOutSoapIn" />
+      <wsdl:output message="tns:RegistryOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CardInit">
+      <wsdl:input message="tns:CardInitSoapIn" />
+      <wsdl:output message="tns:CardInitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OneCardInit">
+      <wsdl:input message="tns:OneCardInitSoapIn" />
+      <wsdl:output message="tns:OneCardInitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCard">
+      <wsdl:input message="tns:GetCardSoapIn" />
+      <wsdl:output message="tns:GetCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardEx">
+      <wsdl:input message="tns:GetCardExSoapIn" />
+      <wsdl:output message="tns:GetCardExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryCardEx">
+      <wsdl:input message="tns:QueryCardExSoapIn" />
+      <wsdl:output message="tns:QueryCardExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOperCardBill">
+      <wsdl:input message="tns:GetOperCardBillSoapIn" />
+      <wsdl:output message="tns:GetOperCardBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOperCardBillEx">
+      <wsdl:input message="tns:GetOperCardBillExSoapIn" />
+      <wsdl:output message="tns:GetOperCardBillExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OperCardAssign">
+      <wsdl:input message="tns:OperCardAssignSoapIn" />
+      <wsdl:output message="tns:OperCardAssignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFixVehCardBill">
+      <wsdl:input message="tns:GetFixVehCardBillSoapIn" />
+      <wsdl:output message="tns:GetFixVehCardBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFixVehCardBillEx">
+      <wsdl:input message="tns:GetFixVehCardBillExSoapIn" />
+      <wsdl:output message="tns:GetFixVehCardBillExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FixVehCardAssign">
+      <wsdl:input message="tns:FixVehCardAssignSoapIn" />
+      <wsdl:output message="tns:FixVehCardAssignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehTypeList">
+      <wsdl:input message="tns:GetVehTypeListSoapIn" />
+      <wsdl:output message="tns:GetVehTypeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableVehNo">
+      <wsdl:input message="tns:GetAvailableVehNoSoapIn" />
+      <wsdl:output message="tns:GetAvailableVehNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoseCardVehNo">
+      <wsdl:input message="tns:GetLoseCardVehNoSoapIn" />
+      <wsdl:output message="tns:GetLoseCardVehNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableBillInfos">
+      <wsdl:input message="tns:GetAvailableBillInfosSoapIn" />
+      <wsdl:output message="tns:GetAvailableBillInfosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_Arrives">
+      <wsdl:input message="tns:GetBill_ArrivesSoapIn" />
+      <wsdl:output message="tns:GetBill_ArrivesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_ArrivesEx">
+      <wsdl:input message="tns:GetBill_ArrivesExSoapIn" />
+      <wsdl:output message="tns:GetBill_ArrivesExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_FYD">
+      <wsdl:input message="tns:GetBill_FYDSoapIn" />
+      <wsdl:output message="tns:GetBill_FYDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_QTWZ">
+      <wsdl:input message="tns:GetBill_QTWZSoapIn" />
+      <wsdl:output message="tns:GetBill_QTWZSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_XHWZ">
+      <wsdl:input message="tns:GetBill_XHWZSoapIn" />
+      <wsdl:output message="tns:GetBill_XHWZSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenNoticeBill">
+      <wsdl:input message="tns:GenNoticeBillSoapIn" />
+      <wsdl:output message="tns:GenNoticeBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehNoFromICID">
+      <wsdl:input message="tns:GetVehNoFromICIDSoapIn" />
+      <wsdl:output message="tns:GetVehNoFromICIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryAvailableVehNo">
+      <wsdl:input message="tns:QueryAvailableVehNoSoapIn" />
+      <wsdl:output message="tns:QueryAvailableVehNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryBillByUserID">
+      <wsdl:input message="tns:QueryBillByUserIDSoapIn" />
+      <wsdl:output message="tns:QueryBillByUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryAvailableVehNoOfRFFYD">
+      <wsdl:input message="tns:QueryAvailableVehNoOfRFFYDSoapIn" />
+      <wsdl:output message="tns:QueryAvailableVehNoOfRFFYDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TTCardInit">
+      <wsdl:input message="tns:TTCardInitSoapIn" />
+      <wsdl:output message="tns:TTCardInitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ISExistTaskOfVehNo">
+      <wsdl:input message="tns:ISExistTaskOfVehNoSoapIn" />
+      <wsdl:output message="tns:ISExistTaskOfVehNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicInfo">
+      <wsdl:input message="tns:GetVehicInfoSoapIn" />
+      <wsdl:output message="tns:GetVehicInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RFVehCardCancel">
+      <wsdl:input message="tns:RFVehCardCancelSoapIn" />
+      <wsdl:output message="tns:RFVehCardCancelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RoadBrakeLog">
+      <wsdl:input message="tns:RoadBrakeLogSoapIn" />
+      <wsdl:output message="tns:RoadBrakeLogSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ICCardManageServiceSoap" type="tns:ICCardManageServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ISFixVeh">
+      <soap:operation soapAction="http://tempuri.org/ISFixVeh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RFVehCardAssign">
+      <soap:operation soapAction="http://tempuri.org/RFVehCardAssign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegOperList">
+      <soap:operation soapAction="http://tempuri.org/GetRegOperList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehTypeByVehNo">
+      <soap:operation soapAction="http://tempuri.org/GetVehTypeByVehNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardOwnerList">
+      <soap:operation soapAction="http://tempuri.org/GetCardOwnerList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistryCard">
+      <soap:operation soapAction="http://tempuri.org/RegistryCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCardNo">
+      <soap:operation soapAction="http://tempuri.org/UpdateCardNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistryLost">
+      <soap:operation soapAction="http://tempuri.org/RegistryLost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistryOut">
+      <soap:operation soapAction="http://tempuri.org/RegistryOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardInit">
+      <soap:operation soapAction="http://tempuri.org/CardInit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OneCardInit">
+      <soap:operation soapAction="http://tempuri.org/OneCardInit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCard">
+      <soap:operation soapAction="http://tempuri.org/GetCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardEx">
+      <soap:operation soapAction="http://tempuri.org/GetCardEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCardEx">
+      <soap:operation soapAction="http://tempuri.org/QueryCardEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOperCardBill">
+      <soap:operation soapAction="http://tempuri.org/GetOperCardBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOperCardBillEx">
+      <soap:operation soapAction="http://tempuri.org/GetOperCardBillEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OperCardAssign">
+      <soap:operation soapAction="http://tempuri.org/OperCardAssign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFixVehCardBill">
+      <soap:operation soapAction="http://tempuri.org/GetFixVehCardBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFixVehCardBillEx">
+      <soap:operation soapAction="http://tempuri.org/GetFixVehCardBillEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixVehCardAssign">
+      <soap:operation soapAction="http://tempuri.org/FixVehCardAssign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehTypeList">
+      <soap:operation soapAction="http://tempuri.org/GetVehTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableVehNo">
+      <soap:operation soapAction="http://tempuri.org/GetAvailableVehNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoseCardVehNo">
+      <soap:operation soapAction="http://tempuri.org/GetLoseCardVehNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableBillInfos">
+      <soap:operation soapAction="http://tempuri.org/GetAvailableBillInfos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_Arrives">
+      <soap:operation soapAction="http://tempuri.org/GetBill_Arrives" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_ArrivesEx">
+      <soap:operation soapAction="http://tempuri.org/GetBill_ArrivesEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_FYD">
+      <soap:operation soapAction="http://tempuri.org/GetBill_FYD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_QTWZ">
+      <soap:operation soapAction="http://tempuri.org/GetBill_QTWZ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_XHWZ">
+      <soap:operation soapAction="http://tempuri.org/GetBill_XHWZ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenNoticeBill">
+      <soap:operation soapAction="http://tempuri.org/GenNoticeBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehNoFromICID">
+      <soap:operation soapAction="http://tempuri.org/GetVehNoFromICID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAvailableVehNo">
+      <soap:operation soapAction="http://tempuri.org/QueryAvailableVehNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryBillByUserID">
+      <soap:operation soapAction="http://tempuri.org/QueryBillByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAvailableVehNoOfRFFYD">
+      <soap:operation soapAction="http://tempuri.org/QueryAvailableVehNoOfRFFYD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TTCardInit">
+      <soap:operation soapAction="http://tempuri.org/TTCardInit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ISExistTaskOfVehNo">
+      <soap:operation soapAction="http://tempuri.org/ISExistTaskOfVehNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicInfo">
+      <soap:operation soapAction="http://tempuri.org/GetVehicInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RFVehCardCancel">
+      <soap:operation soapAction="http://tempuri.org/RFVehCardCancel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoadBrakeLog">
+      <soap:operation soapAction="http://tempuri.org/RoadBrakeLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ICCardManageServiceSoap12" type="tns:ICCardManageServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ISFixVeh">
+      <soap12:operation soapAction="http://tempuri.org/ISFixVeh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RFVehCardAssign">
+      <soap12:operation soapAction="http://tempuri.org/RFVehCardAssign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegOperList">
+      <soap12:operation soapAction="http://tempuri.org/GetRegOperList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehTypeByVehNo">
+      <soap12:operation soapAction="http://tempuri.org/GetVehTypeByVehNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardOwnerList">
+      <soap12:operation soapAction="http://tempuri.org/GetCardOwnerList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistryCard">
+      <soap12:operation soapAction="http://tempuri.org/RegistryCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCardNo">
+      <soap12:operation soapAction="http://tempuri.org/UpdateCardNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistryLost">
+      <soap12:operation soapAction="http://tempuri.org/RegistryLost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistryOut">
+      <soap12:operation soapAction="http://tempuri.org/RegistryOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardInit">
+      <soap12:operation soapAction="http://tempuri.org/CardInit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OneCardInit">
+      <soap12:operation soapAction="http://tempuri.org/OneCardInit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCard">
+      <soap12:operation soapAction="http://tempuri.org/GetCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardEx">
+      <soap12:operation soapAction="http://tempuri.org/GetCardEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCardEx">
+      <soap12:operation soapAction="http://tempuri.org/QueryCardEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOperCardBill">
+      <soap12:operation soapAction="http://tempuri.org/GetOperCardBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOperCardBillEx">
+      <soap12:operation soapAction="http://tempuri.org/GetOperCardBillEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OperCardAssign">
+      <soap12:operation soapAction="http://tempuri.org/OperCardAssign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFixVehCardBill">
+      <soap12:operation soapAction="http://tempuri.org/GetFixVehCardBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFixVehCardBillEx">
+      <soap12:operation soapAction="http://tempuri.org/GetFixVehCardBillEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixVehCardAssign">
+      <soap12:operation soapAction="http://tempuri.org/FixVehCardAssign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehTypeList">
+      <soap12:operation soapAction="http://tempuri.org/GetVehTypeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableVehNo">
+      <soap12:operation soapAction="http://tempuri.org/GetAvailableVehNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoseCardVehNo">
+      <soap12:operation soapAction="http://tempuri.org/GetLoseCardVehNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableBillInfos">
+      <soap12:operation soapAction="http://tempuri.org/GetAvailableBillInfos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_Arrives">
+      <soap12:operation soapAction="http://tempuri.org/GetBill_Arrives" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_ArrivesEx">
+      <soap12:operation soapAction="http://tempuri.org/GetBill_ArrivesEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_FYD">
+      <soap12:operation soapAction="http://tempuri.org/GetBill_FYD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_QTWZ">
+      <soap12:operation soapAction="http://tempuri.org/GetBill_QTWZ" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBill_XHWZ">
+      <soap12:operation soapAction="http://tempuri.org/GetBill_XHWZ" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenNoticeBill">
+      <soap12:operation soapAction="http://tempuri.org/GenNoticeBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehNoFromICID">
+      <soap12:operation soapAction="http://tempuri.org/GetVehNoFromICID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAvailableVehNo">
+      <soap12:operation soapAction="http://tempuri.org/QueryAvailableVehNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryBillByUserID">
+      <soap12:operation soapAction="http://tempuri.org/QueryBillByUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAvailableVehNoOfRFFYD">
+      <soap12:operation soapAction="http://tempuri.org/QueryAvailableVehNoOfRFFYD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TTCardInit">
+      <soap12:operation soapAction="http://tempuri.org/TTCardInit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ISExistTaskOfVehNo">
+      <soap12:operation soapAction="http://tempuri.org/ISExistTaskOfVehNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetVehicInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RFVehCardCancel">
+      <soap12:operation soapAction="http://tempuri.org/RFVehCardCancel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoadBrakeLog">
+      <soap12:operation soapAction="http://tempuri.org/RoadBrakeLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ICCardManageService">
+    <wsdl:port name="ICCardManageServiceSoap" binding="tns:ICCardManageServiceSoap">
+      <soap:address location="http://192.168.2.33/VehIC_WS/ICCardManageService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ICCardManageServiceSoap12" binding="tns:ICCardManageServiceSoap12">
+      <soap12:address location="http://192.168.2.33/VehIC_WS/ICCardManageService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

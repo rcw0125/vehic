@@ -1,0 +1,32 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="VehIC_WF_VehIC_WF_ICCardManageService_ICCardManageService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.2.33/VehIC_WS/ICCardManageService.asmx</Value>
+    </Setting>
+    <Setting Name="VehIC_WF_VehIC_WF_CommonService_CommonService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.2.122/VehIC_WS/CommonService.asmx</Value>
+    </Setting>
+    <Setting Name="VehIC_WF_VehIC_WF_AuthService_AuthService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.2.122/VehIC_WS/AuthService.asmx</Value>
+    </Setting>
+    <Setting Name="VehIC_WF_VehIC_WF_DoorService_DoorService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.2.122/VehIC_WS/DoorService.asmx</Value>
+    </Setting>
+    <Setting Name="VehIC_WF_VehIC_WF_SamplingService_SamplingService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.2.122/VehIC_WS/SamplingService.asmx</Value>
+    </Setting>
+    <Setting Name="VehIC_WF_VehIC_WF_ScaleService_ScaleService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.2.122/VehIC_WS/ScaleService.asmx</Value>
+    </Setting>
+    <Setting Name="VehIcConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=192.168.2.34;Initial Catalog=VehIc;User ID=sa;Password=vehic0901&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=192.168.2.34;Initial Catalog=VehIc;User ID=sa;Password=vehic0901</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

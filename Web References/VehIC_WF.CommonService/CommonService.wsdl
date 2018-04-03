@@ -1,0 +1,1994 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.lfy.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.lfy.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.lfy.com/">
+      <s:element name="GetRoute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="routecode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRouteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRouteResult" type="tns:ArrayOfRouteNode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRouteNode">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RouteNode" nillable="true" type="tns:RouteNode" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RouteNode">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="InvXH" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="wctype" type="tns:RouteNodeType" />
+          <s:element minOccurs="0" maxOccurs="1" name="wclist" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="RouteNodeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="door" />
+          <s:enumeration value="sampling" />
+          <s:enumeration value="scales" />
+          <s:enumeration value="goodssite" />
+          <s:enumeration value="unknow" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRoute_Code">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="routecode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoute_CodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoute_CodeResult" type="tns:ArrayOfRouteNode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRouteOfBillType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billtype" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isqtorxh" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRouteOfBillTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRouteOfBillTypeResult" type="tns:ArrayOfRouteNode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNoticeBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNoticeBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNoticeBillResult" type="tns:NoticeBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NoticeBill">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="billtype" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="billtypeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="billtypedesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="icno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="wzlx" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="vehtype" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fkr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fksj" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="djtime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="vehisfix" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="vehenable" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="vehtare" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="needweigh" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="lxtz" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastOpertime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PerMaxTime" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfNBItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="doorroute" type="tns:ArrayOfItemRoute" />
+          <s:element minOccurs="1" maxOccurs="1" name="ISFirstItem" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNBItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NBItem" nillable="true" type="tns:NBItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NBItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="productarea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="usedept" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Available" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="rowid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="rowno" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="billbodyid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pk_inv" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="invcode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="invname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="spectypegraphid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="funit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="plannum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="planassistnum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="factnum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="factassistnum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Weigh1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Weigh2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="T1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="T2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="wpcode1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="wpcode2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="operid1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="operid2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="property" type="tns:INVProperty" />
+          <s:element minOccurs="0" maxOccurs="1" name="itemroute" type="tns:ArrayOfItemRoute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="INVProperty">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="available" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="routecode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="allowmix" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="needweigh" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="monitorweigh" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="overweight" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfItemRoute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemRoute" nillable="true" type="tns:ItemRoute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ItemRoute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WPTypeCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ISOver" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="WPS" type="tns:ArrayOfWPInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfWPInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WPInfo" nillable="true" type="tns:WPInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WPInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WPCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WPBM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WPName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNoticeBillByVehNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNoticeBillByVehNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNoticeBillByVehNoResult" type="tns:NoticeBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskBillByBillNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskBillByBillNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaskBillByBillNoResult" type="tns:NoticeBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateNoticeBillCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldicid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remarkex" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateNoticeBillCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateNoticeBillCardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNoticeBillEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wptype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNoticeBillExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNoticeBillExResult" type="tns:NoticeBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Test">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetThridUrl">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetThridUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetThridUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSystemPara">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="paraname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSystemParaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSystemParaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WorkPointRegistry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="regcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WorkPointRegistryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="WorkPointRegistryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDistinctAvailableWorkPointType">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDistinctAvailableWorkPointTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDistinctAvailableWorkPointTypeResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDistinctAvailableWorkPoint">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wptype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDistinctAvailableWorkPointResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDistinctAvailableWorkPointResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WorkPointCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="regcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WorkPointCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WorkPointCheckResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserAlarmInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ywdesc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noticeid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wccode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserAlarmInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InserAlarmInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertTaskLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isfix" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertTaskLogResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="InsertTaskFlowInitRec">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertTaskFlowInitRecResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertTaskFlowInitRecResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TerminalTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TerminalTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TerminalTaskResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogVehInOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="billtype" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="billtypecode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wccode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dept" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="owner" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="inout" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogVehInOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LogVehInOutResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TaskFlowInitRecCancel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="noticeid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isfix" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TaskFlowInitRecCancelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TaskFlowInitRecCancelResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Excute_Sampling">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bill" type="tns:NoticeBill" />
+            <s:element minOccurs="0" maxOccurs="1" name="itemids" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="xh" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="curitemid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Excute_SamplingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Excute_SamplingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Excute_Scales">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bill" type="tns:NoticeBill" />
+            <s:element minOccurs="0" maxOccurs="1" name="itemids" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="xh" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="curitemid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="weigh" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="monitor" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Excute_ScalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Excute_ScalesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Excute_Goodssite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bill" type="tns:NoticeBill" />
+            <s:element minOccurs="0" maxOccurs="1" name="itemids" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="xh" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="curitemid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Excute_GoodssiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Excute_GoodssiteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Excute_GoodssiteEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bill" type="tns:NoticeBill" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Excute_GoodssiteExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Excute_GoodssiteExResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTaskBillRemark">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newremark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTaskBillRemarkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateTaskBillRemarkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskFlowRecs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskFlowRecsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaskFlowRecsResult" type="tns:ArrayOfTaskFlow" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTaskFlow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TaskFlow" nillable="true" type="tns:TaskFlow" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TaskFlow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NoticeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoticeItemID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="XH" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BeginTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EndTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCTypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCTypeId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRFFYDInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRFFYDInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRFFYDInfoResult" type="tns:RFFYD" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RFFYD">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fydh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ICID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMeg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRFFYD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cph" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRFFYDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRFFYDResult" type="tns:ArrayOfRFFYD" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRFFYD">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RFFYD" nillable="true" type="tns:RFFYD" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRFFYDByICID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRFFYDByICIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRFFYDByICIDResult" type="tns:RFFYD" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFYDBillCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="icid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFYDBillCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateFYDBillCardResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Flag" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardVehNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardVehNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardVehNoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskBillByVehNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vehno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskBillByVehNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaskBillByVehNoResult" type="tns:NoticeBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BillRouteIncludeWP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="billno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BillRouteIncludeWPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillRouteIncludeWPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcuteOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bill" type="tns:NoticeBill" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcuteOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExcuteOutResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskBill_N_Task">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wptype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="mode" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaskBill_N_TaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaskBill_N_TaskResult" type="tns:NoticeBill" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckEnter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bill" type="tns:NoticeBill" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckEnterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckEnterResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bill" type="tns:NoticeBill" />
+            <s:element minOccurs="0" maxOccurs="1" name="wpcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckOutResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FetchDatatime">
+        <s:complexType />
+      </s:element>
+      <s:element name="FetchDatatimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FetchDatatimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FetchIrdaRecordList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dt1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dt2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FetchIrdaRecordListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FetchIrdaRecordListResult" type="tns:ArrayOfIrdaRecord" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIrdaRecord">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IrdaRecord" nillable="true" type="tns:IrdaRecord" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IrdaRecord">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WCCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WCName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperateTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperateResult" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IrdaLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wccode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IrdaLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IrdaLogResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetRouteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoute" />
+  </wsdl:message>
+  <wsdl:message name="GetRouteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRouteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoute_CodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoute_Code" />
+  </wsdl:message>
+  <wsdl:message name="GetRoute_CodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoute_CodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRouteOfBillTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRouteOfBillType" />
+  </wsdl:message>
+  <wsdl:message name="GetRouteOfBillTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRouteOfBillTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNoticeBillSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNoticeBill" />
+  </wsdl:message>
+  <wsdl:message name="GetNoticeBillSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNoticeBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNoticeBillByVehNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNoticeBillByVehNo" />
+  </wsdl:message>
+  <wsdl:message name="GetNoticeBillByVehNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNoticeBillByVehNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskBillByBillNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTaskBillByBillNo" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskBillByBillNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaskBillByBillNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNoticeBillCardSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateNoticeBillCard" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNoticeBillCardSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateNoticeBillCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNoticeBillExSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNoticeBillEx" />
+  </wsdl:message>
+  <wsdl:message name="GetNoticeBillExSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNoticeBillExResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapIn">
+    <wsdl:part name="parameters" element="tns:Test" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapOut">
+    <wsdl:part name="parameters" element="tns:TestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetThridUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetThridUrl" />
+  </wsdl:message>
+  <wsdl:message name="GetThridUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetThridUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemParaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSystemPara" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemParaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSystemParaResponse" />
+  </wsdl:message>
+  <wsdl:message name="WorkPointRegistrySoapIn">
+    <wsdl:part name="parameters" element="tns:WorkPointRegistry" />
+  </wsdl:message>
+  <wsdl:message name="WorkPointRegistrySoapOut">
+    <wsdl:part name="parameters" element="tns:WorkPointRegistryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDistinctAvailableWorkPointTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDistinctAvailableWorkPointType" />
+  </wsdl:message>
+  <wsdl:message name="GetDistinctAvailableWorkPointTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDistinctAvailableWorkPointTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDistinctAvailableWorkPointSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDistinctAvailableWorkPoint" />
+  </wsdl:message>
+  <wsdl:message name="GetDistinctAvailableWorkPointSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDistinctAvailableWorkPointResponse" />
+  </wsdl:message>
+  <wsdl:message name="WorkPointCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:WorkPointCheck" />
+  </wsdl:message>
+  <wsdl:message name="WorkPointCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:WorkPointCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="InserAlarmInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:InserAlarmInfo" />
+  </wsdl:message>
+  <wsdl:message name="InserAlarmInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:InserAlarmInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertTaskLogSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertTaskLog" />
+  </wsdl:message>
+  <wsdl:message name="InsertTaskLogSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertTaskLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertTaskFlowInitRecSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertTaskFlowInitRec" />
+  </wsdl:message>
+  <wsdl:message name="InsertTaskFlowInitRecSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertTaskFlowInitRecResponse" />
+  </wsdl:message>
+  <wsdl:message name="TerminalTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:TerminalTask" />
+  </wsdl:message>
+  <wsdl:message name="TerminalTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:TerminalTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogVehInOutSoapIn">
+    <wsdl:part name="parameters" element="tns:LogVehInOut" />
+  </wsdl:message>
+  <wsdl:message name="LogVehInOutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogVehInOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="TaskFlowInitRecCancelSoapIn">
+    <wsdl:part name="parameters" element="tns:TaskFlowInitRecCancel" />
+  </wsdl:message>
+  <wsdl:message name="TaskFlowInitRecCancelSoapOut">
+    <wsdl:part name="parameters" element="tns:TaskFlowInitRecCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="Excute_SamplingSoapIn">
+    <wsdl:part name="parameters" element="tns:Excute_Sampling" />
+  </wsdl:message>
+  <wsdl:message name="Excute_SamplingSoapOut">
+    <wsdl:part name="parameters" element="tns:Excute_SamplingResponse" />
+  </wsdl:message>
+  <wsdl:message name="Excute_ScalesSoapIn">
+    <wsdl:part name="parameters" element="tns:Excute_Scales" />
+  </wsdl:message>
+  <wsdl:message name="Excute_ScalesSoapOut">
+    <wsdl:part name="parameters" element="tns:Excute_ScalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Excute_GoodssiteSoapIn">
+    <wsdl:part name="parameters" element="tns:Excute_Goodssite" />
+  </wsdl:message>
+  <wsdl:message name="Excute_GoodssiteSoapOut">
+    <wsdl:part name="parameters" element="tns:Excute_GoodssiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Excute_GoodssiteExSoapIn">
+    <wsdl:part name="parameters" element="tns:Excute_GoodssiteEx" />
+  </wsdl:message>
+  <wsdl:message name="Excute_GoodssiteExSoapOut">
+    <wsdl:part name="parameters" element="tns:Excute_GoodssiteExResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTaskBillRemarkSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTaskBillRemark" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTaskBillRemarkSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTaskBillRemarkResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskFlowRecsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTaskFlowRecs" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskFlowRecsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaskFlowRecsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRFFYDInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRFFYDInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetRFFYDInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRFFYDInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRFFYDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRFFYD" />
+  </wsdl:message>
+  <wsdl:message name="GetRFFYDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRFFYDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRFFYDByICIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRFFYDByICID" />
+  </wsdl:message>
+  <wsdl:message name="GetRFFYDByICIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRFFYDByICIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFYDBillCardSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateFYDBillCard" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFYDBillCardSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateFYDBillCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardVehNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardVehNo" />
+  </wsdl:message>
+  <wsdl:message name="GetCardVehNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardVehNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskBillByVehNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTaskBillByVehNo" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskBillByVehNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaskBillByVehNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BillRouteIncludeWPSoapIn">
+    <wsdl:part name="parameters" element="tns:BillRouteIncludeWP" />
+  </wsdl:message>
+  <wsdl:message name="BillRouteIncludeWPSoapOut">
+    <wsdl:part name="parameters" element="tns:BillRouteIncludeWPResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcuteOutSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcuteOut" />
+  </wsdl:message>
+  <wsdl:message name="ExcuteOutSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcuteOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskBill_N_TaskSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTaskBill_N_Task" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskBill_N_TaskSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaskBill_N_TaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckEnterSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckEnter" />
+  </wsdl:message>
+  <wsdl:message name="CheckEnterSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckEnterResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckOutSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckOut" />
+  </wsdl:message>
+  <wsdl:message name="CheckOutSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchDatatimeSoapIn">
+    <wsdl:part name="parameters" element="tns:FetchDatatime" />
+  </wsdl:message>
+  <wsdl:message name="FetchDatatimeSoapOut">
+    <wsdl:part name="parameters" element="tns:FetchDatatimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchIrdaRecordListSoapIn">
+    <wsdl:part name="parameters" element="tns:FetchIrdaRecordList" />
+  </wsdl:message>
+  <wsdl:message name="FetchIrdaRecordListSoapOut">
+    <wsdl:part name="parameters" element="tns:FetchIrdaRecordListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IrdaLogSoapIn">
+    <wsdl:part name="parameters" element="tns:IrdaLog" />
+  </wsdl:message>
+  <wsdl:message name="IrdaLogSoapOut">
+    <wsdl:part name="parameters" element="tns:IrdaLogResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CommonServiceSoap">
+    <wsdl:operation name="GetRoute">
+      <wsdl:input message="tns:GetRouteSoapIn" />
+      <wsdl:output message="tns:GetRouteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoute_Code">
+      <wsdl:input message="tns:GetRoute_CodeSoapIn" />
+      <wsdl:output message="tns:GetRoute_CodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteOfBillType">
+      <wsdl:input message="tns:GetRouteOfBillTypeSoapIn" />
+      <wsdl:output message="tns:GetRouteOfBillTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNoticeBill">
+      <wsdl:input message="tns:GetNoticeBillSoapIn" />
+      <wsdl:output message="tns:GetNoticeBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNoticeBillByVehNo">
+      <wsdl:input message="tns:GetNoticeBillByVehNoSoapIn" />
+      <wsdl:output message="tns:GetNoticeBillByVehNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskBillByBillNo">
+      <wsdl:input message="tns:GetTaskBillByBillNoSoapIn" />
+      <wsdl:output message="tns:GetTaskBillByBillNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNoticeBillCard">
+      <wsdl:input message="tns:UpdateNoticeBillCardSoapIn" />
+      <wsdl:output message="tns:UpdateNoticeBillCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNoticeBillEx">
+      <wsdl:input message="tns:GetNoticeBillExSoapIn" />
+      <wsdl:output message="tns:GetNoticeBillExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <wsdl:input message="tns:TestSoapIn" />
+      <wsdl:output message="tns:TestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetThridUrl">
+      <wsdl:input message="tns:GetThridUrlSoapIn" />
+      <wsdl:output message="tns:GetThridUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemPara">
+      <wsdl:input message="tns:GetSystemParaSoapIn" />
+      <wsdl:output message="tns:GetSystemParaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WorkPointRegistry">
+      <wsdl:input message="tns:WorkPointRegistrySoapIn" />
+      <wsdl:output message="tns:WorkPointRegistrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDistinctAvailableWorkPointType">
+      <wsdl:input message="tns:GetDistinctAvailableWorkPointTypeSoapIn" />
+      <wsdl:output message="tns:GetDistinctAvailableWorkPointTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDistinctAvailableWorkPoint">
+      <wsdl:input message="tns:GetDistinctAvailableWorkPointSoapIn" />
+      <wsdl:output message="tns:GetDistinctAvailableWorkPointSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WorkPointCheck">
+      <wsdl:input message="tns:WorkPointCheckSoapIn" />
+      <wsdl:output message="tns:WorkPointCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InserAlarmInfo">
+      <wsdl:input message="tns:InserAlarmInfoSoapIn" />
+      <wsdl:output message="tns:InserAlarmInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTaskLog">
+      <wsdl:input message="tns:InsertTaskLogSoapIn" />
+      <wsdl:output message="tns:InsertTaskLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTaskFlowInitRec">
+      <wsdl:input message="tns:InsertTaskFlowInitRecSoapIn" />
+      <wsdl:output message="tns:InsertTaskFlowInitRecSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TerminalTask">
+      <wsdl:input message="tns:TerminalTaskSoapIn" />
+      <wsdl:output message="tns:TerminalTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogVehInOut">
+      <wsdl:input message="tns:LogVehInOutSoapIn" />
+      <wsdl:output message="tns:LogVehInOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TaskFlowInitRecCancel">
+      <wsdl:input message="tns:TaskFlowInitRecCancelSoapIn" />
+      <wsdl:output message="tns:TaskFlowInitRecCancelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Excute_Sampling">
+      <wsdl:input message="tns:Excute_SamplingSoapIn" />
+      <wsdl:output message="tns:Excute_SamplingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Excute_Scales">
+      <wsdl:input message="tns:Excute_ScalesSoapIn" />
+      <wsdl:output message="tns:Excute_ScalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Excute_Goodssite">
+      <wsdl:input message="tns:Excute_GoodssiteSoapIn" />
+      <wsdl:output message="tns:Excute_GoodssiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Excute_GoodssiteEx">
+      <wsdl:input message="tns:Excute_GoodssiteExSoapIn" />
+      <wsdl:output message="tns:Excute_GoodssiteExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTaskBillRemark">
+      <wsdl:input message="tns:UpdateTaskBillRemarkSoapIn" />
+      <wsdl:output message="tns:UpdateTaskBillRemarkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskFlowRecs">
+      <wsdl:input message="tns:GetTaskFlowRecsSoapIn" />
+      <wsdl:output message="tns:GetTaskFlowRecsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRFFYDInfo">
+      <wsdl:input message="tns:GetRFFYDInfoSoapIn" />
+      <wsdl:output message="tns:GetRFFYDInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRFFYD">
+      <wsdl:input message="tns:GetRFFYDSoapIn" />
+      <wsdl:output message="tns:GetRFFYDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRFFYDByICID">
+      <wsdl:input message="tns:GetRFFYDByICIDSoapIn" />
+      <wsdl:output message="tns:GetRFFYDByICIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFYDBillCard">
+      <wsdl:input message="tns:UpdateFYDBillCardSoapIn" />
+      <wsdl:output message="tns:UpdateFYDBillCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardVehNo">
+      <wsdl:input message="tns:GetCardVehNoSoapIn" />
+      <wsdl:output message="tns:GetCardVehNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskBillByVehNo">
+      <wsdl:input message="tns:GetTaskBillByVehNoSoapIn" />
+      <wsdl:output message="tns:GetTaskBillByVehNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BillRouteIncludeWP">
+      <wsdl:input message="tns:BillRouteIncludeWPSoapIn" />
+      <wsdl:output message="tns:BillRouteIncludeWPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcuteOut">
+      <wsdl:input message="tns:ExcuteOutSoapIn" />
+      <wsdl:output message="tns:ExcuteOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskBill_N_Task">
+      <wsdl:input message="tns:GetTaskBill_N_TaskSoapIn" />
+      <wsdl:output message="tns:GetTaskBill_N_TaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckEnter">
+      <wsdl:input message="tns:CheckEnterSoapIn" />
+      <wsdl:output message="tns:CheckEnterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckOut">
+      <wsdl:input message="tns:CheckOutSoapIn" />
+      <wsdl:output message="tns:CheckOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchDatatime">
+      <wsdl:input message="tns:FetchDatatimeSoapIn" />
+      <wsdl:output message="tns:FetchDatatimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchIrdaRecordList">
+      <wsdl:input message="tns:FetchIrdaRecordListSoapIn" />
+      <wsdl:output message="tns:FetchIrdaRecordListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IrdaLog">
+      <wsdl:input message="tns:IrdaLogSoapIn" />
+      <wsdl:output message="tns:IrdaLogSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CommonServiceSoap" type="tns:CommonServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRoute">
+      <soap:operation soapAction="http://www.lfy.com/GetRoute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoute_Code">
+      <soap:operation soapAction="http://www.lfy.com/GetRoute_Code" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteOfBillType">
+      <soap:operation soapAction="http://www.lfy.com/GetRouteOfBillType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoticeBill">
+      <soap:operation soapAction="http://www.lfy.com/GetNoticeBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoticeBillByVehNo">
+      <soap:operation soapAction="http://www.lfy.com/GetNoticeBillByVehNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskBillByBillNo">
+      <soap:operation soapAction="http://www.lfy.com/GetTaskBillByBillNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNoticeBillCard">
+      <soap:operation soapAction="http://www.lfy.com/UpdateNoticeBillCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoticeBillEx">
+      <soap:operation soapAction="http://www.lfy.com/GetNoticeBillEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap:operation soapAction="http://www.lfy.com/Test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetThridUrl">
+      <soap:operation soapAction="http://www.lfy.com/GetThridUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemPara">
+      <soap:operation soapAction="http://www.lfy.com/GetSystemPara" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WorkPointRegistry">
+      <soap:operation soapAction="http://www.lfy.com/WorkPointRegistry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDistinctAvailableWorkPointType">
+      <soap:operation soapAction="http://www.lfy.com/GetDistinctAvailableWorkPointType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDistinctAvailableWorkPoint">
+      <soap:operation soapAction="http://www.lfy.com/GetDistinctAvailableWorkPoint" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WorkPointCheck">
+      <soap:operation soapAction="http://www.lfy.com/WorkPointCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserAlarmInfo">
+      <soap:operation soapAction="http://www.lfy.com/InserAlarmInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTaskLog">
+      <soap:operation soapAction="http://www.lfy.com/InsertTaskLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTaskFlowInitRec">
+      <soap:operation soapAction="http://www.lfy.com/InsertTaskFlowInitRec" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminalTask">
+      <soap:operation soapAction="http://www.lfy.com/TerminalTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogVehInOut">
+      <soap:operation soapAction="http://www.lfy.com/LogVehInOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TaskFlowInitRecCancel">
+      <soap:operation soapAction="http://www.lfy.com/TaskFlowInitRecCancel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Excute_Sampling">
+      <soap:operation soapAction="http://www.lfy.com/Excute_Sampling" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Excute_Scales">
+      <soap:operation soapAction="http://www.lfy.com/Excute_Scales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Excute_Goodssite">
+      <soap:operation soapAction="http://www.lfy.com/Excute_Goodssite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Excute_GoodssiteEx">
+      <soap:operation soapAction="http://www.lfy.com/Excute_GoodssiteEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTaskBillRemark">
+      <soap:operation soapAction="http://www.lfy.com/UpdateTaskBillRemark" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskFlowRecs">
+      <soap:operation soapAction="http://www.lfy.com/GetTaskFlowRecs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRFFYDInfo">
+      <soap:operation soapAction="http://www.lfy.com/GetRFFYDInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRFFYD">
+      <soap:operation soapAction="http://www.lfy.com/GetRFFYD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRFFYDByICID">
+      <soap:operation soapAction="http://www.lfy.com/GetRFFYDByICID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFYDBillCard">
+      <soap:operation soapAction="http://www.lfy.com/UpdateFYDBillCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardVehNo">
+      <soap:operation soapAction="http://www.lfy.com/GetCardVehNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskBillByVehNo">
+      <soap:operation soapAction="http://www.lfy.com/GetTaskBillByVehNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillRouteIncludeWP">
+      <soap:operation soapAction="http://www.lfy.com/BillRouteIncludeWP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcuteOut">
+      <soap:operation soapAction="http://www.lfy.com/ExcuteOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskBill_N_Task">
+      <soap:operation soapAction="http://www.lfy.com/GetTaskBill_N_Task" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEnter">
+      <soap:operation soapAction="http://www.lfy.com/CheckEnter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckOut">
+      <soap:operation soapAction="http://www.lfy.com/CheckOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchDatatime">
+      <soap:operation soapAction="http://www.lfy.com/FetchDatatime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchIrdaRecordList">
+      <soap:operation soapAction="http://www.lfy.com/FetchIrdaRecordList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IrdaLog">
+      <soap:operation soapAction="http://www.lfy.com/IrdaLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CommonServiceSoap12" type="tns:CommonServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRoute">
+      <soap12:operation soapAction="http://www.lfy.com/GetRoute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoute_Code">
+      <soap12:operation soapAction="http://www.lfy.com/GetRoute_Code" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteOfBillType">
+      <soap12:operation soapAction="http://www.lfy.com/GetRouteOfBillType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoticeBill">
+      <soap12:operation soapAction="http://www.lfy.com/GetNoticeBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoticeBillByVehNo">
+      <soap12:operation soapAction="http://www.lfy.com/GetNoticeBillByVehNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskBillByBillNo">
+      <soap12:operation soapAction="http://www.lfy.com/GetTaskBillByBillNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNoticeBillCard">
+      <soap12:operation soapAction="http://www.lfy.com/UpdateNoticeBillCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoticeBillEx">
+      <soap12:operation soapAction="http://www.lfy.com/GetNoticeBillEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap12:operation soapAction="http://www.lfy.com/Test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetThridUrl">
+      <soap12:operation soapAction="http://www.lfy.com/GetThridUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemPara">
+      <soap12:operation soapAction="http://www.lfy.com/GetSystemPara" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WorkPointRegistry">
+      <soap12:operation soapAction="http://www.lfy.com/WorkPointRegistry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDistinctAvailableWorkPointType">
+      <soap12:operation soapAction="http://www.lfy.com/GetDistinctAvailableWorkPointType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDistinctAvailableWorkPoint">
+      <soap12:operation soapAction="http://www.lfy.com/GetDistinctAvailableWorkPoint" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WorkPointCheck">
+      <soap12:operation soapAction="http://www.lfy.com/WorkPointCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserAlarmInfo">
+      <soap12:operation soapAction="http://www.lfy.com/InserAlarmInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTaskLog">
+      <soap12:operation soapAction="http://www.lfy.com/InsertTaskLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTaskFlowInitRec">
+      <soap12:operation soapAction="http://www.lfy.com/InsertTaskFlowInitRec" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminalTask">
+      <soap12:operation soapAction="http://www.lfy.com/TerminalTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogVehInOut">
+      <soap12:operation soapAction="http://www.lfy.com/LogVehInOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TaskFlowInitRecCancel">
+      <soap12:operation soapAction="http://www.lfy.com/TaskFlowInitRecCancel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Excute_Sampling">
+      <soap12:operation soapAction="http://www.lfy.com/Excute_Sampling" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Excute_Scales">
+      <soap12:operation soapAction="http://www.lfy.com/Excute_Scales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Excute_Goodssite">
+      <soap12:operation soapAction="http://www.lfy.com/Excute_Goodssite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Excute_GoodssiteEx">
+      <soap12:operation soapAction="http://www.lfy.com/Excute_GoodssiteEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTaskBillRemark">
+      <soap12:operation soapAction="http://www.lfy.com/UpdateTaskBillRemark" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskFlowRecs">
+      <soap12:operation soapAction="http://www.lfy.com/GetTaskFlowRecs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRFFYDInfo">
+      <soap12:operation soapAction="http://www.lfy.com/GetRFFYDInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRFFYD">
+      <soap12:operation soapAction="http://www.lfy.com/GetRFFYD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRFFYDByICID">
+      <soap12:operation soapAction="http://www.lfy.com/GetRFFYDByICID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFYDBillCard">
+      <soap12:operation soapAction="http://www.lfy.com/UpdateFYDBillCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardVehNo">
+      <soap12:operation soapAction="http://www.lfy.com/GetCardVehNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskBillByVehNo">
+      <soap12:operation soapAction="http://www.lfy.com/GetTaskBillByVehNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillRouteIncludeWP">
+      <soap12:operation soapAction="http://www.lfy.com/BillRouteIncludeWP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcuteOut">
+      <soap12:operation soapAction="http://www.lfy.com/ExcuteOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskBill_N_Task">
+      <soap12:operation soapAction="http://www.lfy.com/GetTaskBill_N_Task" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEnter">
+      <soap12:operation soapAction="http://www.lfy.com/CheckEnter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckOut">
+      <soap12:operation soapAction="http://www.lfy.com/CheckOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchDatatime">
+      <soap12:operation soapAction="http://www.lfy.com/FetchDatatime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchIrdaRecordList">
+      <soap12:operation soapAction="http://www.lfy.com/FetchIrdaRecordList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IrdaLog">
+      <soap12:operation soapAction="http://www.lfy.com/IrdaLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CommonService">
+    <wsdl:port name="CommonServiceSoap" binding="tns:CommonServiceSoap">
+      <soap:address location="http://192.168.2.33/VehIC_WS/CommonService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CommonServiceSoap12" binding="tns:CommonServiceSoap12">
+      <soap12:address location="http://192.168.2.33/VehIC_WS/CommonService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
