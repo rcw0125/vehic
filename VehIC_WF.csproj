@@ -1610,7 +1610,7 @@
       <HintPath>lib\VehIC_Device.dll</HintPath>
     </Reference>
     <Reference Include="Zhc">
-      <HintPath>..\..\..\..\..\VehIC_WFNEW20170706新\VehIC_WFNEW20170706\VehIC_WFNEW\bin\Release\Zhc.dll</HintPath>
+      <HintPath>include\Zhc.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1936,6 +1936,7 @@
     <Content Include="che2.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="include\" />
     <Folder Include="VehIC_WF\Sampling\rcw\ViewModel\" />
   </ItemGroup>
 </Project>
