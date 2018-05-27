@@ -29,7 +29,7 @@ namespace VehIC_WF.WorkPoint
             lableiji.LoadInfo = "CheckVals";
             this.qCSampleLabBindingSource.DataSource = lableiji;
             lableiji.LoadDataByWhere("main.BillType=@BillType and main.WLLX='合金' order by main.JyTime desc", "开始检验");
-            labTable1.LoadDataByWhere("main.labstate='合金' and main.checkgroupname like '化验样%' and  main.maketime>=@maketime and main.WLLX='合金'", DateTime.Today.AddDays(-1));
+            labTable1.LoadDataByWhere("labstate='送检' and main.checkgroupname like '化验样%' and  main.maketime>=@maketime and main.WLLX='合金'", DateTime.Today.AddDays(-1));
             //labTable2.LoadDataByWhere("labstate='送检' and checkgroupname like '角质层%' and  maketime>=@maketime", DateTime.Today.AddDays(-1));
 
             label2.Text = labTable1.Count.ToString();
@@ -82,7 +82,7 @@ namespace VehIC_WF.WorkPoint
             lableiji.Add(curLab);
 
             DbContext.ExeSql("insert into QC_LabLog(zycode,jycode,jytime) values('" + this.curLab.StoreCode + "','" + this.curLab.JyCode + "',getDate())");
-            labTable1.LoadDataByWhere("labstate='送检' and checkgroupname like '化验样%' and  maketime>=@maketime and WLLX='合金'", DateTime.Today.AddDays(-1));
+            labTable1.LoadDataByWhere("labstate='送检' and checkgroupname like '化验样%' and  maketime>=@maketime and main.WLLX='合金'", DateTime.Today.AddDays(-1));
           //  labTable2.LoadDataByWhere("labstate='送检' and checkgroupname like '角质层%' and  maketime>=@maketime", DateTime.Today.AddDays(-1));
             label2.Text = labTable1.Count.ToString();
          //   label4.Text = labTable2.Count.ToString();

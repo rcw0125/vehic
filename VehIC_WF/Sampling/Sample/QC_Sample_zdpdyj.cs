@@ -25,7 +25,48 @@ namespace VehIC_WF.Sampling.Sample
                 }
             }
         }
+        private string _WLLX;
 
+        public string WLLX
+        {
+            get { return _WLLX; }
+            set
+            {
+                if (_WLLX != value)
+                {
+                    _WLLX = value;
+                    RaisePropertyChanged("WLLX", true);
+                }
+            }
+        }
+        private string _matname;
+
+        public string matname
+        {
+            get { return _matname; }
+            set
+            {
+                if (_matname != value)
+                {
+                    _matname = value;
+                    RaisePropertyChanged("matname", true);
+                }
+            }
+        }
+        private string _matcode;
+
+        public string matcode
+        {
+            get { return _matcode; }
+            set
+            {
+                if (_matcode != value)
+                {
+                    _matcode = value;
+                    RaisePropertyChanged("matcode", true);
+                }
+            }
+        }
         private string _type;
 
         public string type

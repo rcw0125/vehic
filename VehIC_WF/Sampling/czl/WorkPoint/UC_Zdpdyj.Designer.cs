@@ -34,8 +34,13 @@
             this.保存 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.右键菜单 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.添加上传标准 = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除上传标准 = new System.Windows.Forms.ToolStripMenuItem();
             this.qCSamplezdpdyjBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -43,21 +48,24 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            this.右键菜单.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qCSamplezdpdyjBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -112,6 +120,7 @@
             // 
             // gridControl1
             // 
+            this.gridControl1.ContextMenuStrip = this.右键菜单;
             this.gridControl1.DataSource = this.qCSamplezdpdyjBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
@@ -119,11 +128,33 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
-            this.repositoryItemComboBox1});
+            this.repositoryItemComboBox1,
+            this.repositoryItemComboBox2});
             this.gridControl1.Size = new System.Drawing.Size(828, 454);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // 右键菜单
+            // 
+            this.右键菜单.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.添加上传标准,
+            this.删除上传标准});
+            this.右键菜单.Name = "contextMenuStrip2";
+            this.右键菜单.Size = new System.Drawing.Size(149, 48);
+            // 
+            // 添加上传标准
+            // 
+            this.添加上传标准.Name = "添加上传标准";
+            this.添加上传标准.Size = new System.Drawing.Size(148, 22);
+            this.添加上传标准.Text = "添加上传标准";
+            this.添加上传标准.Click += new System.EventHandler(this.添加上传标准_Click);
+            // 
+            // 删除上传标准
+            // 
+            this.删除上传标准.Name = "删除上传标准";
+            this.删除上传标准.Size = new System.Drawing.Size(148, 22);
+            this.删除上传标准.Text = "删除上传标准";
             // 
             // qCSamplezdpdyjBindingSource
             // 
@@ -132,6 +163,8 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn13,
+            this.gridColumn12,
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
@@ -146,6 +179,24 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "物料类型";
+            this.gridColumn13.ColumnEdit = this.repositoryItemComboBox2;
+            this.gridColumn13.FieldName = "WLLX";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 0;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "物料";
+            this.gridColumn12.FieldName = "matname";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 1;
+            this.gridColumn12.Width = 67;
+            // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "依据类型";
@@ -153,7 +204,8 @@
             this.gridColumn1.FieldName = "type";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.VisibleIndex = 2;
+            this.gridColumn1.Width = 67;
             // 
             // repositoryItemComboBox1
             // 
@@ -164,11 +216,12 @@
             "正样优于标准范围",
             "正样劣于标准范围",
             "抽样判定范围",
-            "复检样判定范围",
-            "精粉正样优于标准范围",
-            "精粉正样劣于标准范围",
-            "精粉抽样判定范围",
-            "精粉复检样判定范围"});
+            "复检样判定范围"});
+            //,
+            //"精粉正样优于标准范围",
+            //"精粉正样劣于标准范围",
+            //"精粉抽样判定范围",
+            //"精粉复检样判定范围"
             this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
             // 
             // gridColumn2
@@ -177,7 +230,8 @@
             this.gridColumn2.FieldName = "sf";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.Width = 67;
             // 
             // gridColumn3
             // 
@@ -185,7 +239,8 @@
             this.gridColumn3.FieldName = "hf";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 4;
+            this.gridColumn3.Width = 67;
             // 
             // gridColumn4
             // 
@@ -193,7 +248,8 @@
             this.gridColumn4.FieldName = "hff";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 5;
+            this.gridColumn4.Width = 67;
             // 
             // gridColumn5
             // 
@@ -201,7 +257,8 @@
             this.gridColumn5.FieldName = "Y";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.VisibleIndex = 6;
+            this.gridColumn5.Width = 67;
             // 
             // gridColumn6
             // 
@@ -209,13 +266,8 @@
             this.gridColumn6.FieldName = "G";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
-            // 
-            // repositoryItemCheckEdit1
-            // 
-            this.repositoryItemCheckEdit1.AutoHeight = false;
-            this.repositoryItemCheckEdit1.Caption = "Check";
-            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.gridColumn6.VisibleIndex = 7;
+            this.gridColumn6.Width = 67;
             // 
             // gridColumn7
             // 
@@ -223,7 +275,8 @@
             this.gridColumn7.FieldName = "TFe";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 8;
+            this.gridColumn7.Width = 67;
             // 
             // gridColumn8
             // 
@@ -231,7 +284,8 @@
             this.gridColumn8.FieldName = "SiO2";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 9;
+            this.gridColumn8.Width = 67;
             // 
             // gridColumn9
             // 
@@ -239,7 +293,8 @@
             this.gridColumn9.FieldName = "P";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.VisibleIndex = 10;
+            this.gridColumn9.Width = 67;
             // 
             // gridColumn10
             // 
@@ -247,7 +302,8 @@
             this.gridColumn10.FieldName = "Cu";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
+            this.gridColumn10.VisibleIndex = 11;
+            this.gridColumn10.Width = 67;
             // 
             // gridColumn11
             // 
@@ -255,7 +311,30 @@
             this.gridColumn11.FieldName = "Zn";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 10;
+            this.gridColumn11.VisibleIndex = 12;
+            this.gridColumn11.Width = 73;
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Caption = "Check";
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // repositoryItemComboBox2
+            // 
+         
+ 
+   
+            this.repositoryItemComboBox2.AutoHeight = false;
+            this.repositoryItemComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox2.Items.AddRange(new object[] {
+            "煤",
+            "精粉",
+            "外矿",
+            "合金",
+            "焦炭"});
+            this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
             // 
             // UC_Zdpdyj
             // 
@@ -271,10 +350,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            this.右键菜单.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.qCSamplezdpdyjBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -301,5 +382,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private System.Windows.Forms.ContextMenuStrip 右键菜单;
+        private System.Windows.Forms.ToolStripMenuItem 添加上传标准;
+        private System.Windows.Forms.ToolStripMenuItem 删除上传标准;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
     }
 }

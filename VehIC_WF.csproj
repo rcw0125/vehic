@@ -679,6 +679,7 @@
     <Compile Include="VehIC_WF\Sampling\Sample\Doc\QC_WorkPoint_View.cs" />
     <Compile Include="VehIC_WF\Sampling\Sample\View\QC_QualityRule_View.cs" />
     <Compile Include="VehIC_WF\Sampling\Sample\View\Tb_IC.cs" />
+    <Compile Include="VehIC_WF\Sampling\Sample\View\v_train_weight.cs" />
     <Compile Include="VehIC_WF\Sampling\UC_Batching.cs">
       <SubType>UserControl</SubType>
     </Compile>

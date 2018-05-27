@@ -53,6 +53,7 @@ namespace VehIC_WF.Sampling.lhl
             if (MessageBox.Show("确实要组批吗?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 Dictionary<string, List<QC_Sample_Veh>> vehFenzu = new Dictionary<string, List<QC_Sample_Veh>>();
+                vehFenzu.Clear();
 
                 foreach (var veh in hjvehs)
                 {
@@ -177,6 +178,7 @@ namespace VehIC_WF.Sampling.lhl
         private void 刷新_Click(object sender, EventArgs e)
         {
             hjvehs.LoadDataByWhere("main.SAMPLESTATE=@SAMPLESTATE and WLLX='合金'", SampleState.初始状态);
+            hjmixs.Clear();
         }
 
         private void HJHeyang_Load(object sender, EventArgs e)

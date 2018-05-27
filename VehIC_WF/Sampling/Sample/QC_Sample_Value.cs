@@ -590,7 +590,7 @@ namespace Xg.Lab.Sample
 
         public void LoadHotData(int HotMixId,int SampleMixId,String HotMat)
         {
-            this.LoadDataBySql("Select * from QC_MixSampleValue_V Where (Sample_Mix_ID=@Sample_Mix_ID or MainSampleMixId=@Sample_Mix_ID) or (Sample_Mix_ID=@HotMixId and checkitemname=@checkitemname)", SampleMixId, HotMixId, HotMat);
+            this.LoadDataBySql("Select * from QC_MixSampleValue_V Where (Sample_Mix_ID=@Sample_Mix_ID or (MainSampleMixId=@Sample_Mix_ID and SampleType=1)) or (Sample_Mix_ID=@HotMixId and checkitemname=@checkitemname)", SampleMixId, HotMixId, HotMat);
             foreach (var item in this)
             {
                 QC_Sample_Value_Table recheckvals = new QC_Sample_Value_Table();
@@ -630,7 +630,7 @@ namespace Xg.Lab.Sample
                 mixs.LoadDataByWhere("main.Sample_Mix_ID=@Sample_Mix_ID", SampleMixId);
                 if(item.Sample_Mix_ID==InspectSampleMixId)
                     item.ValSource="抽样";
-                if (item.Sample_Mix_ID == SampleMixId && mixs[0].SampleType==SampleType.普通样)
+                if (item.Sample_Mix_ID == SampleMixId && (mixs[0].SampleType == SampleType.普通样 || mixs[0].SampleType == SampleType.人工取样 || mixs[0].SampleType == SampleType.机器取样))
                     item.ValSource = "正样";
                 if (item.Sample_Mix_ID == SampleMixId && mixs[0].SampleType == SampleType.抽查样)
                     item.ValSource = "抽样";
@@ -666,7 +666,7 @@ namespace Xg.Lab.Sample
 
         public void LoadZhengSampleAllData(int ZhengSampleMixId)
         {
-            this.LoadDataBySql("Select * from QC_MixSampleValue_V Where (Sample_Mix_ID=@ZhengSampleMixId or MainSampleMixId=@ZhengSampleMixId) and SampleType<>3", ZhengSampleMixId);
+            this.LoadDataBySql("Select * from QC_MixSampleValue_V Where (Sample_Mix_ID=@ZhengSampleMixId or (MainSampleMixId=@ZhengSampleMixId and (SampleType=1 or SampleType=4))) and SampleType<>3", ZhengSampleMixId);
 
             QC_Sample_Value_Table recheckvals = new QC_Sample_Value_Table();
             recheckvals.LoadDataBySql("Select * from QC_MixSampleValue_V Where  MainSampleMixId=@ZhengSampleMixId and SampleType=3", ZhengSampleMixId);

@@ -520,6 +520,47 @@ namespace VehIC_WF.WorkPoint
             mix.LoadDataByWhere("main.CardID=@CardID", QC_Sample_Mix.FullStoreCode(comboBox1.Text));
             if (mix.Count > 0)
             { mixid = mix[0].Sample_Mix_ID; }
+
+            DbEntityTable<QC_Sample_Mix> lishimixs = new DbEntityTable<QC_Sample_Mix>();
+            lishimixs.LoadDataByWhere("main.MatCode=@MatCode and main.SupplierCode=@SupplierCode and main.mix_time>=@mix_time", mix[0].MatCode, mix[0].SupplierCode, DateTime.Now.AddDays(-3));
+            DbEntityTable<QC_MixCheckGroup> groups = new DbEntityTable<QC_MixCheckGroup>();
+            bool cunzailidu = false;
+            bool cunzaifyx = false;
+            
+            foreach (var item in lishimixs)
+            {
+
+                groups.LoadDataByWhere("main.Sample_Mix_ID=@Sample_Mix_ID", item.Sample_Mix_ID);
+                foreach (var it in groups)
+                {
+                    if (it.CheckGroupName == "粒度样")
+                    {
+                        cunzailidu = true;
+                    }
+
+                    if (it.CheckGroupName == "热反应性样")
+                    {
+                        cunzaifyx = true;
+                    }
+                }
+            }
+
+            if (!cunzaifyx&&!checkBox1.Checked)
+            { 
+                MessageBox.Show("三天内未做热反应性");
+                return;
+            }
+            if (!cunzailidu && !checkBox2.Checked)
+            {
+                MessageBox.Show("三天内未做粒度");
+                return;
+            }
+
+
+
+
+
+
             QC_SampleMix_ZhiYang zySample = QC_SampleMix_ZhiYang.GetById(mixid); 
             if (zySample == null)
             {
@@ -564,7 +605,7 @@ namespace VehIC_WF.WorkPoint
                         item.Sample_Mix_ID = item.Sample_Mix_ID;
                         item.CheckGroupVisIdx = stdCheckItem.CheckGroupVisIdx;
                         item.Source = "检验标准-必检";
-                        if (!(checkBox1.Checked == false && item.CheckGroupName == "热反应性样"))
+                        if ((!(checkBox1.Checked == false && item.CheckGroupName == "热反应性样")) && (!(checkBox2.Checked == false && item.CheckGroupName == "粒度样")))
                         zySample.CheckItems.Add(item);
                     }
                 }
@@ -596,7 +637,7 @@ namespace VehIC_WF.WorkPoint
                                 item.Sample_Mix_ID = item.Sample_Mix_ID;
                                 item.CheckGroupVisIdx = stdCheckItem.CheckGroupVisIdx;
                                 item.Source = "检验标准-每月";
-                                if (!(checkBox1.Checked == false && item.CheckGroupName == "热反应性样"))
+                                if ((!(checkBox1.Checked == false && item.CheckGroupName == "热反应性样")) && (!(checkBox2.Checked == false && item.CheckGroupName == "粒度样")))
                                 zySample.CheckItems.Add(item);
                             }
                         }
@@ -636,7 +677,7 @@ namespace VehIC_WF.WorkPoint
                                 item.Sample_Mix_ID = item.Sample_Mix_ID;
                                 item.CheckGroupVisIdx = stdCheckItem.CheckGroupVisIdx;
                                 item.Source = "检验标准-每周";
-                                if (!(checkBox1.Checked==false && item.CheckGroupName == "热反应性样"))
+                                if ((!(checkBox1.Checked == false && item.CheckGroupName == "热反应性样")) && (!(checkBox2.Checked == false && item.CheckGroupName == "粒度样")))
                                 zySample.CheckItems.Add(item);
                             }
                         }
@@ -669,7 +710,7 @@ namespace VehIC_WF.WorkPoint
                                 item.Sample_Mix_ID = item.Sample_Mix_ID;
                                 item.CheckGroupVisIdx = stdCheckItem.CheckGroupVisIdx;
                                 item.Source = "检验标准-每天";
-                                if (!(checkBox1.Checked == false && item.CheckGroupName == "热反应性样"))
+                                if ((!(checkBox1.Checked == false && item.CheckGroupName == "热反应性样")) && (!(checkBox2.Checked == false && item.CheckGroupName == "粒度样")))
                                 zySample.CheckItems.Add(item);
                             }
                         }
@@ -784,7 +825,7 @@ namespace VehIC_WF.WorkPoint
 
             zyMixSamples.Add(zySample);
 
-            lblRecvDanHao.Text = zySample.ZyShortDanHao;
+            //lblRecvDanHao.Text = zySample.ZyShortDanHao;
             this.gridView1.FocusedRowHandle = this.gridView1.GetRowHandle(zyMixSamples.Count - 1);
             LabTabs();
             hjmixs.LoadDataByWhere("main.SAMPLESTATE=@SAMPLESTATE and main.WLLX='焦炭'", SampleState.组批完成);
@@ -794,6 +835,9 @@ namespace VehIC_WF.WorkPoint
                 comboBox1.Items.Add(QC_Sample_Mix.ShortStoreCode(item.CardID));
 
             }
+
+
+            checkBox1.Checked = false; checkBox2.Checked = false;
             this.printDocument1.Print();
         }
 

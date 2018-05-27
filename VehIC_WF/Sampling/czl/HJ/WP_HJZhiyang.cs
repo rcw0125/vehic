@@ -265,9 +265,36 @@ namespace VehIC_WF.WorkPoint
                     DbEntityTable<QC_Material> mat = new DbEntityTable<QC_Material>();
                     mat.LoadDataByWhere("main.MatNcId=@MatNcId", zySample.MatPK);
                     if (item.CheckGroupName == "大样留存样" && mat.Count == 1)
-                    riqi = riqi + mat[0].MatName;
+                    {
+                        if (mat[0].MatCode == "13314")
+                            riqi = riqi + mat[0].MatName + "-06";
+                        else if (mat[0].MatCode == "13316")
+                            riqi = riqi + mat[0].MatName + "-05";
+                        else if (mat[0].MatCode == "13317")
+                            riqi = riqi + mat[0].MatName + "-01";
+                        else if (mat[0].MatCode == "13318")
+                            riqi = riqi + mat[0].MatName + "-02";
+                        else if (mat[0].MatCode == "13321")
+                            riqi = riqi + mat[0].MatName + "-04";
+                        else if (mat[0].MatCode == "13331")
+                            riqi = riqi + mat[0].MatName + "-03";
+                        else if (mat[0].MatCode == "13332")
+                            riqi = riqi + mat[0].MatName + "-07";
+                        else if (mat[0].MatCode == "12612")
+                            riqi = riqi + mat[0].MatName + "-01";
+                        else if (mat[0].MatCode == "12613")
+                            riqi = riqi + mat[0].MatName + "-02";
+                        else if (mat[0].MatCode == "12614")
+                            riqi = riqi + mat[0].MatName + "-03";
+                        else if (mat[0].MatCode == "12615")
+                            riqi = riqi + mat[0].MatName + "-04";
+                        else if (mat[0].MatCode == "12616")
+                            riqi = riqi + mat[0].MatName + "-05";
+                        else if (mat[0].MatCode == "12619")
+                            riqi = riqi + mat[0].MatName + "-06";
+                        else riqi = riqi + mat[0].MatName;
 
-
+                    }
 
 
                     Font f1 = new System.Drawing.Font("宋体", 21, FontStyle.Bold);

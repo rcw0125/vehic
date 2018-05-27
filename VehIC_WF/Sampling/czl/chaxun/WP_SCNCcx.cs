@@ -77,6 +77,77 @@ namespace VehIC_WF.Sampling.czl.WorkPoint
                     }
                   
                 }
+
+
+                DbEntityTable<QC_MatAllCheckItem> matcheckitems = new DbEntityTable<QC_MatAllCheckItem>();
+
+                matcheckitems.LoadDataByWhere("MATNCID=@MATNCID", zyMixSamples[i].MatPK);
+
+            if (matcheckitems.Count > 0)
+            {
+                foreach (var item in matcheckitems)
+                {
+                    if (item.CheckGroupName == "可磨样")
+                    {
+                        bool czkm = false;
+                        foreach (var it in zyMixSamples[i].CheckGroupLabs)
+                        {
+                            if (it.CheckGroupName == "可磨样")
+                            { czkm = true; }
+
+
+                        }
+                        if (!czkm)
+                        {
+                            DbEntityTable<QC_Sample_Mix> lishimixs = new DbEntityTable<QC_Sample_Mix>();
+                            string SQL = "select * from QC_Sample_Mix where MatCode='" + zyMixSamples[i].MatCode + "' and SupplierCode='" + zyMixSamples[i].SupplierCode + "' and mix_time>='" + zyMixSamples[i].ZyRecvTime.Value.Date + "'  and mix_time<'" + zyMixSamples[i].ZyRecvTime + "' order by ZyRecvTime desc";
+                            lishimixs.LoadDataBySql(SQL);
+                            foreach (var li in lishimixs)
+                            {
+                                bool czkmy = false;
+                                DbEntityTable<QC_Sample_Lab> labs = new DbEntityTable<QC_Sample_Lab>();
+                                labs.LoadDataByWhere("main.Sample_Mix_ID=@Sample_Mix_ID", li.Sample_Mix_ID);
+                                foreach (var it in labs)
+                                {
+                                    if (it.CheckGroupName == "可磨样")
+                                    {
+                                        DbEntityTable<QC_Sample_Value> vals = new DbEntityTable<QC_Sample_Value>();
+                                        vals.LoadDataByWhere("main.Sample_Lab_ID=@Sample_Lab_ID", it.Sample_Lab_ID);
+                                        foreach (var va in vals)
+                                        {
+                                            va.ValSource = "前样";
+                                            zyMixSamples[i].CheckVals.Add(va);
+                                        }
+                                        czkmy = true;
+                                        break;
+                                    }
+                                }
+                                if (czkmy) break;
+
+                            }
+
+                        }
+
+
+
+                    }
+
+
+
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
                 zyMixSamples[i].CheckVals.DefaultSort();
                 if (zyMixSamples[i].SampleType == SampleType.普通样)
                 { zyMixSamples[i].CheckVals.DaoxuSort(); }
@@ -103,6 +174,12 @@ namespace VehIC_WF.Sampling.czl.WorkPoint
                             {
                                 if (cx.Sf == "")
                                 { cx.Sf = item.ReportVal; }
+
+                            }
+                            if (item.CheckItemName == "哈氏可磨性")
+                            {
+                                if (cx.KM == "")
+                                { cx.KM = item.ReportVal; }
 
                             }
                             else if (item.CheckItemName == "灰分")

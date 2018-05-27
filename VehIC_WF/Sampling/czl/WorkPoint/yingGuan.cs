@@ -96,7 +96,7 @@ namespace VehIC_WF.Sampling.czl.WorkPoint
                 for (int i = 0; i < this.m_Buffer.Length; i++)
                 {
                     if (this.m_Buffer[i] == '\x0005')    // 05 是请求  回写06  收到通知
-                    {
+                    {                                                          
                         this.s.Write('\x0006'.ToString());
                         // this.m_Buffer.Remove(0, i + 1);
                         // return;

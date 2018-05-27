@@ -35,8 +35,9 @@ namespace VehIC_WF.Sampling.czl.WorkPoint
         }
 private void timer1_Tick(object sender, EventArgs e)
 {
-
+    mixs.LoadDataByWhere("main.WLLX='石子' and main.SampleState=@SampleState", SampleState.初始状态);
     qvs.LoadDataByWhere("WLLX='石子' and status=7 order by begintime desc");
+  
     for (int j = 0; j < qvs.Count; j++)
     {
         bool cunzai = false;
@@ -94,7 +95,7 @@ private void timer1_Tick(object sender, EventArgs e)
             mix.WLLX = qvs[j].WLLX;
             mix.CardID = Zhc.Data.DbContext.GetSeq("SZ" + DateTime.Now.Date.ToString("yyyyMMdd"), 2);
             mix.Save();
-            mixs.Add(mix);
+           mixs.Add(mix);
             QC_Sample_Veh sm = new QC_Sample_Veh();
             sm.begintime = qvs[j].begintime;
             sm.WpCode = FrmMain.localinfo.workpoint.Code;       //作业点编码

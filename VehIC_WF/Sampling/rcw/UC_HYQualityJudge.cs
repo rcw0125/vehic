@@ -286,10 +286,21 @@ namespace VehIC_WF.Sampling
             {
 
                 DbEntityTable<QC_QualityRule_View> quality = new DbEntityTable<QC_QualityRule_View>();
-                    quality.LoadDataByWhere("MATNCID=@MATNCID and LocalQcLevel='一级'", SelectedMixSample.MatPK);
+                quality.LoadDataByWhere("MATNCID=@MATNCID and LocalQcLevel='一级' and  suppliercode=@suppliercode", SelectedMixSample.MatPK, SelectedMixSample.SupplierCode);
                 if (quality.Count == 0)
                 {
-                    quality.LoadDataByWhere("MATNCID=@MATNCID and QualityLevelName='合格'", SelectedMixSample.MatPK);
+                    quality.LoadDataByWhere("MATNCID=@MATNCID and QualityLevelName='合格' and  suppliercode=@suppliercode", SelectedMixSample.MatPK, SelectedMixSample.SupplierCode);
+
+                }
+                if (quality.Count == 0)
+                {
+
+                    quality.LoadDataByWhere("MATNCID=@MATNCID and LocalQcLevel='一级'", SelectedMixSample.MatPK);
+                    if (quality.Count == 0)
+                    {
+                        quality.LoadDataByWhere("MATNCID=@MATNCID and QualityLevelName='合格'", SelectedMixSample.MatPK);
+
+                    }
 
                 }
                 foreach (var it in SelectedMixSample.CheckVals)
@@ -574,13 +585,15 @@ namespace VehIC_WF.Sampling
 
         private void 清理_Click(object sender, EventArgs e)
         {
-            if (this.SelectedMixSample.JudgeTime != null)
-            {
-            DateTime t = Convert.ToDateTime(this.SelectedMixSample.JudgeTime);
+            //if (this.SelectedMixSample.JudgeTime != null)
+            //{
+            //DateTime t = Convert.ToDateTime(this.SelectedMixSample.JudgeTime);
 
-                if ((DateTime.Now - t).Days > 7)
-                {
+            //    if ((DateTime.Now - t).Days > 7)
+            //    {
                     this.SelectedMixSample.SampleState = SampleState.处理完成;
+                    this.SelectedMixSample.UploadNcUser = LocalInfo.Current.user.ID;
+                    this.SelectedMixSample.UploadNcTime = DateTime.Now;
                     this.SelectedMixSample.Save();
 
                     LoadData();
@@ -588,34 +601,34 @@ namespace VehIC_WF.Sampling
                    
                     gridView1.RefreshData();
                    
-                }
-                else
-                {
-                    MessageBox.Show("7天以内单据不能处理");
-                }
-            }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("7天以内单据不能处理");
+                //}
+            //}
        }
 
         private void gridView1_RowCellStyle(object sender, RowCellStyleEventArgs e)
         {
-            int hand = e.RowHandle;
-            if (hand < 0) return;
+            //int hand = e.RowHandle;
+            //if (hand < 0) return;
 
-            QC_Sample_Mix mix = (QC_Sample_Mix)gridView1.GetRow(hand);
+            //QC_Sample_Mix mix = (QC_Sample_Mix)gridView1.GetRow(hand);
 
-            if (mix != null)
-            {
-                Font f1 = new System.Drawing.Font("宋体", 1, FontStyle.Bold);
-                Font f2 = new System.Drawing.Font("宋体",9, FontStyle.Regular);
-                if (mix.SampleState<SampleState.化验审核完成)
-                {
-                    e.Appearance.Font = f1;// 改变行字体
-                }
-                else
-                {
-                    e.Appearance.Font = f2;// 改变行字体
-                }
-            }
+            //if (mix != null)
+            //{
+            //    Font f1 = new System.Drawing.Font("宋体", 1, FontStyle.Bold);
+            //    Font f2 = new System.Drawing.Font("宋体",9, FontStyle.Regular);
+            //    if (mix.SampleState<SampleState.化验审核完成)
+            //    {
+            //        e.Appearance.Font = f1;// 改变行字体
+            //    }
+            //    else
+            //    {
+            //        e.Appearance.Font = f2;// 改变行字体
+            //    }
+            //}
         }
         DbEntityTable<QC_Sample_zdpdyj> pdyjs = new DbEntityTable<QC_Sample_zdpdyj>();
         private void 自动判定上传_Click(object sender, EventArgs e)

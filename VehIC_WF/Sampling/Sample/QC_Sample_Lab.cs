@@ -420,18 +420,18 @@ namespace Xg.Lab.Sample
 
             if (this.SaveCheckVals)
             {
-                if (this.DataState == DataRowState.Deleted)
-                {
-                    // DbContext.ExeSql("Delete From QC_Sample_Value where Sample_Mix_ID=@Sample_Mix_ID AND Sample_LAB_ID>0", this.Sample_Mix_ID);
-                }
-                else
-                {
+                //if (this.DataState == DataRowState.Deleted)
+                //{
+                //    // DbContext.ExeSql("Delete From QC_Sample_Value where Sample_Mix_ID=@Sample_Mix_ID AND Sample_LAB_ID>0", this.Sample_Mix_ID);
+                //}
+                //else
+                //{
                     foreach (var item in CheckVals)
                     {
                         item.Sample_Lab_ID = this.Sample_Lab_ID;
                     }
                     CheckVals.Save(trans);
-                }
+                //}
             }
 
             base.AfterSave(trans);

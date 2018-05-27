@@ -48,6 +48,7 @@ namespace VehIC_WF.WorkPoint
 
         public void initDanHao()
         {
+            comboBox1.Text = "";
             hymixs.LoadDataByWhere("main.samplestate = @samplestate and main.wllx=@wllx and main.cardid='' and main.matpk in (SELECT   MATNCID  FROM  QC_Material WHERE WLLX <> '煤') ", Xg.Lab.Sample.SampleState.组批完成, "火运");
             comboBox1.Items.Clear();
             foreach (var item in hymixs)
@@ -181,12 +182,12 @@ namespace VehIC_WF.WorkPoint
                     return;
 
                 }
-                zySample.ZyDanHao = DbContext.GetSeq(zySample.MatClassWord + DateTime.Now.Date.ToString("yyyyMMdd"), 2);
+                zySample.ZyDanHao = zySample.MatClassWord + DbContext.GetSeq(DateTime.Now.Date.ToString("yyyyMMdd"), 2);
                 zySample.SampleState = SampleState.开始制样;
                 zySample.ZyWpCode = workpointCode;
                 zySample.ZyRecvUser = LocalInfo.Current.user.ID;
                 zySample.ZyRecvTime = DateTime.Now;
-                if (zySample.SampleType == SampleType.人工取样|| zySample.SampleType == SampleType.机器取样|| zySample.SampleType == SampleType.抽查样)
+                if (zySample.SampleType == SampleType.人工取样|| zySample.SampleType == SampleType.机器取样)
                 {
                     DbEntityTable<QC_MatAllCheckItem> bjCheckItem = new DbEntityTable<QC_MatAllCheckItem>();
                     bjCheckItem.LoadDataByWhere("MATNCID=@MATNCID and JYLX='必检'", zySample.MatPK);
@@ -459,7 +460,7 @@ namespace VehIC_WF.WorkPoint
                 }
 
                 string ckgCode = icCard.CardType.Substring(4);
-                if (curSelLab.CheckGroupName.Contains("角质层"))
+                if (curSelLab.CheckGroupName.Contains("角质层") || curSelLab.CheckGroupName.Contains("煤岩"))
                 {
                     if (ckgCode != "04" && ckgCode != "05")
                     {
@@ -545,6 +546,12 @@ namespace VehIC_WF.WorkPoint
                     SizeF bodySize = e.Graphics.MeasureString(body, f2);
 
                     Font f3 = new System.Drawing.Font("宋体", 12f, FontStyle.Bold);
+
+                    if (curZyPrintPage ==1)
+                    {
+                        riqi = QC_Sample_Mix.ShortStoreCode(zySample.YpDanHao);
+                    }
+                   
                     SizeF riqiSize = e.Graphics.MeasureString(riqi, f2);
 
                     Rectangle rect = new Rectangle(9, 3, 112, 94);
@@ -818,7 +825,7 @@ namespace VehIC_WF.WorkPoint
                 return;
 
             }
-            zySample.ZyDanHao = DbContext.GetSeq(zySample.MatClassWord + DateTime.Now.Date.ToString("yyyyMMdd"), 2);
+            zySample.ZyDanHao = zySample.MatClassWord + DbContext.GetSeq(DateTime.Now.Date.ToString("yyyyMMdd"), 2);
             zySample.SampleState = SampleState.开始制样;
             zySample.ZyWpCode = workpointCode;
             zySample.ZyRecvUser = LocalInfo.Current.user.ID;
@@ -860,7 +867,7 @@ namespace VehIC_WF.WorkPoint
 
                 foreach (var stdCheckItem in myCheckItem)
                 {
-                    object cntObj = DbContext.ExecuteScalar("SELECT count(*)  FROM  QC_MixCheckItem mck  inner join qc_sample_mix mix on mix.SAMPLE_MIX_ID=mck.SAMPLE_MIX_ID  where mix.Mix_Time>=@MixTime and mix.SampleType=" + (int)SampleType.普通样 + " and mix.SupplierCode=@SupplierCode and mix.MatPK=@MatPK and mck.CheckItemNcId=@CheckItemNcId", yue, zySample.SupplierCode, zySample.MatPK, stdCheckItem.CheckItemNcId);
+                    object cntObj = DbContext.ExecuteScalar("SELECT count(*)  FROM  QC_MixCheckItem mck  inner join qc_sample_mix mix on mix.SAMPLE_MIX_ID=mck.SAMPLE_MIX_ID  where mix.Mix_Time>=@MixTime and (mix.SampleType=" + (int)SampleType.机器取样 + " or mix.SampleType=" + (int)SampleType.人工取样 + ") and mix.SupplierCode=@SupplierCode and mix.MatPK=@MatPK and mck.CheckItemNcId=@CheckItemNcId", yue, zySample.SupplierCode, zySample.MatPK, stdCheckItem.CheckItemNcId);
                     if (cntObj != null)
                     {
                         int cnt = Convert.ToInt32(cntObj);
@@ -905,7 +912,7 @@ namespace VehIC_WF.WorkPoint
 
                 foreach (var stdCheckItem in meizhouCheckItem)
                 {
-                    object cntObj = DbContext.ExecuteScalar("SELECT count(*)  FROM  QC_MixCheckItem mck  inner join qc_sample_mix mix on mix.SAMPLE_MIX_ID=mck.SAMPLE_MIX_ID  where mix.Mix_Time>=@MixTime and mix.SampleType=" + (int)SampleType.普通样 + " and mix.SupplierCode=@SupplierCode and mix.MatPK=@MatPK and mck.CheckItemNcId=@CheckItemNcId", zhou1, zySample.SupplierCode, zySample.MatPK, stdCheckItem.CheckItemNcId);
+                    object cntObj = DbContext.ExecuteScalar("SELECT count(*)  FROM  QC_MixCheckItem mck  inner join qc_sample_mix mix on mix.SAMPLE_MIX_ID=mck.SAMPLE_MIX_ID  where mix.Mix_Time>=@MixTime and (mix.SampleType=" + (int)SampleType.机器取样 + " or mix.SampleType=" + (int)SampleType.人工取样 + ")and mix.SupplierCode=@SupplierCode and mix.MatPK=@MatPK and mck.CheckItemNcId=@CheckItemNcId", zhou1, zySample.SupplierCode, zySample.MatPK, stdCheckItem.CheckItemNcId);
                     if (cntObj != null)
                     {
                         int cnt = Convert.ToInt32(cntObj);
@@ -943,7 +950,7 @@ namespace VehIC_WF.WorkPoint
 
                 foreach (var stdCheckItem in meizhouCheckItem)
                 {
-                    object cntObj = DbContext.ExecuteScalar("SELECT count(*)  FROM  QC_MixCheckItem mck  inner join qc_sample_mix mix on mix.SAMPLE_MIX_ID=mck.SAMPLE_MIX_ID  where mix.Mix_Time>=@MixTime and mix.SampleType=" + (int)SampleType.普通样 + " and mix.SupplierCode=@SupplierCode and mix.MatPK=@MatPK and mck.CheckItemNcId=@CheckItemNcId", tian1, zySample.SupplierCode, zySample.MatPK, stdCheckItem.CheckItemNcId);
+                    object cntObj = DbContext.ExecuteScalar("SELECT count(*)  FROM  QC_MixCheckItem mck  inner join qc_sample_mix mix on mix.SAMPLE_MIX_ID=mck.SAMPLE_MIX_ID  where mix.Mix_Time>=@MixTime and (mix.SampleType=" + (int)SampleType.机器取样 + " or mix.SampleType=" + (int)SampleType.人工取样 + ") and mix.SupplierCode=@SupplierCode and mix.MatPK=@MatPK and mck.CheckItemNcId=@CheckItemNcId", tian1, zySample.SupplierCode, zySample.MatPK, stdCheckItem.CheckItemNcId);
                     if (cntObj != null)
                     {
                         int cnt = Convert.ToInt32(cntObj);
@@ -1182,8 +1189,13 @@ namespace VehIC_WF.WorkPoint
                         }
                         if (youJzc)
                         {
+
+                          
                             string key = zySample.MatPK + "_" + zySample.SupplierCode + "_";
                             if (zySample.Sample_TBZD) key += "_" + (tbzd++).ToString();
+                            if (zySample.MainSampleMixId == 0)
+                                key += zySample.Sample_Mix_ID;
+                            else key += zySample.MainSampleMixId;
                             if (sampleFenzu.ContainsKey(key))
                             {
                                 sampleFenzu[key].Add(zySample);
@@ -1583,6 +1595,11 @@ namespace VehIC_WF.WorkPoint
                 curZupiPrintPage = 1;
                 e.HasMorePages = false;
             }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            PrintZupi();
         }
     }
 }

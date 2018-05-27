@@ -184,7 +184,7 @@ namespace VehIC_WF.Sampling
 
                                 if (SelectedMixSample.UploadToNc())
                                 {
-
+                                    LoadData();
                                     MessageBox.Show(string.Format("发送数据成功!"));
                                 }
                           
@@ -286,10 +286,21 @@ namespace VehIC_WF.Sampling
             {
 
                 DbEntityTable<QC_QualityRule_View> quality = new DbEntityTable<QC_QualityRule_View>();
-                    quality.LoadDataByWhere("MATNCID=@MATNCID and LocalQcLevel='一级'", SelectedMixSample.MatPK);
+                quality.LoadDataByWhere("MATNCID=@MATNCID and LocalQcLevel='一级' and  suppliercode=@suppliercode", SelectedMixSample.MatPK, SelectedMixSample.SupplierCode);
                 if (quality.Count == 0)
                 {
-                    quality.LoadDataByWhere("MATNCID=@MATNCID and QualityLevelName='合格'", SelectedMixSample.MatPK);
+                    quality.LoadDataByWhere("MATNCID=@MATNCID and QualityLevelName='合格' and  suppliercode=@suppliercode", SelectedMixSample.MatPK, SelectedMixSample.SupplierCode);
+
+                }
+                if (quality.Count == 0)
+                {
+
+                    quality.LoadDataByWhere("MATNCID=@MATNCID and LocalQcLevel='一级'", SelectedMixSample.MatPK);
+                    if (quality.Count == 0)
+                    {
+                        quality.LoadDataByWhere("MATNCID=@MATNCID and QualityLevelName='合格'", SelectedMixSample.MatPK);
+
+                    }
 
                 }
                 foreach (var it in SelectedMixSample.CheckVals)
@@ -574,13 +585,15 @@ namespace VehIC_WF.Sampling
 
         private void 清理_Click(object sender, EventArgs e)
         {
-            if (this.SelectedMixSample.JudgeTime != null)
-            {
-            DateTime t = Convert.ToDateTime(this.SelectedMixSample.JudgeTime);
+            //if (this.SelectedMixSample.JudgeTime != null)
+            //{
+            //DateTime t = Convert.ToDateTime(this.SelectedMixSample.JudgeTime);
 
-                if ((DateTime.Now - t).Days > 7)
-                {
+            //    if ((DateTime.Now - t).Days > 7)
+            //    {
                     this.SelectedMixSample.SampleState = SampleState.处理完成;
+                    this.SelectedMixSample.UploadNcUser = LocalInfo.Current.user.ID;
+                    this.SelectedMixSample.UploadNcTime = DateTime.Now;
                     this.SelectedMixSample.Save();
 
                     LoadData();
@@ -588,12 +601,12 @@ namespace VehIC_WF.Sampling
                    
                     gridView1.RefreshData();
                    
-                }
-                else
-                {
-                    MessageBox.Show("7天以内单据不能处理");
-                }
-            }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("7天以内单据不能处理");
+                //}
+            //}
        }
 
         private void gridView1_RowCellStyle(object sender, RowCellStyleEventArgs e)
@@ -672,7 +685,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "抽样判定范围")
+                                        if (i.type == "抽样判定范围"&&i.WLLX=="煤")
                                         {
                                             cypdfwhf = Convert.ToDouble(i.hf);
                                         }
@@ -705,7 +718,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "抽样判定范围")
+                                        if (i.type == "抽样判定范围" && i.WLLX == "煤")
                                         {
                                             cypdfwhff = Convert.ToDouble(i.hff);
                                         }
@@ -736,7 +749,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "抽样判定范围")
+                                        if (i.type == "抽样判定范围" && i.WLLX == "煤")
                                         {
                                             cypdfwS = Convert.ToDouble(i.sf);
                                         }
@@ -766,7 +779,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "抽样判定范围")
+                                        if (i.type == "抽样判定范围" && i.WLLX == "煤")
                                         {
                                             cypdfwS = Convert.ToDouble(i.sf);
                                         }
@@ -796,7 +809,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "抽样判定范围")
+                                        if (i.type == "抽样判定范围" && i.WLLX == "煤")
                                         {
                                             cypdfwY = Convert.ToDouble(i.Y);
                                         }
@@ -827,7 +840,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "抽样判定范围")
+                                        if (i.type == "抽样判定范围" && i.WLLX == "煤")
                                         {
                                             cypdfwG = Convert.ToDouble(i.G);
                                         }
@@ -909,11 +922,11 @@ namespace VehIC_WF.Sampling
                                              {
                                                  foreach (var pdfw in pdyjs)
                                                  {
-                                                     if (pdfw.type == "正样劣于标准范围")
+                                                     if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX == "煤")
                                                      {
                                                          zypdfwhf = Convert.ToDouble(pdfw.hf);
                                                      }
-                                                     if (pdfw.type == "正样优于标准范围")
+                                                     if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "煤")
                                                      {
                                                          haozypdfwhf = Convert.ToDouble(pdfw.hf);
                                                      }
@@ -962,11 +975,11 @@ namespace VehIC_WF.Sampling
                                              {
                                                  foreach (var pdfw in pdyjs)
                                                  {
-                                                     if (pdfw.type == "正样劣于标准范围")
+                                                     if (pdfw.type == "正样劣于标准范围" &&pdfw.WLLX == "煤")
                                                      {
                                                          zypdfwhff = Convert.ToDouble(pdfw.hff);
                                                      }
-                                                     if (pdfw.type == "正样优于标准范围")
+                                                     if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "煤")
                                                      {
                                                          haozypdfwhff = Convert.ToDouble(pdfw.hff);
                                                      }
@@ -1016,11 +1029,11 @@ namespace VehIC_WF.Sampling
                                              {
                                                  foreach (var pdfw in pdyjs)
                                                  {
-                                                     if (pdfw.type == "正样劣于标准范围")
+                                                     if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX == "煤")
                                                      {
                                                          zypdfwS = Convert.ToDouble(pdfw.sf);
                                                      }
-                                                     if (pdfw.type == "正样优于标准范围")
+                                                     if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "煤")
                                                      {
                                                          haozypdfwS = Convert.ToDouble(pdfw.sf);
                                                      }
@@ -1070,11 +1083,11 @@ namespace VehIC_WF.Sampling
                                              {
                                                  foreach (var pdfw in pdyjs)
                                                  {
-                                                     if (pdfw.type == "正样劣于标准范围")
+                                                     if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX == "煤")
                                                      {
                                                          zypdfwS = Convert.ToDouble(pdfw.sf);
                                                      }
-                                                     if (pdfw.type == "正样优于标准范围")
+                                                     if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "煤")
                                                      {
                                                          haozypdfwS = Convert.ToDouble(pdfw.sf);
                                                      }
@@ -1124,11 +1137,11 @@ namespace VehIC_WF.Sampling
                                              {
                                                  foreach (var pdfw in pdyjs)
                                                  {
-                                                     if (pdfw.type == "正样劣于标准范围")
+                                                     if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX == "煤")
                                                      {
                                                          zypdfwY = Convert.ToDouble(pdfw.Y);
                                                      }
-                                                     if (pdfw.type == "正样优于标准范围")
+                                                     if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "煤")
                                                      {
                                                          haozypdfwY = Convert.ToDouble(pdfw.Y);
                                                      }
@@ -1178,11 +1191,11 @@ namespace VehIC_WF.Sampling
                                              {
                                                  foreach (var pdfw in pdyjs)
                                                  {
-                                                     if (pdfw.type == "正样劣于标准范围")
+                                                     if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX == "煤")
                                                      {
                                                          zypdfwG = Convert.ToDouble(pdfw.G);
                                                      }
-                                                     if (pdfw.type == "正样优于标准范围")
+                                                     if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "煤")
                                                      {
                                                          haozypdfwG = Convert.ToDouble(pdfw.G);
                                                      }
@@ -1256,7 +1269,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "复检样判定范围")
+                                        if (i.type == "复检样判定范围" && i.WLLX == "煤")
                                         {
                                             fjypdfwhf = Convert.ToDouble(i.hf);
                                         }
@@ -1293,7 +1306,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "复检样判定范围")
+                                        if (i.type == "复检样判定范围" && i.WLLX == "煤")
                                         {
                                             fjypdfwhff = Convert.ToDouble(i.hff);
                                         }
@@ -1328,7 +1341,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "复检样判定范围")
+                                        if (i.type == "复检样判定范围" && i.WLLX == "煤")
                                         {
                                             fjypdfwS = Convert.ToDouble(i.sf);
                                         }
@@ -1364,7 +1377,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "复检样判定范围")
+                                        if (i.type == "复检样判定范围" && i.WLLX == "煤")
                                         {
                                             fjypdfwS = Convert.ToDouble(i.sf);
                                         }
@@ -1400,7 +1413,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "复检样判定范围")
+                                        if (i.type == "复检样判定范围" && i.WLLX == "煤")
                                         {
                                             fjypdfwY = Convert.ToDouble(i.Y);
                                         }
@@ -1437,7 +1450,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "复检样判定范围")
+                                        if (i.type == "复检样判定范围" && i.WLLX == "煤")
                                         {
                                             fjypdfwG = Convert.ToDouble(i.G);
                                         }
@@ -1495,26 +1508,27 @@ namespace VehIC_WF.Sampling
 
                 //this.SelectedMixSample.SampleState = SampleState.处理完成;
                 //this.SelectedMixSample.Save();
-                if (this.SelectedMixSample.FinishCommand == "处理")
-                {
-                    if (this.SelectedMixSample.SampleState >= SampleState.化验审核完成)
-                    {
-                        this.SelectedMixSample.SampleState = SampleState.处理完成;
-                        this.SelectedMixSample.Save();
-                    }
-                    else
-                    {
-                        MessageBox.Show("化验审核完成后才能处理");
-                    }
-                }
-                else
-                {
+                //if (this.SelectedMixSample.FinishCommand == "处理")
+                //{
+                //    if (this.SelectedMixSample.SampleState >= SampleState.化验审核完成)
+                //    {
+                //        this.SelectedMixSample.SampleState = SampleState.处理完成;
+                //        this.SelectedMixSample.Save();
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("化验审核完成后才能处理");
+                //    }
+                //}
+                //else
+               // {
                     try
                     {
                         if (this.SelectedMixSample.SampleState >= SampleState.质量判定完成)
                         {
 
                                 SelectedMixSample.SampleState = SampleState.取用;
+                                SelectedMixSample.Save();
                                 MessageBox.Show(string.Format("取用完成!"));
                         }
                         else
@@ -1526,7 +1540,7 @@ namespace VehIC_WF.Sampling
                     {
                         MessageBox.Show(ex.Message);
                     }
-                }
+               // }
 
             }
             else

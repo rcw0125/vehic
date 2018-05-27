@@ -118,7 +118,9 @@ namespace VehIC_WF.Sampling
 
                 curData.VehNo = selectedVeh.VehNo;
                 txtCph.Text = curData.VehNo;
-                curData.NoticeBillId = selectedVeh.NoticeBillId;
+                //if (selectedVeh.WLLX == "火运")
+                //{ curData.NoticeBillId = selectedVeh.Sample_Veh_ID.ToString(); }
+                curData.NoticeBillId = selectedVeh.NoticeBillId; 
                 curData.SupplierCode = selectedVeh.SupplierCode;
                 curData.SupplierName = selectedVeh.SupplierName;
                 curData.MatPK = selectedVeh.MatPK;
@@ -127,7 +129,10 @@ namespace VehIC_WF.Sampling
 
                 curData.CheckItems.Empty();
                 DbEntityTable<QC_CheckItem> CheckItemView = new DbEntityTable<QC_CheckItem>();
-                CheckItemView.LoadDataByWhere("CHECKITEMCODE in ('10001','10002','10011','10012')");
+                if (selectedVeh.MatCode == "16911" || selectedVeh.MatCode == "16912")
+                { CheckItemView.LoadDataByWhere("CHECKITEMCODE in ('10001','10120','10011','10012')"); }
+                else
+                { CheckItemView.LoadDataByWhere("CHECKITEMCODE in ('10001','10002','10011','10012')"); }
 
                 //DbEntityTable<QC_MatCheckItem_View> CheckItemView = new DbEntityTable<QC_MatCheckItem_View>();
                 //CheckItemView.LoadDataByWhere("MatNCid=@MatNCid", curData.MatPK);
@@ -188,6 +193,8 @@ namespace VehIC_WF.Sampling
             }
             if (veh.Count > 0)
             sample.WLLX = veh[0].WLLX;
+            //if (veh[0].WLLX == "火运")
+            //{ sample.NoticeBillId = veh[0].Sample_Veh_ID.ToString(); }
             sample.SampleType = SampleType.抽查样;
             sample.Sample_Cylx = this.Cylx;
             sample.MixCount = 1;

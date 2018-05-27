@@ -229,6 +229,19 @@ namespace VehIC_WF.Sampling.czl.chaxun
                 }
             }
         }
+        private string _KM = "";
+        public string KM
+        {
+            get { return _KM; }
+            set
+            {
+                if (_KM != value)
+                {
+                    _KM = value;
+                    RaisePropertyChanged("KM", true);
+                }
+            }
+        }
         private string _Hf = "";
         public string Hf
         {

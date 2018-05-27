@@ -10,6 +10,28 @@ namespace Xg.Lab.Sample.View
     [DbTable(IsView=true)]
     public class QC_QualityRule_View:DbEntity
     {
+        #region SupplierCode  供应商编码
+        private string _Ori_SupplierCode = "";
+        private string _SupplierCode = "";
+
+        /// <summary>
+        /// 供应商编码
+        /// </summary> 
+        [DisplayName("供应商编码")]
+        public string SupplierCode
+        {
+            get { return _SupplierCode; }
+            set
+            {
+                if (_SupplierCode != value)
+                {
+                    if (IsIniting) _Ori_SupplierCode = value;
+                    _SupplierCode = value;
+                    RaisePropertyChanged("SupplierCode", true);
+                }
+            }
+        }
+        #endregion
         #region 主键
         private int _QualityRuleId;
         public int QualityRuleId

@@ -166,7 +166,7 @@ namespace VehIC_WF.WorkPoint
                     return;
 
                 }
-                zySample.ZyDanHao = DbContext.GetSeq(zySample.MatClassWord + DateTime.Now.Date.ToString("yyyyMMdd"), 2);
+                zySample.ZyDanHao = zySample.MatClassWord + DbContext.GetSeq(DateTime.Now.Date.ToString("yyyyMMdd"), 2);
                 zySample.SampleState = SampleState.开始制样;
                 zySample.ZyWpCode = workpointCode;
                 zySample.ZyRecvUser = LocalInfo.Current.user.ID;

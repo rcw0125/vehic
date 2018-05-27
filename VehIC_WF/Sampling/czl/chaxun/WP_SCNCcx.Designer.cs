@@ -61,6 +61,7 @@
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -212,7 +213,8 @@
             this.gridColumn12,
             this.gridColumn19,
             this.gridColumn20,
-            this.gridColumn21});
+            this.gridColumn21,
+            this.gridColumn22});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsSelection.MultiSelect = true;
@@ -403,6 +405,14 @@
             this.gridColumn21.Visible = true;
             this.gridColumn21.VisibleIndex = 20;
             // 
+            // gridColumn22
+            // 
+            this.gridColumn22.Caption = "哈氏可磨性";
+            this.gridColumn22.FieldName = "KM";
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 21;
+            // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "xls";
@@ -468,5 +478,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
     }
 }

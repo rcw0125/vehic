@@ -36,12 +36,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.自动判定取用 = new System.Windows.Forms.Button();
             this.取用 = new System.Windows.Forms.Button();
-            this.curData_Source = new System.Windows.Forms.BindingSource(this.components);
             this.btnQuaRule = new System.Windows.Forms.Button();
             this.btnReportVal = new System.Windows.Forms.Button();
             this.btnAllJudge = new System.Windows.Forms.Button();
             this.清理 = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.curData_Source = new System.Windows.Forms.BindingSource(this.components);
             this.btnJudge = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnUploadNc = new System.Windows.Forms.Button();
@@ -369,19 +369,13 @@
             // 
             // 取用
             // 
-            this.取用.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.curData_Source, "FinishCommand", true));
             this.取用.Location = new System.Drawing.Point(729, 6);
             this.取用.Name = "取用";
             this.取用.Size = new System.Drawing.Size(48, 23);
             this.取用.TabIndex = 71;
             this.取用.Text = "取用";
             this.取用.UseVisualStyleBackColor = true;
-            this.取用.Visible = false;
             this.取用.Click += new System.EventHandler(this.取用_Click);
-            // 
-            // curData_Source
-            // 
-            this.curData_Source.DataSource = typeof(Xg.Lab.Sample.QC_Sample_Mix);
             // 
             // btnQuaRule
             // 
@@ -434,6 +428,10 @@
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // curData_Source
+            // 
+            this.curData_Source.DataSource = typeof(Xg.Lab.Sample.QC_Sample_Mix);
             // 
             // btnJudge
             // 

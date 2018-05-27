@@ -36,51 +36,7 @@ namespace VehIC_WF.Sampling.czl.WorkPoint
 private void timer1_Tick(object sender, EventArgs e)
 {
 
-    vehs.LoadDataByWhere("main.WLLX='焦炭' and main.SampleState=@SampleState", SampleState.初始状态);
-
-    for (int j = 0; j < vehs.Count; j++)
-    {
-        if (vehs[j].Sample_Mix_ID == 0)
-        {
-            bool cunzai = false;
-            for (int m = 0; m < mixs.Count; m++)
-            {
-                if (vehs[j].SupplierCode == mixs[m].SupplierCode && vehs[j].MatCode == mixs[m].MatCode && mixs[m].MixPlanCount > mixs[m].MixCount)
-                {
-                    cunzai = true;
-                    vehs[j].Sample_Mix_ID = mixs[m].Sample_Mix_ID;
-                    vehs[j].Save();
-                    mixs[m].MixCount++;
-                    mixs[m].Save();
-                }
-
-            }
-            if (cunzai == false)
-            {
-                QC_Material matInfo = QC_Material.GetByID(vehs[j].MatPK);
-                QC_Sample_Mix mix = new QC_Sample_Mix();
-
-                mix.WpCode = "0092";
-             
-                mix.MatCode = vehs[j].MatCode;
-                mix.MatPK = vehs[j].MatPK;
-                mix.MixCount = 1;
-                mix.MixPlanCount = matInfo.BatchNum;
-                mix.SupplierCode = vehs[j].SupplierCode;
-                mix.MixUser = LocalInfo.Current.user.ID;
-                mix.SampleState = SampleState.初始状态;
-                mix.SampleType = SampleType.普通样;
-                mix.WLLX = vehs[j].WLLX;
-                mix.CardID = Zhc.Data.DbContext.GetSeq("JT" + DateTime.Now.Date.ToString("yyyyMMdd"), 2);
-                mix.Save();
-                mixs.Add(mix);
-
-                vehs[j].Sample_Mix_ID = mix.Sample_Mix_ID;
-                vehs[j].Save();
-
-            }
-        }
-    }
+  
 }
 
 
@@ -167,6 +123,78 @@ private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.Ro
     //{
     //    e.Appearance.BackColor = Color.Red;
     //}
+}
+
+
+private void gridView1_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+{
+  
+    QC_Sample_Mix mix =e.Row as QC_Sample_Mix;
+    if (mix != null)
+    { vehs.LoadDataByWhere("main.Sample_mix_id=@Sample_mix_id", mix.Sample_Mix_ID); }
+
+
+}
+
+private void 刷新_Click(object sender, EventArgs e)
+{
+    vehs.LoadDataByWhere("main.WLLX='焦炭' and main.SampleState=@SampleState", SampleState.初始状态);
+    mixs.LoadDataByWhere("main.WLLX='焦炭' and main.SampleState=@SampleState", SampleState.初始状态);
+}
+
+private void 查询组批_Click(object sender, EventArgs e)
+{
+    mixs.LoadDataByWhere("main.WLLX='焦炭' and main.SampleState=@SampleState", SampleState.初始状态);
+    vehs.LoadDataByWhere("main.WLLX='焦炭' and main.SampleState=@SampleState", SampleState.初始状态);
+    if (vehs.Count > 0)
+    {
+        for (int j = 0; j < vehs.Count; j++)
+        {
+            if (vehs[j].Sample_Mix_ID == 0)
+            {
+                bool cunzai = false;
+                if (mixs.Count > 0)
+                {
+                    for (int m = 0; m < mixs.Count; m++)
+                    {
+                        if (vehs[j].SupplierCode == mixs[m].SupplierCode && vehs[j].MatCode == mixs[m].MatCode && mixs[m].MixPlanCount > mixs[m].MixCount)
+                        {
+                            cunzai = true;
+                            vehs[j].Sample_Mix_ID = mixs[m].Sample_Mix_ID;
+                            vehs[j].Save();
+                            mixs[m].MixCount++;
+                            mixs[m].Save();
+                        }
+
+                    }
+                }
+                if (cunzai == false)
+                {
+                    QC_Material matInfo = QC_Material.GetByID(vehs[j].MatPK);
+                    QC_Sample_Mix mix = new QC_Sample_Mix();
+
+                    mix.WpCode = "0092";
+
+                    mix.MatCode = vehs[j].MatCode;
+                    mix.MatPK = vehs[j].MatPK;
+                    mix.MixCount = 1;
+                    mix.MixPlanCount = matInfo.BatchNum;
+                    mix.SupplierCode = vehs[j].SupplierCode;
+                    mix.MixUser = LocalInfo.Current.user.ID;
+                    mix.SampleState = SampleState.初始状态;
+                    mix.SampleType = SampleType.普通样;
+                    mix.WLLX = vehs[j].WLLX;
+                    mix.CardID = Zhc.Data.DbContext.GetSeq("JT" + DateTime.Now.Date.ToString("yyyyMMdd"), 2);
+                    mix.Save();
+                    mixs.Add(mix);
+
+                    vehs[j].Sample_Mix_ID = mix.Sample_Mix_ID;
+                    vehs[j].Save();
+
+                }
+            }
+        }
+    }
 }
 }
 }

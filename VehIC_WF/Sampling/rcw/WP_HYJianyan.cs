@@ -62,7 +62,10 @@ namespace VehIC_WF.Sampling.rcw
             if (tempLab==null) { MessageBox.Show("没有找到单据"); return; }
 
             if (tempLab.WLLX != "火运") { MessageBox.Show("此样品物料类型不是火运"); return; }
+
             tempLab.JyCode = DbContext.GetSeq("HY" + DateTime.Now.Date.ToString("yyyyMMdd"), 2);
+
+
             tempLab.Billtype = "开始检验";
             tempLab.LabState = "开始检验";
             tempLab.JyUser = LocalInfo.Current.user.ID;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WP_SZZhiyang));
@@ -39,16 +40,13 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.制样 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblRecvDanHao = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.打印制样编码 = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.qCSampleMixZhiYangBindingSource = new System.Windows.Forms.BindingSource();
+            this.qCSampleMixZhiYangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,7 +54,7 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.checkGroupsBindingSource = new System.Windows.Forms.BindingSource();
+            this.checkGroupsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colCheckGroupName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStoreCode = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,7 +63,7 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
-            this.qCSampleLabBindingSource1 = new System.Windows.Forms.BindingSource();
+            this.qCSampleLabBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -109,7 +107,6 @@
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -245,7 +242,6 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(216)))));
-            this.panel3.Controls.Add(this.checkBox1);
             this.panel3.Controls.Add(this.comboBox1);
             this.panel3.Controls.Add(this.制样);
             this.panel3.Controls.Add(this.panel4);
@@ -255,17 +251,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1014, 42);
             this.panel3.TabIndex = 1;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.Color.Red;
-            this.checkBox1.Location = new System.Drawing.Point(385, 15);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(84, 16);
-            this.checkBox1.TabIndex = 47;
-            this.checkBox1.Text = "是否做粒度";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
@@ -290,32 +275,11 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.lblRecvDanHao);
-            this.panel4.Controls.Add(this.labelControl2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(321, 42);
             this.panel4.TabIndex = 43;
-            // 
-            // lblRecvDanHao
-            // 
-            this.lblRecvDanHao.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecvDanHao.Appearance.ForeColor = System.Drawing.Color.Crimson;
-            this.lblRecvDanHao.Location = new System.Drawing.Point(97, 11);
-            this.lblRecvDanHao.Name = "lblRecvDanHao";
-            this.lblRecvDanHao.Size = new System.Drawing.Size(0, 19);
-            this.lblRecvDanHao.TabIndex = 38;
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.BlueViolet;
-            this.labelControl2.Location = new System.Drawing.Point(16, 12);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(77, 16);
-            this.labelControl2.TabIndex = 37;
-            this.labelControl2.Text = "扫混样卡:";
             // 
             // 打印制样编码
             // 
@@ -888,9 +852,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -944,8 +905,6 @@
         private System.Windows.Forms.SplitContainer splitContainer5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private DevExpress.XtraEditors.LabelControl lblRecvDanHao;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.BindingSource qCSampleMixZhiYangBindingSource;
@@ -993,6 +952,5 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private System.Windows.Forms.Button 制样;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

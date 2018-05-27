@@ -21,7 +21,10 @@ namespace VehIC_WF.Sampling
 
         private void DlgQualityRule_Load(object sender, EventArgs e)
         {
-            this.uC_QualityRule1.DataSource.LoadDataByWhere("MATNCID=@MATNCID", curSampleMix.MatPK);
+          
+                this.uC_QualityRule1.DataSource.LoadDataByWhere("MATNCID=@MATNCID and  suppliercode=@suppliercode", curSampleMix.MatPK, curSampleMix.SupplierCode);
+                if (this.uC_QualityRule1.DataSource.Count == 0)
+                { this.uC_QualityRule1.DataSource.LoadDataByWhere("MATNCID=@MATNCID", curSampleMix.MatPK); }
             foreach (var item in this.uC_QualityRule1.DataSource)
             {
                 item.CurrentVal = this.curSampleMix.CheckVals.GetTagValueByCode(item.CheckItemCode);

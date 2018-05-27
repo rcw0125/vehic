@@ -46,6 +46,53 @@
             this.bshcph = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.lbtask = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer6 = new System.Windows.Forms.SplitContainer();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblRecvDanHao = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer7 = new System.Windows.Forms.SplitContainer();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
+            this.bsarrivebill = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colvarrordercode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colvdef3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colinvcode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colinvname = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coldreceivedate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcustname = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colvmemo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coldeptname = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcdeptid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coluser_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coltmaketime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcauditpsn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coltaudittime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coldauditdate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colbodymemo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcbaseid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcvendorbaseid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcemployeeid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcoperator = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSaveEnable = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
@@ -111,40 +158,7 @@
             this.colFinishCommand = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSaveEnable1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.button9 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.lbtask = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
-            this.bsarrivebill = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colvarrordercode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colvdef3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colinvcode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colinvname = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coldreceivedate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcustname = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colvmemo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coldeptname = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcdeptid = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coluser_name = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coltmaketime = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcauditpsn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coltaudittime = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coldauditdate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colbodymemo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcbaseid = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcvendorbaseid = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcemployeeid = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcoperator = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSaveEnable = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.label3 = new System.Windows.Forms.Label();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
@@ -159,6 +173,35 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
+            this.splitContainer6.Panel1.SuspendLayout();
+            this.splitContainer6.Panel2.SuspendLayout();
+            this.splitContainer6.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
+            this.splitContainer7.Panel1.SuspendLayout();
+            this.splitContainer7.Panel2.SuspendLayout();
+            this.splitContainer7.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsarrivebill)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -167,21 +210,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsMix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsarrivebill)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(325, 66);
+            this.button1.Location = new System.Drawing.Point(362, 53);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -196,7 +229,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(403, 429);
+            this.gridControl1.Size = new System.Drawing.Size(403, 400);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -217,6 +250,7 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.IndicatorWidth = 30;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator_1);
             // 
             // gridColumn1
@@ -335,8 +369,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.layoutControl1);
             this.splitContainer1.Panel1.Controls.Add(this.button6);
             this.splitContainer1.Panel1.Controls.Add(this.button7);
             this.splitContainer1.Panel1.Controls.Add(this.lbtask);
@@ -350,14 +383,478 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1090, 550);
-            this.splitContainer1.SplitterDistance = 117;
+            this.splitContainer1.SplitterDistance = 100;
             this.splitContainer1.TabIndex = 4;
+            // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.textEdit1);
+            this.layoutControl1.Location = new System.Drawing.Point(723, 16);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.layoutControlGroup1;
+            this.layoutControl1.Size = new System.Drawing.Size(181, 47);
+            this.layoutControl1.TabIndex = 10;
+            this.layoutControl1.Text = "layoutControl1";
+            this.layoutControl1.Visible = false;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Location = new System.Drawing.Point(63, 12);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(106, 20);
+            this.textEdit1.StyleController = this.layoutControl1;
+            this.textEdit1.TabIndex = 4;
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1});
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(181, 47);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.textEdit1;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(161, 27);
+            this.layoutControlItem1.Text = "样品单号";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(951, 16);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(84, 31);
+            this.button6.TabIndex = 9;
+            this.button6.Text = "重新勾兑";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Visible = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(951, 53);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(60, 23);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "补打";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // lbtask
+            // 
+            this.lbtask.AutoSize = true;
+            this.lbtask.Font = new System.Drawing.Font("宋体", 12F);
+            this.lbtask.ForeColor = System.Drawing.Color.Red;
+            this.lbtask.Location = new System.Drawing.Point(494, 10);
+            this.lbtask.Name = "lbtask";
+            this.lbtask.Size = new System.Drawing.Size(136, 16);
+            this.lbtask.TabIndex = 6;
+            this.lbtask.Text = "等待取样的火车：";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(362, 10);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "刷新";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(579, 52);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(61, 23);
+            this.button8.TabIndex = 7;
+            this.button8.Text = "抽样";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(495, 52);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(61, 23);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "取样";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer6);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
+            this.splitContainer2.Size = new System.Drawing.Size(1090, 446);
+            this.splitContainer2.SplitterDistance = 403;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // splitContainer6
+            // 
+            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer6.Name = "splitContainer6";
+            this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer6.Panel1
+            // 
+            this.splitContainer6.Panel1.Controls.Add(this.panel4);
+            // 
+            // splitContainer6.Panel2
+            // 
+            this.splitContainer6.Panel2.Controls.Add(this.gridControl1);
+            this.splitContainer6.Size = new System.Drawing.Size(403, 446);
+            this.splitContainer6.SplitterDistance = 42;
+            this.splitContainer6.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.lblRecvDanHao);
+            this.panel4.Controls.Add(this.labelControl2);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(403, 42);
+            this.panel4.TabIndex = 44;
+            // 
+            // lblRecvDanHao
+            // 
+            this.lblRecvDanHao.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecvDanHao.Appearance.ForeColor = System.Drawing.Color.Crimson;
+            this.lblRecvDanHao.Appearance.Options.UseFont = true;
+            this.lblRecvDanHao.Appearance.Options.UseForeColor = true;
+            this.lblRecvDanHao.Location = new System.Drawing.Point(97, 11);
+            this.lblRecvDanHao.Name = "lblRecvDanHao";
+            this.lblRecvDanHao.Size = new System.Drawing.Size(0, 19);
+            this.lblRecvDanHao.TabIndex = 38;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.BlueViolet;
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(16, 12);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(120, 16);
+            this.labelControl2.TabIndex = 37;
+            this.labelControl2.Text = "NC火车到站信息";
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.splitContainer5);
+            this.splitContainer3.Size = new System.Drawing.Size(683, 446);
+            this.splitContainer3.SplitterDistance = 28;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.splitContainer7);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.label2);
+            this.splitContainer5.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer5.Panel2.Controls.Add(this.label3);
+            this.splitContainer5.Size = new System.Drawing.Size(651, 446);
+            this.splitContainer5.SplitterDistance = 216;
+            this.splitContainer5.TabIndex = 2;
+            // 
+            // splitContainer7
+            // 
+            this.splitContainer7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer7.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer7.Name = "splitContainer7";
+            this.splitContainer7.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer7.Panel1
+            // 
+            this.splitContainer7.Panel1.Controls.Add(this.panel1);
+            // 
+            // splitContainer7.Panel2
+            // 
+            this.splitContainer7.Panel2.Controls.Add(this.gridControl3);
+            this.splitContainer7.Size = new System.Drawing.Size(651, 216);
+            this.splitContainer7.SplitterDistance = 46;
+            this.splitContainer7.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.labelControl1);
+            this.panel1.Controls.Add(this.labelControl3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(651, 46);
+            this.panel1.TabIndex = 45;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Crimson;
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(97, 11);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(0, 19);
+            this.labelControl1.TabIndex = 38;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.BlueViolet;
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
+            this.labelControl3.Location = new System.Drawing.Point(257, 12);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(137, 16);
+            this.labelControl3.TabIndex = 37;
+            this.labelControl3.Text = "NC到货单物料信息";
+            // 
+            // gridControl3
+            // 
+            this.gridControl3.DataSource = this.bsarrivebill;
+            this.gridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl3.Location = new System.Drawing.Point(0, 0);
+            this.gridControl3.MainView = this.gridView3;
+            this.gridControl3.Name = "gridControl3";
+            this.gridControl3.Size = new System.Drawing.Size(651, 166);
+            this.gridControl3.TabIndex = 1;
+            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // bsarrivebill
+            // 
+            this.bsarrivebill.DataSource = typeof(VehIC_WF.Sampling.rcw.View_arrivebill);
+            // 
+            // gridView3
+            // 
+            this.gridView3.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.gridView3.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 10.5F);
+            this.gridView3.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.gridView3.Appearance.FocusedCell.Options.UseFont = true;
+            this.gridView3.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.gridView3.Appearance.FocusedRow.Font = new System.Drawing.Font("Tahoma", 10.5F);
+            this.gridView3.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView3.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridView3.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.gridView3.Appearance.HideSelectionRow.Font = new System.Drawing.Font("Tahoma", 10.5F);
+            this.gridView3.Appearance.HideSelectionRow.Options.UseBackColor = true;
+            this.gridView3.Appearance.HideSelectionRow.Options.UseFont = true;
+            this.gridView3.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.gridView3.Appearance.SelectedRow.Font = new System.Drawing.Font("Tahoma", 10.5F);
+            this.gridView3.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.gridView3.Appearance.SelectedRow.Options.UseFont = true;
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colvarrordercode,
+            this.gridColumn7,
+            this.gridColumn6,
+            this.colvdef3,
+            this.colinvcode,
+            this.colinvname,
+            this.coldreceivedate,
+            this.gridColumn8,
+            this.colcustname,
+            this.colvmemo,
+            this.coldeptname,
+            this.colcdeptid,
+            this.coluser_name,
+            this.coltmaketime,
+            this.colcauditpsn,
+            this.coltaudittime,
+            this.coldauditdate,
+            this.colbodymemo,
+            this.colcbaseid,
+            this.colcvendorbaseid,
+            this.colcemployeeid,
+            this.colcoperator,
+            this.colSaveEnable});
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.GridControl = this.gridControl3;
+            this.gridView3.IndicatorWidth = 40;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.Editable = false;
+            this.gridView3.OptionsDetail.EnableMasterViewMode = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            this.gridView3.RowHeight = 20;
+            this.gridView3.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView3_CustomDrawRowIndicator);
+            // 
+            // colvarrordercode
+            // 
+            this.colvarrordercode.FieldName = "varrordercode";
+            this.colvarrordercode.Name = "colvarrordercode";
+            this.colvarrordercode.OptionsColumn.AllowEdit = false;
+            this.colvarrordercode.Visible = true;
+            this.colvarrordercode.VisibleIndex = 0;
+            this.colvarrordercode.Width = 102;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.FieldName = "vdef4";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 0;
+            this.gridColumn7.Width = 82;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.FieldName = "vdef5";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 1;
+            this.gridColumn6.Width = 54;
+            // 
+            // colvdef3
+            // 
+            this.colvdef3.FieldName = "vdef3";
+            this.colvdef3.Name = "colvdef3";
+            // 
+            // colinvcode
+            // 
+            this.colinvcode.FieldName = "invcode";
+            this.colinvcode.Name = "colinvcode";
+            // 
+            // colinvname
+            // 
+            this.colinvname.FieldName = "invname";
+            this.colinvname.Name = "colinvname";
+            this.colinvname.OptionsColumn.AllowEdit = false;
+            this.colinvname.Visible = true;
+            this.colinvname.VisibleIndex = 2;
+            this.colinvname.Width = 73;
+            // 
+            // coldreceivedate
+            // 
+            this.coldreceivedate.FieldName = "dreceivedate";
+            this.coldreceivedate.Name = "coldreceivedate";
+            this.coldreceivedate.OptionsColumn.AllowEdit = false;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.FieldName = "custcode";
+            this.gridColumn8.Name = "gridColumn8";
+            // 
+            // colcustname
+            // 
+            this.colcustname.FieldName = "custname";
+            this.colcustname.Name = "colcustname";
+            this.colcustname.OptionsColumn.AllowEdit = false;
+            this.colcustname.Width = 143;
+            // 
+            // colvmemo
+            // 
+            this.colvmemo.FieldName = "vmemo";
+            this.colvmemo.Name = "colvmemo";
+            // 
+            // coldeptname
+            // 
+            this.coldeptname.FieldName = "deptname";
+            this.coldeptname.Name = "coldeptname";
+            this.coldeptname.OptionsColumn.AllowEdit = false;
+            this.coldeptname.Visible = true;
+            this.coldeptname.VisibleIndex = 3;
+            this.coldeptname.Width = 65;
+            // 
+            // colcdeptid
+            // 
+            this.colcdeptid.FieldName = "cdeptid";
+            this.colcdeptid.Name = "colcdeptid";
+            // 
+            // coluser_name
+            // 
+            this.coluser_name.FieldName = "user_name";
+            this.coluser_name.Name = "coluser_name";
+            this.coluser_name.Visible = true;
+            this.coluser_name.VisibleIndex = 4;
+            this.coluser_name.Width = 59;
+            // 
+            // coltmaketime
+            // 
+            this.coltmaketime.FieldName = "tmaketime";
+            this.coltmaketime.Name = "coltmaketime";
+            this.coltmaketime.Width = 64;
+            // 
+            // colcauditpsn
+            // 
+            this.colcauditpsn.FieldName = "cauditpsn";
+            this.colcauditpsn.Name = "colcauditpsn";
+            // 
+            // coltaudittime
+            // 
+            this.coltaudittime.FieldName = "taudittime";
+            this.coltaudittime.Name = "coltaudittime";
+            // 
+            // coldauditdate
+            // 
+            this.coldauditdate.FieldName = "dauditdate";
+            this.coldauditdate.Name = "coldauditdate";
+            // 
+            // colbodymemo
+            // 
+            this.colbodymemo.FieldName = "bodymemo";
+            this.colbodymemo.Name = "colbodymemo";
+            // 
+            // colcbaseid
+            // 
+            this.colcbaseid.FieldName = "cbaseid";
+            this.colcbaseid.Name = "colcbaseid";
+            // 
+            // colcvendorbaseid
+            // 
+            this.colcvendorbaseid.FieldName = "cvendorbaseid";
+            this.colcvendorbaseid.Name = "colcvendorbaseid";
+            // 
+            // colcemployeeid
+            // 
+            this.colcemployeeid.FieldName = "cemployeeid";
+            this.colcemployeeid.Name = "colcemployeeid";
+            // 
+            // colcoperator
+            // 
+            this.colcoperator.FieldName = "coperator";
+            this.colcoperator.Name = "colcoperator";
+            // 
+            // colSaveEnable
+            // 
+            this.colSaveEnable.FieldName = "SaveEnable";
+            this.colSaveEnable.Name = "colSaveEnable";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 12F);
-            this.label2.Location = new System.Drawing.Point(804, 17);
+            this.label2.Location = new System.Drawing.Point(315, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 11;
@@ -365,9 +862,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.splitContainer4);
-            this.groupBox2.Location = new System.Drawing.Point(649, 3);
+            this.groupBox2.Location = new System.Drawing.Point(189, 16);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(287, 111);
+            this.groupBox2.Size = new System.Drawing.Size(287, 196);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
@@ -384,7 +881,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.button9);
-            this.splitContainer4.Size = new System.Drawing.Size(281, 91);
+            this.splitContainer4.Size = new System.Drawing.Size(281, 176);
             this.splitContainer4.SplitterDistance = 175;
             this.splitContainer4.TabIndex = 0;
             // 
@@ -395,7 +892,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(175, 91);
+            this.gridControl2.Size = new System.Drawing.Size(175, 176);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -772,7 +1269,7 @@
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.Salmon;
-            this.button9.Location = new System.Drawing.Point(14, 45);
+            this.button9.Location = new System.Drawing.Point(16, 81);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(71, 23);
             this.button9.TabIndex = 11;
@@ -780,307 +1277,16 @@
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(1012, 20);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "重新勾兑";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Visible = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click_1);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(1000, 77);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(60, 23);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "补打";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // lbtask
-            // 
-            this.lbtask.AutoSize = true;
-            this.lbtask.Font = new System.Drawing.Font("宋体", 12F);
-            this.lbtask.ForeColor = System.Drawing.Color.Red;
-            this.lbtask.Location = new System.Drawing.Point(424, 11);
-            this.lbtask.Name = "lbtask";
-            this.lbtask.Size = new System.Drawing.Size(136, 16);
-            this.lbtask.TabIndex = 6;
-            this.lbtask.Text = "等待取样的火车：";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(325, 10);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "刷新";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(509, 66);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(61, 23);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "抽样";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(425, 66);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(61, 23);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "取样";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.gridControl1);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1090, 429);
-            this.splitContainer2.SplitterDistance = 403;
-            this.splitContainer2.TabIndex = 0;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.gridControl3);
-            this.splitContainer3.Size = new System.Drawing.Size(683, 429);
-            this.splitContainer3.SplitterDistance = 28;
-            this.splitContainer3.TabIndex = 0;
-            // 
-            // gridControl3
-            // 
-            this.gridControl3.DataSource = this.bsarrivebill;
-            this.gridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl3.Location = new System.Drawing.Point(0, 0);
-            this.gridControl3.MainView = this.gridView3;
-            this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(651, 429);
-            this.gridControl3.TabIndex = 1;
-            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
-            // 
-            // bsarrivebill
-            // 
-            this.bsarrivebill.DataSource = typeof(VehIC_WF.Sampling.rcw.View_arrivebill);
-            // 
-            // gridView3
-            // 
-            this.gridView3.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.gridView3.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 10.5F);
-            this.gridView3.Appearance.FocusedCell.Options.UseBackColor = true;
-            this.gridView3.Appearance.FocusedCell.Options.UseFont = true;
-            this.gridView3.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.gridView3.Appearance.FocusedRow.Font = new System.Drawing.Font("Tahoma", 10.5F);
-            this.gridView3.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridView3.Appearance.FocusedRow.Options.UseFont = true;
-            this.gridView3.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.gridView3.Appearance.HideSelectionRow.Font = new System.Drawing.Font("Tahoma", 10.5F);
-            this.gridView3.Appearance.HideSelectionRow.Options.UseBackColor = true;
-            this.gridView3.Appearance.HideSelectionRow.Options.UseFont = true;
-            this.gridView3.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.gridView3.Appearance.SelectedRow.Font = new System.Drawing.Font("Tahoma", 10.5F);
-            this.gridView3.Appearance.SelectedRow.Options.UseBackColor = true;
-            this.gridView3.Appearance.SelectedRow.Options.UseFont = true;
-            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colvarrordercode,
-            this.gridColumn7,
-            this.gridColumn6,
-            this.colvdef3,
-            this.colinvcode,
-            this.colinvname,
-            this.coldreceivedate,
-            this.gridColumn8,
-            this.colcustname,
-            this.colvmemo,
-            this.coldeptname,
-            this.colcdeptid,
-            this.coluser_name,
-            this.coltmaketime,
-            this.colcauditpsn,
-            this.coltaudittime,
-            this.coldauditdate,
-            this.colbodymemo,
-            this.colcbaseid,
-            this.colcvendorbaseid,
-            this.colcemployeeid,
-            this.colcoperator,
-            this.colSaveEnable});
-            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView3.GridControl = this.gridControl3;
-            this.gridView3.IndicatorWidth = 40;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsBehavior.Editable = false;
-            this.gridView3.OptionsDetail.EnableMasterViewMode = false;
-            this.gridView3.OptionsView.ShowGroupPanel = false;
-            this.gridView3.RowHeight = 20;
-            this.gridView3.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView3_CustomDrawRowIndicator);
-            // 
-            // colvarrordercode
-            // 
-            this.colvarrordercode.FieldName = "varrordercode";
-            this.colvarrordercode.Name = "colvarrordercode";
-            this.colvarrordercode.OptionsColumn.AllowEdit = false;
-            this.colvarrordercode.Visible = true;
-            this.colvarrordercode.VisibleIndex = 0;
-            this.colvarrordercode.Width = 102;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.FieldName = "vdef4";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 1;
-            this.gridColumn7.Width = 82;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.FieldName = "vdef5";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 2;
-            this.gridColumn6.Width = 54;
-            // 
-            // colvdef3
-            // 
-            this.colvdef3.FieldName = "vdef3";
-            this.colvdef3.Name = "colvdef3";
-            // 
-            // colinvcode
-            // 
-            this.colinvcode.FieldName = "invcode";
-            this.colinvcode.Name = "colinvcode";
-            // 
-            // colinvname
-            // 
-            this.colinvname.FieldName = "invname";
-            this.colinvname.Name = "colinvname";
-            this.colinvname.OptionsColumn.AllowEdit = false;
-            this.colinvname.Visible = true;
-            this.colinvname.VisibleIndex = 3;
-            this.colinvname.Width = 73;
-            // 
-            // coldreceivedate
-            // 
-            this.coldreceivedate.FieldName = "dreceivedate";
-            this.coldreceivedate.Name = "coldreceivedate";
-            this.coldreceivedate.OptionsColumn.AllowEdit = false;
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.FieldName = "custcode";
-            this.gridColumn8.Name = "gridColumn8";
-            // 
-            // colcustname
-            // 
-            this.colcustname.FieldName = "custname";
-            this.colcustname.Name = "colcustname";
-            this.colcustname.OptionsColumn.AllowEdit = false;
-            this.colcustname.Visible = true;
-            this.colcustname.VisibleIndex = 4;
-            this.colcustname.Width = 143;
-            // 
-            // colvmemo
-            // 
-            this.colvmemo.FieldName = "vmemo";
-            this.colvmemo.Name = "colvmemo";
-            // 
-            // coldeptname
-            // 
-            this.coldeptname.FieldName = "deptname";
-            this.coldeptname.Name = "coldeptname";
-            this.coldeptname.OptionsColumn.AllowEdit = false;
-            this.coldeptname.Visible = true;
-            this.coldeptname.VisibleIndex = 5;
-            this.coldeptname.Width = 65;
-            // 
-            // colcdeptid
-            // 
-            this.colcdeptid.FieldName = "cdeptid";
-            this.colcdeptid.Name = "colcdeptid";
-            // 
-            // coluser_name
-            // 
-            this.coluser_name.FieldName = "user_name";
-            this.coluser_name.Name = "coluser_name";
-            this.coluser_name.Visible = true;
-            this.coluser_name.VisibleIndex = 6;
-            this.coluser_name.Width = 59;
-            // 
-            // coltmaketime
-            // 
-            this.coltmaketime.FieldName = "tmaketime";
-            this.coltmaketime.Name = "coltmaketime";
-            this.coltmaketime.Width = 64;
-            // 
-            // colcauditpsn
-            // 
-            this.colcauditpsn.FieldName = "cauditpsn";
-            this.colcauditpsn.Name = "colcauditpsn";
-            // 
-            // coltaudittime
-            // 
-            this.coltaudittime.FieldName = "taudittime";
-            this.coltaudittime.Name = "coltaudittime";
-            // 
-            // coldauditdate
-            // 
-            this.coldauditdate.FieldName = "dauditdate";
-            this.coldauditdate.Name = "coldauditdate";
-            // 
-            // colbodymemo
-            // 
-            this.colbodymemo.FieldName = "bodymemo";
-            this.colbodymemo.Name = "colbodymemo";
-            // 
-            // colcbaseid
-            // 
-            this.colcbaseid.FieldName = "cbaseid";
-            this.colcbaseid.Name = "colcbaseid";
-            // 
-            // colcvendorbaseid
-            // 
-            this.colcvendorbaseid.FieldName = "cvendorbaseid";
-            this.colcvendorbaseid.Name = "colcvendorbaseid";
-            // 
-            // colcemployeeid
-            // 
-            this.colcemployeeid.FieldName = "cemployeeid";
-            this.colcemployeeid.Name = "colcemployeeid";
-            // 
-            // colcoperator
-            // 
-            this.colcoperator.FieldName = "coperator";
-            this.colcoperator.Name = "colcoperator";
-            // 
-            // colSaveEnable
-            // 
-            this.colSaveEnable.FieldName = "SaveEnable";
-            this.colSaveEnable.Name = "colSaveEnable";
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 12F);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(37, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "需要绑扣的单号";
             // 
             // printDialog1
             // 
@@ -1121,6 +1327,38 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.splitContainer6.Panel1.ResumeLayout(false);
+            this.splitContainer6.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
+            this.splitContainer6.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            this.splitContainer5.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
+            this.splitContainer7.Panel1.ResumeLayout(false);
+            this.splitContainer7.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
+            this.splitContainer7.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsarrivebill)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
@@ -1129,16 +1367,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsMix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsarrivebill)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1265,5 +1493,19 @@
         private DevExpress.XtraGrid.Columns.GridColumn colLeiXing;
         private DevExpress.XtraGrid.Columns.GridColumn colFinishCommand;
         private DevExpress.XtraGrid.Columns.GridColumn colSaveEnable1;
+        private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.Label label3;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private System.Windows.Forms.SplitContainer splitContainer6;
+        private System.Windows.Forms.Panel panel4;
+        private DevExpress.XtraEditors.LabelControl lblRecvDanHao;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private System.Windows.Forms.SplitContainer splitContainer7;
+        private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
     }
 }

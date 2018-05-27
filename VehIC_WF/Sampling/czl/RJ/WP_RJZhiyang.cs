@@ -190,7 +190,7 @@ namespace VehIC_WF.WorkPoint
                 }
                 else
                 {
-                    if (curSelLab.CheckGroupCode != ckgCode)
+                    if (curSelLab.CheckGroupCode != ckgCode && !((curSelLab.CheckGroupCode == "14" || curSelLab.CheckGroupCode == "13") && (ckgCode == "04" || ckgCode == "05" || ckgCode == "14" || ckgCode == "13")))
                     {
                         MessageBox.Show("磁扣类型不对");
                         return;
@@ -781,7 +781,7 @@ namespace VehIC_WF.WorkPoint
 
             zyMixSamples.Add(zySample);
 
-            lblRecvDanHao.Text = zySample.ZyShortDanHao;
+            //lblRecvDanHao.Text = zySample.ZyShortDanHao;
             this.gridView1.FocusedRowHandle = this.gridView1.GetRowHandle(zyMixSamples.Count - 1);
             LabTabs();
             rjmixs.LoadDataByWhere("main.SAMPLESTATE=@SAMPLESTATE and main.WLLX='熔剂'", SampleState.组批完成);

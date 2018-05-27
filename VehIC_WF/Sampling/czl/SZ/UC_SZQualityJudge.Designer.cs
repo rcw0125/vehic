@@ -389,7 +389,6 @@
             this.清理.TabIndex = 70;
             this.清理.Text = "清理";
             this.清理.UseVisualStyleBackColor = true;
-            this.清理.Visible = false;
             this.清理.Click += new System.EventHandler(this.清理_Click);
             // 
             // btnSum
@@ -447,7 +446,6 @@
             this.btnUploadNc.TabIndex = 1;
             this.btnUploadNc.Text = "上传NC";
             this.btnUploadNc.UseVisualStyleBackColor = true;
-            this.btnUploadNc.Visible = false;
             this.btnUploadNc.Click += new System.EventHandler(this.btnUploadNc_Click);
             // 
             // btnSave

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode4 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WP_HYZhiyang));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnRefresh = new System.Windows.Forms.Button();
@@ -40,6 +40,7 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.组批 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.制样 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -95,7 +96,7 @@
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog2 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog2 = new System.Windows.Forms.PrintDialog();
-            this.组批 = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -228,7 +229,7 @@
             // 
             this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer5.Location = new System.Drawing.Point(2, 26);
+            this.splitContainer5.Location = new System.Drawing.Point(2, 27);
             this.splitContainer5.Name = "splitContainer5";
             this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -239,13 +240,14 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer5.Size = new System.Drawing.Size(1014, 497);
+            this.splitContainer5.Size = new System.Drawing.Size(1014, 496);
             this.splitContainer5.SplitterDistance = 42;
             this.splitContainer5.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(216)))));
+            this.panel3.Controls.Add(this.btnPrint);
             this.panel3.Controls.Add(this.组批);
             this.panel3.Controls.Add(this.comboBox1);
             this.panel3.Controls.Add(this.制样);
@@ -257,12 +259,22 @@
             this.panel3.Size = new System.Drawing.Size(1014, 42);
             this.panel3.TabIndex = 1;
             // 
+            // 组批
+            // 
+            this.组批.Location = new System.Drawing.Point(796, 11);
+            this.组批.Name = "组批";
+            this.组批.Size = new System.Drawing.Size(85, 23);
+            this.组批.TabIndex = 47;
+            this.组批.Text = "角质层组批";
+            this.组批.UseVisualStyleBackColor = true;
+            this.组批.Click += new System.EventHandler(this.组批_Click);
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(393, 11);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 22);
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 46;
             // 
             // 制样
@@ -291,8 +303,6 @@
             // 
             this.lblRecvDanHao.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecvDanHao.Appearance.ForeColor = System.Drawing.Color.Crimson;
-            this.lblRecvDanHao.Appearance.Options.UseFont = true;
-            this.lblRecvDanHao.Appearance.Options.UseForeColor = true;
             this.lblRecvDanHao.Location = new System.Drawing.Point(97, 11);
             this.lblRecvDanHao.Name = "lblRecvDanHao";
             this.lblRecvDanHao.Size = new System.Drawing.Size(0, 19);
@@ -302,8 +312,6 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.BlueViolet;
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Appearance.Options.UseForeColor = true;
             this.labelControl2.Location = new System.Drawing.Point(16, 12);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(77, 16);
@@ -312,7 +320,7 @@
             // 
             // 打印制样编码
             // 
-            this.打印制样编码.Location = new System.Drawing.Point(890, 12);
+            this.打印制样编码.Location = new System.Drawing.Point(650, 13);
             this.打印制样编码.Name = "打印制样编码";
             this.打印制样编码.Size = new System.Drawing.Size(85, 23);
             this.打印制样编码.TabIndex = 18;
@@ -333,7 +341,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.gridControl2);
-            this.splitContainer2.Size = new System.Drawing.Size(1014, 451);
+            this.splitContainer2.Size = new System.Drawing.Size(1014, 450);
             this.splitContainer2.SplitterDistance = 426;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -344,7 +352,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(426, 451);
+            this.gridControl1.Size = new System.Drawing.Size(426, 450);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -438,15 +446,15 @@
             // 
             this.gridControl2.DataSource = this.checkGroupsBindingSource;
             this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode3.RelationName = "Level1";
-            gridLevelNode4.RelationName = "Level2";
+            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level2";
             this.gridControl2.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode3,
-            gridLevelNode4});
+            gridLevelNode1,
+            gridLevelNode2});
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(584, 451);
+            this.gridControl2.Size = new System.Drawing.Size(584, 450);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -525,7 +533,7 @@
             // splitContainer6
             // 
             this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer6.Location = new System.Drawing.Point(2, 26);
+            this.splitContainer6.Location = new System.Drawing.Point(2, 27);
             this.splitContainer6.Name = "splitContainer6";
             // 
             // splitContainer6.Panel1
@@ -536,7 +544,7 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer6.Size = new System.Drawing.Size(1014, 497);
+            this.splitContainer6.Size = new System.Drawing.Size(1014, 496);
             this.splitContainer6.SplitterDistance = 275;
             this.splitContainer6.TabIndex = 1;
             // 
@@ -547,7 +555,7 @@
             this.gridControl3.Location = new System.Drawing.Point(0, 32);
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(275, 465);
+            this.gridControl3.Size = new System.Drawing.Size(275, 464);
             this.gridControl3.TabIndex = 3;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3,
@@ -633,7 +641,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.gridCtl_CheckVal);
-            this.splitContainer4.Size = new System.Drawing.Size(735, 497);
+            this.splitContainer4.Size = new System.Drawing.Size(735, 496);
             this.splitContainer4.SplitterDistance = 45;
             this.splitContainer4.TabIndex = 0;
             // 
@@ -690,8 +698,6 @@
             // 
             this.lblLabMakeTime.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLabMakeTime.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblLabMakeTime.Appearance.Options.UseFont = true;
-            this.lblLabMakeTime.Appearance.Options.UseForeColor = true;
             this.lblLabMakeTime.Location = new System.Drawing.Point(182, 10);
             this.lblLabMakeTime.Name = "lblLabMakeTime";
             this.lblLabMakeTime.Size = new System.Drawing.Size(0, 19);
@@ -701,8 +707,6 @@
             // 
             this.lblLabGroupName.Appearance.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblLabGroupName.Appearance.ForeColor = System.Drawing.Color.BlueViolet;
-            this.lblLabGroupName.Appearance.Options.UseFont = true;
-            this.lblLabGroupName.Appearance.Options.UseForeColor = true;
             this.lblLabGroupName.Location = new System.Drawing.Point(6, 11);
             this.lblLabGroupName.Name = "lblLabGroupName";
             this.lblLabGroupName.Size = new System.Drawing.Size(77, 16);
@@ -745,7 +749,7 @@
             this.gridCtl_CheckVal.Location = new System.Drawing.Point(0, 0);
             this.gridCtl_CheckVal.MainView = this.gridView_CheckVal;
             this.gridCtl_CheckVal.Name = "gridCtl_CheckVal";
-            this.gridCtl_CheckVal.Size = new System.Drawing.Size(735, 448);
+            this.gridCtl_CheckVal.Size = new System.Drawing.Size(735, 447);
             this.gridCtl_CheckVal.TabIndex = 1;
             this.gridCtl_CheckVal.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_CheckVal});
@@ -868,15 +872,15 @@
             this.printDialog2.Document = this.printDocument2;
             this.printDialog2.UseEXDialog = true;
             // 
-            // 组批
+            // btnPrint
             // 
-            this.组批.Location = new System.Drawing.Point(695, 13);
-            this.组批.Name = "组批";
-            this.组批.Size = new System.Drawing.Size(85, 23);
-            this.组批.TabIndex = 47;
-            this.组批.Text = "角质层组批";
-            this.组批.UseVisualStyleBackColor = true;
-            this.组批.Click += new System.EventHandler(this.组批_Click);
+            this.btnPrint.Location = new System.Drawing.Point(909, 12);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(93, 23);
+            this.btnPrint.TabIndex = 48;
+            this.btnPrint.Text = "打印组批信息";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // WP_HYZhiyang
             // 
@@ -1006,5 +1010,6 @@
         private System.Windows.Forms.Button 制样;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button 组批;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

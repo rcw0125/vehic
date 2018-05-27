@@ -11,7 +11,7 @@ using Xg.Lab.Sample;
 
 namespace VehIC_WF.Sampling.rcw
 {
-    public partial class trainGouDui : UserControl
+    public partial class trainGouDui : UserControl, ICardMessage
     {
         public trainGouDui()
         {
@@ -39,6 +39,7 @@ namespace VehIC_WF.Sampling.rcw
         public string hcph="";
         public string matname = "";
         public string ncdhd = "";
+        public string fazhan = "";
         private void trainGouDui_Load(object sender, EventArgs e)
         {
 
@@ -80,6 +81,8 @@ namespace VehIC_WF.Sampling.rcw
                 sample.CardID = item.HCPH;
                 sample.begintime = item.GROSSTIME;
                 sample.SampleState = Xg.Lab.Sample.SampleState.初始状态;
+                //加入noticebillid
+                sample.NoticeBillId = System.Guid.NewGuid().ToString();
                 sample.WLLX = "火运";
                 veh.Add(sample);
 
@@ -108,7 +111,7 @@ namespace VehIC_WF.Sampling.rcw
         /// </summary>
         public void initview()
         {
-            initArrivebill();
+            //initArrivebill();
             initcmbHCPH();
             initTaskbill();
             initDanHao();
@@ -144,6 +147,7 @@ namespace VehIC_WF.Sampling.rcw
                 hcph = sample_selected[0].CardID;
                 matname = sample_selected[0].rwdh;
                 ncdhd = sample_selected[0].NcDhdHeadNo;
+                fazhan = sample_selected[0].zpdh;
                 lbtask.Text = "等待取样的火车：" + hcph;
             }
             else
@@ -151,6 +155,7 @@ namespace VehIC_WF.Sampling.rcw
                 hcph = "";
                 matname = "";
                 ncdhd = "";
+                fazhan = "";
                 lbtask.Text = "请勾选物料到货单！";
             }
         }
@@ -208,8 +213,30 @@ namespace VehIC_WF.Sampling.rcw
         {
             arrivebill = new DbEntityTable<View_arrivebill>();
             arrivebill.LoadDataByWhere(" 1=1 order by vdef5,custname,invname,varrordercode desc");
+
+            string[] leibie = cmbHCPH.Text.Trim().Split('_');
+            if (leibie.Count() != 2)
+            {
+                gridControl3.DataSource = arrivebill;
+            }
+            else
+            {
+
+                string fazhan = leibie[0].ToString();
+
+                if (arrivebill.Where(o => o.vdef5 == fazhan).Count() > 0)
+                {
+                    gridControl3.DataSource = arrivebill.Where(o => o.vdef5 == fazhan).ToList();
+                }
+                else
+                {
+                    gridControl3.DataSource = arrivebill;
+                }
+            }
+           
+           
             // gridControl3.DataSource = arrivebill;
-            gridControl3.DataSource = arrivebill;
+           
         }
 
       
@@ -222,19 +249,26 @@ namespace VehIC_WF.Sampling.rcw
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            var view3 = gridView3;
+            View_arrivebill bill = view3.GetFocusedRow() as View_arrivebill;
+            if (bill == null)
+            {
+                MessageBox.Show("没有NC到货单！");
+                return;
+            }
+            if (MessageBox.Show("请确认勾选的是"+bill.custname+"的"+bill.invname, "提示", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                return;
+            }
+
+            initTaskbill();
             if (!checkMat())
             {
                 MessageBox.Show("请检查物料、到货单，必须是同一物料、同一到货单","提示",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
 
-            //var view = gridView1;
-
-            //if (view.RowCount < 1)
-            //{
-            //    MessageBox.Show("没有火车，请稍后刷新");
-            //    return;
-            //}
+           
 
             //QC_Sample_Veh train = view.GetRow(0) as QC_Sample_Veh;
             //var hc= train.CardID;
@@ -245,13 +279,7 @@ namespace VehIC_WF.Sampling.rcw
             //    return;
             //}
 
-            var view3 = gridView3;
-            View_arrivebill bill = view3.GetFocusedRow() as View_arrivebill;
-            if (bill == null)
-            {
-                MessageBox.Show("没有NC到货单！");
-                return;
-            }
+          
 
             foreach (var item in sample_unselect)
             {
@@ -290,9 +318,14 @@ namespace VehIC_WF.Sampling.rcw
             {
                 return false;               
             }
+
+           
+
             QC_Sample_Veh train = view.GetRow(0) as QC_Sample_Veh;
             string hc = train.CardID;
             string mat = train.rwdh;
+            string fz = train.zpdh;
+            bool gouxuan = false;
             //gridcontrol列表内选择的是同一种物料
             for (int i = 0; i < view.RowCount; i++)
             {
@@ -303,16 +336,27 @@ namespace VehIC_WF.Sampling.rcw
                 {
                     return false;
                 }
+                if (entity.zp)
+                {
+                    gouxuan = true;
+                }
             }
-            //选择的和任务单不是同一个火车
-            //if (hcph != ""&&hcph!=hc)
-            //{
-            //    return false;
-            //}
+
+            if (!gouxuan)
+            {
+                return false;
+            }
+            //选择的发站不一致
+            if (fazhan != "" && fazhan != fz)
+            {
+                return false;
+            }
+            ////选择的物料不一致
             if (matname != "" && matname != mat)
             {
                 return false;
             }
+
 
            //判断是否是同一张到货单
             if (ncdhd != "")
@@ -341,10 +385,11 @@ namespace VehIC_WF.Sampling.rcw
         private void cmbHCPH_SelectedIndexChanged(object sender, EventArgs e)
         {
             initHCgrid();
-            if (gridView3.RowCount > 0)
-            {
-                gridView3.FocusedRowHandle = gridView3.GetRowHandle(selectdhd());
-            }
+            initArrivebill();
+            //if (gridView3.RowCount > 0)
+            //{
+            //    gridView3.FocusedRowHandle = gridView3.GetRowHandle(selectdhd());
+            //}
            
         }
 
@@ -481,6 +526,7 @@ namespace VehIC_WF.Sampling.rcw
         //抽取
         private void button8_Click(object sender, EventArgs e)
         {
+            initTaskbill();
             if (sample_selected.Count > 0)
             {
                 MessageBox.Show("已勾选其他物料，请先处理");
@@ -543,7 +589,10 @@ namespace VehIC_WF.Sampling.rcw
                 mix.SampleType = SampleType.抽查样;
                 mix.WLLX = sample_selected[0].WLLX;
                 mix.StoreCode = Zhc.Data.DbContext.GetSeq("HY" + DateTime.Now.Date.ToString("yyyyMMdd"), 2);
+                //记住主样id
                 mix.MainSampleMixId = sample_selected[0].Sample_Mix_ID;
+                //记住车id
+                mix.NoticeBillId = sample_selected[0].Sample_Veh_ID.ToString();
                 qc.Add(mix);
                
 
@@ -574,7 +623,7 @@ namespace VehIC_WF.Sampling.rcw
         {
 
             quYang("quyang");
-            print();
+           
 
         }
 
@@ -1036,6 +1085,11 @@ namespace VehIC_WF.Sampling.rcw
             }
         }
 
+        /// <summary>
+        /// 重新勾兑
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button6_Click_1(object sender, EventArgs e)
         {
             if (MessageBox.Show("确认要进行重新勾兑吗","确认", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -1155,7 +1209,7 @@ namespace VehIC_WF.Sampling.rcw
             if (hycrds.Count == 0)
             {
                 CardID = "";
-                label2.Text = "该卡类型不对!";
+                label2.Text = "该扣类型不对!";
                 label2.ForeColor = Color.Red;
             }
 
@@ -1164,13 +1218,13 @@ namespace VehIC_WF.Sampling.rcw
                 if (qcic.SampleId == 0)
                 {
                   
-                    label2.Text = System.DateTime.Now + "扫卡成功!";
+                    label2.Text = System.DateTime.Now.ToString("HH:mm:ss") + "扫扣成功!";
 
                     label2.ForeColor = Color.Red;
                 }
                 else
                 {
-                    label2.Text = "该卡已经使用!";
+                    label2.Text = "该扣已经使用!";
                     label2.ForeColor = Color.Red;
                     CardID = "";
                 }
@@ -1200,7 +1254,7 @@ namespace VehIC_WF.Sampling.rcw
         {
             if (CardID == "")
             {
-                MessageBox.Show("请刷卡");
+                MessageBox.Show("请刷扣");
                 return;
             }
 
@@ -1210,7 +1264,7 @@ namespace VehIC_WF.Sampling.rcw
             if (hycrds.Count == 0)
             {
                 CardID = "";
-                label2.Text = "该卡类型不对!";
+                label2.Text = "该扣类型不对!";
                 label2.ForeColor = Color.Red;
                 return;
             }
@@ -1245,6 +1299,8 @@ namespace VehIC_WF.Sampling.rcw
             hycrds.Save(trans);
             trans.Commit();
             conn.Close();
+            label2.Text = "";
+            CardID = "";
 
             //foreach (var item in mixDanHao)
             //{

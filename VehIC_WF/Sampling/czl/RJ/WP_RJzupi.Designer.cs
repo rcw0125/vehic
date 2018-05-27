@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WP_RJzupi));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.查询组批 = new System.Windows.Forms.Button();
             this.刷新 = new System.Windows.Forms.Button();
-            this.查询 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.打印任务单 = new System.Windows.Forms.Button();
             this.完成取样 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.qCSampleMixBindingSource = new System.Windows.Forms.BindingSource();
+            this.qCSampleMixBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSupplierCode = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,7 +50,7 @@
             this.时间 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.qC_Sample_VehBindingSource = new System.Windows.Forms.BindingSource();
+            this.qC_Sample_VehBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,8 +61,7 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.物料类型 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.qCNoticeDhdItemViewBindingSource = new System.Windows.Forms.BindingSource();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.qCNoticeDhdItemViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
@@ -92,9 +91,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.查询组批);
             this.splitContainer1.Panel1.Controls.Add(this.刷新);
-            this.splitContainer1.Panel1.Controls.Add(this.查询);
-            this.splitContainer1.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer1.Panel1.Controls.Add(this.打印任务单);
             this.splitContainer1.Panel1.Controls.Add(this.完成取样);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
@@ -106,9 +104,19 @@
             this.splitContainer1.SplitterDistance = 45;
             this.splitContainer1.TabIndex = 0;
             // 
+            // 查询组批
+            // 
+            this.查询组批.Location = new System.Drawing.Point(298, 3);
+            this.查询组批.Name = "查询组批";
+            this.查询组批.Size = new System.Drawing.Size(122, 40);
+            this.查询组批.TabIndex = 10;
+            this.查询组批.Text = "查询组批大样";
+            this.查询组批.UseVisualStyleBackColor = true;
+            this.查询组批.Click += new System.EventHandler(this.查询组批_Click);
+            // 
             // 刷新
             // 
-            this.刷新.Location = new System.Drawing.Point(496, 3);
+            this.刷新.Location = new System.Drawing.Point(607, 2);
             this.刷新.Name = "刷新";
             this.刷新.Size = new System.Drawing.Size(83, 40);
             this.刷新.TabIndex = 9;
@@ -116,27 +124,9 @@
             this.刷新.UseVisualStyleBackColor = true;
             this.刷新.Click += new System.EventHandler(this.刷新_Click);
             // 
-            // 查询
-            // 
-            this.查询.Location = new System.Drawing.Point(375, 3);
-            this.查询.Name = "查询";
-            this.查询.Size = new System.Drawing.Size(83, 40);
-            this.查询.TabIndex = 8;
-            this.查询.Text = "查询";
-            this.查询.UseVisualStyleBackColor = true;
-            this.查询.Click += new System.EventHandler(this.查询_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(168, 13);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(168, 20);
-            this.comboBox1.TabIndex = 7;
-            // 
             // 打印任务单
             // 
-            this.打印任务单.Location = new System.Drawing.Point(740, 3);
+            this.打印任务单.Location = new System.Drawing.Point(774, 3);
             this.打印任务单.Name = "打印任务单";
             this.打印任务单.Size = new System.Drawing.Size(83, 40);
             this.打印任务单.TabIndex = 6;
@@ -146,7 +136,7 @@
             // 
             // 完成取样
             // 
-            this.完成取样.Location = new System.Drawing.Point(869, 3);
+            this.完成取样.Location = new System.Drawing.Point(884, 3);
             this.完成取样.Name = "完成取样";
             this.完成取样.Size = new System.Drawing.Size(83, 40);
             this.完成取样.TabIndex = 5;
@@ -201,6 +191,10 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FocusedCell.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.colSupplierCode,
@@ -212,7 +206,8 @@
             this.gridColumn10});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
+      
+            this.gridView1.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.gridView1_FocusedRowObjectChanged);
             // 
             // gridColumn1
             // 
@@ -278,9 +273,9 @@
             // 
             this.gridControl2.DataSource = this.qC_Sample_VehBindingSource;
             this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl2.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
@@ -406,12 +401,6 @@
             // 
             this.qCNoticeDhdItemViewBindingSource.DataSource = typeof(Xg.Lab.Sample.QC_NoticeDhdItem_View);
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 30000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // printDialog1
             // 
             this.printDialog1.Document = this.printDocument1;
@@ -474,7 +463,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMatName;
         private DevExpress.XtraGrid.Columns.GridColumn 制样单号;
         private DevExpress.XtraGrid.Columns.GridColumn 时间;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button 完成取样;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
@@ -495,9 +483,8 @@
         private System.Windows.Forms.BindingSource qCSampleMixBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private System.Windows.Forms.Button 刷新;
-        private System.Windows.Forms.Button 查询;
-        private System.Windows.Forms.ComboBox comboBox1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private System.Windows.Forms.Button 查询组批;
 
     }
 }

@@ -13,6 +13,21 @@ namespace Xg.Lab.Sample
     [DbTable("QC_Sample_Mix", "main")]
     public class QC_SampleMix_ZhiYang : DbEntity
     {
+        private string _YpDanHao = "";
+        [DisplayName("样品单号")]
+        public string YpDanHao
+        {
+            get { return _YpDanHao; }
+            set
+            {
+                if (_YpDanHao != value)
+                {
+                    _YpDanHao = value;
+                    RaisePropertyChanged("YpDanHao", true);
+                }
+            }
+        }
+
         #region 主键
         private int _Sample_Mix_ID;
         /// <summary>
@@ -435,7 +450,7 @@ namespace Xg.Lab.Sample
                 {
                     item.Sample_Mix_ID = this.Sample_Mix_ID;
                 }
-                CheckGroups.Save();
+                CheckGroups.Save(trans);
             }
 
             if (SaveCheckItems)
@@ -444,7 +459,7 @@ namespace Xg.Lab.Sample
                 {
                     item.Sample_Mix_ID = this.Sample_Mix_ID;
                 }
-                CheckItems.Save();
+                CheckItems.Save(trans);
             }
 
             base.AfterSave(trans);

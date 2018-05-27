@@ -25,7 +25,29 @@ namespace Xg.Lab.Sample.View
                 }
             }
         }
+        #region WLLX  物料类型
+        private string _Ori_WLLX;
+        private string _WLLX;
 
+        /// <summary>
+        /// 物料类型
+        /// </summary> 
+        [DisplayName("物料类型")]
+        [DbTableColumn("mat.WLLX")]
+        public string WLLX
+        {
+            get { return _WLLX; }
+            set
+            {
+                if (_WLLX != value)
+                {
+                    if (IsIniting) _Ori_WLLX = value;
+                    _WLLX = value;
+                    RaisePropertyChanged("WLLX", true);
+                }
+            }
+        }
+        #endregion
         private string _InvCode = "";
         [DisplayName("物料编码")]
         public string InvCode

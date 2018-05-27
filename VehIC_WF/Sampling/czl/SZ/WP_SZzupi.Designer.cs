@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WP_SZzupi));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -36,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.qCSampleMixBindingSource = new System.Windows.Forms.BindingSource();
+            this.qCSampleMixBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSupplierCode = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -49,7 +50,7 @@
             this.时间 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.qC_Sample_VehBindingSource = new System.Windows.Forms.BindingSource();
+            this.qC_Sample_VehBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -60,8 +61,8 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.物料类型 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.qCNoticeDhdItemViewBindingSource = new System.Windows.Forms.BindingSource();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.qCNoticeDhdItemViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
@@ -352,7 +353,7 @@
             // 
             // gridColumn6
             // 
-            this.gridColumn6.Caption = "取样时间";
+            this.gridColumn6.Caption = "进门时间";
             this.gridColumn6.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
             this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn6.FieldName = "FetchTime";

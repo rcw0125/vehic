@@ -677,8 +677,8 @@
 
         private void WP_Sampling_Load(object sender, EventArgs e)
         {
-           
-            vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX<>'外矿'and WLLX<>'合金' order by fetchtime desc", DateTime.Now.AddHours(-24));
+
+            vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX<>'外矿'and WLLX<>'合金' and WLLX<>'火运' order by fetchtime desc", DateTime.Now.AddHours(-24));
             this.qCSampleVehBindingSource.DataSource = vehs;
          
       
@@ -1069,7 +1069,7 @@
                 
                 else if (!matQuYang)
                 {    
-                   label8.Text = "不需要刷取样卡";
+                   label8.Text = "不需要刷磁扣";
                 }
                 if (nb != null)
                 {
@@ -1112,7 +1112,8 @@
         private void 东道确认_Click(object sender, EventArgs e)
         {
             DbEntityTable<QC_Material> mat = new DbEntityTable<QC_Material>();
-            DbContext.ExeSql("update Qc_qyxx set state=1 where chedao='东道'");
+            if (nbill != null)
+            { DbContext.ExeSql("update Qc_qyxx set state=1 where chedao='东道'"); }
             if (matQuYang == false && nbill != null)
             {
                 qyxx.chedao = "东道";
@@ -1344,7 +1345,7 @@
 
             //     this.Complete();
             //shuaxin
-            vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX<>'外矿' and WLLX<>'合金' order by fetchtime desc", DateTime.Now.AddHours(-24));
+            vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX<>'外矿' and WLLX<>'合金' and WLLX<>'火运' order by fetchtime desc", DateTime.Now.AddHours(-24));
             this.qCSampleVehBindingSource.DataSource = vehs;
          
 
@@ -1354,7 +1355,9 @@
         {  
           
             DbEntityTable<QC_Material> mat = new DbEntityTable<QC_Material>();
-            DbContext.ExeSql("update Qc_qyxx set state=1 where chedao='西道'");
+
+            if (nbill != null)
+            { DbContext.ExeSql("update Qc_qyxx set state=1 where chedao='西道'"); }
             if (matQuYang == false && nbill != null)
             {
                 qyxx.chedao = "西道";
@@ -1586,7 +1589,7 @@
 
             //     this.Complete();
             //shuaxin
-            vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX<>'外矿' and WLLX<>'合金' order by fetchtime desc", DateTime.Now.AddHours(-24));
+            vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX<>'外矿' and WLLX<>'合金' and WLLX<>'火运' order by fetchtime desc", DateTime.Now.AddHours(-24));
             this.qCSampleVehBindingSource.DataSource = vehs;
          
 

@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WP_JTzupi));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.刷新 = new System.Windows.Forms.Button();
             this.打印任务单 = new System.Windows.Forms.Button();
             this.完成取样 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.qCSampleMixBindingSource = new System.Windows.Forms.BindingSource();
+            this.qCSampleMixBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSupplierCode = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,7 +49,7 @@
             this.时间 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.qC_Sample_VehBindingSource = new System.Windows.Forms.BindingSource();
+            this.qC_Sample_VehBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,11 +60,12 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.物料类型 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.qCNoticeDhdItemViewBindingSource = new System.Windows.Forms.BindingSource();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.qCNoticeDhdItemViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.查询组批 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -89,6 +92,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.查询组批);
+            this.splitContainer1.Panel1.Controls.Add(this.刷新);
             this.splitContainer1.Panel1.Controls.Add(this.打印任务单);
             this.splitContainer1.Panel1.Controls.Add(this.完成取样);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
@@ -99,6 +104,16 @@
             this.splitContainer1.Size = new System.Drawing.Size(981, 564);
             this.splitContainer1.SplitterDistance = 45;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // 刷新
+            // 
+            this.刷新.Location = new System.Drawing.Point(721, 3);
+            this.刷新.Name = "刷新";
+            this.刷新.Size = new System.Drawing.Size(75, 39);
+            this.刷新.TabIndex = 7;
+            this.刷新.Text = "刷新";
+            this.刷新.UseVisualStyleBackColor = true;
+            this.刷新.Click += new System.EventHandler(this.刷新_Click);
             // 
             // 打印任务单
             // 
@@ -179,6 +194,7 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
+            this.gridView1.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.gridView1_FocusedRowObjectChanged);
             // 
             // gridColumn1
             // 
@@ -244,9 +260,9 @@
             // 
             this.gridControl2.DataSource = this.qC_Sample_VehBindingSource;
             this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl2.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
@@ -398,6 +414,16 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // 查询组批
+            // 
+            this.查询组批.Location = new System.Drawing.Point(192, 2);
+            this.查询组批.Name = "查询组批";
+            this.查询组批.Size = new System.Drawing.Size(122, 40);
+            this.查询组批.TabIndex = 11;
+            this.查询组批.Text = "查询组批大样";
+            this.查询组批.UseVisualStyleBackColor = true;
+            this.查询组批.Click += new System.EventHandler(this.查询组批_Click);
+            // 
             // WP_JTzupi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -461,6 +487,8 @@
         private System.Windows.Forms.BindingSource qCSampleMixBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private System.Windows.Forms.Button 刷新;
+        private System.Windows.Forms.Button 查询组批;
 
     }
 }

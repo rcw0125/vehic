@@ -226,7 +226,33 @@
                                         cph = this.nbill.Cph;
                                         head = QC_Sample_Mix.ShortStoreCode(hjdh);
                                         body = cph;
-                                        body1 = this.nbill.INVNAME;
+                                        if (sm.MatCode == "13314")
+                                            body1 = this.nbill.INVNAME + "-06";
+                                        else if (sm.MatCode == "13316")
+                                            body1 = this.nbill.INVNAME + "-05";
+                                        else if (sm.MatCode == "13317")
+                                            body1 = this.nbill.INVNAME + "-01";
+                                        else if (sm.MatCode == "13318")
+                                            body1 = this.nbill.INVNAME + "-02";
+                                        else if (sm.MatCode == "13321")
+                                            body1 = this.nbill.INVNAME + "-04";
+                                        else if (sm.MatCode == "13331")
+                                            body1 = this.nbill.INVNAME + "-03";
+                                        else if (sm.MatCode == "13332")
+                                            body1 = this.nbill.INVNAME + "-07";
+                                        else if (sm.MatCode == "12612")
+                                            body1 = this.nbill.INVNAME + "-01";
+                                        else if (sm.MatCode == "12613")
+                                            body1 = this.nbill.INVNAME + "-02";
+                                        else if (sm.MatCode == "12614")
+                                            body1 = this.nbill.INVNAME + "-03";
+                                        else if (sm.MatCode == "12615")
+                                            body1 = this.nbill.INVNAME + "-04";
+                                        else if (sm.MatCode == "12616")
+                                            body1 = this.nbill.INVNAME + "-05";
+                                        else if (sm.MatCode == "12619")
+                                            body1 = this.nbill.INVNAME + "-06";
+                                        else body1 = this.nbill.INVNAME;
                                         body2 = this.nbill.CUSTNAME;
                                         //    printDocument1.Print();
                                         this.printPreviewDialog1.ShowDialog();
@@ -380,7 +406,7 @@
                     {
                         vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX='合金' order by fetchtime desc", DateTime.Now.AddHours(-24));
                     }
-                    else vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX<>'外矿' and WLLX<>'合金' order by fetchtime desc", DateTime.Now.AddHours(-24));
+                    else vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX<>'外矿' and WLLX<>'合金' and WLLX<>'火运' order by fetchtime desc", DateTime.Now.AddHours(-24));
                     this.qCSampleVehBindingSource.DataSource = vehs;
                     //判定是车卡还是样品卡
 
@@ -973,15 +999,19 @@
         private void WP_Sampling_Load(object sender, EventArgs e)
         {
             btn_ok.Focus();
-            vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX<>'外矿' and  WLLX<>'合金' order by fetchtime desc", DateTime.Now.AddHours(-24));
+            vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX<>'外矿' and  WLLX<>'合金' and WLLX<>'火运' order by fetchtime desc", DateTime.Now.AddHours(-24));
             this.qCSampleVehBindingSource.DataSource = vehs;
-            if (FrmMain.localinfo.workpoint.Code != "JMQY" && FrmMain.localinfo.workpoint.Code != "JFQY" &&  FrmMain.localinfo.workpoint.Code != "HJQY")
+            if (FrmMain.localinfo.workpoint.Code != "JMQY" && FrmMain.localinfo.workpoint.Code != "JFQY" && FrmMain.localinfo.workpoint.Code != "HJQY" && FrmMain.localinfo.workpoint.Code != "JTQY")
             {
                 gridControl1.Visible = false;
             }
             if (FrmMain.localinfo.workpoint.Code == "HJQY")
             {
                 vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX='合金' order by fetchtime desc", DateTime.Now.AddHours(-24));
+            }
+            if (FrmMain.localinfo.workpoint.Code == "JTQY")
+            {
+                vehs.LoadDataByWhere("main.FetchTime>=@FetchTime and WLLX='焦炭' order by fetchtime desc", DateTime.Now.AddHours(-24));
             }
             wkmixs.LoadDataByWhere("main.WLLX='合金' and main.SampleState=@SampleState", SampleState.初始状态);
             if (FrmMain.localinfo.workpoint.Code != "JFQY")
@@ -1540,7 +1570,7 @@
                 }
                 else if (!matQuYang)
                 {
-                    label8.Text = "不需要刷取样卡";
+                    label8.Text = "不需要刷磁扣";
                 }
             }
         }

@@ -513,19 +513,19 @@
             this.查询ToolStripMenuItem,
             this.复检ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 48);
             // 
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.Name = "查询ToolStripMenuItem";
-            this.查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.查询ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.查询ToolStripMenuItem.Text = "查询";
             this.查询ToolStripMenuItem.Click += new System.EventHandler(this.查询ToolStripMenuItem_Click);
             // 
             // 复检ToolStripMenuItem
             // 
             this.复检ToolStripMenuItem.Name = "复检ToolStripMenuItem";
-            this.复检ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.复检ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.复检ToolStripMenuItem.Text = "复检";
             this.复检ToolStripMenuItem.Click += new System.EventHandler(this.复检ToolStripMenuItem_Click);
             // 

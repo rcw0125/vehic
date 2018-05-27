@@ -23,78 +23,17 @@ namespace VehIC_WF.Sampling.czl.WorkPoint
             InitializeComponent();
         }
     
-        DbEntityTable<QC_Sample_Veh> vehs = new DbEntityTable<QC_Sample_Veh>();
+        DbEntityTable<QC_Sample_Veh> ches = new DbEntityTable<QC_Sample_Veh>();
         DbEntityTable<QC_Sample_Mix> mixs = new DbEntityTable<QC_Sample_Mix>();
       
         private void WP_Kuaikuangqy_Load(object sender, EventArgs e)
         {
-            vehs.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
+            ches.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
             mixs.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
-            foreach (var item in mixs)
-            {
-                if (!comboBox1.Items.Contains(item.MatName))
-                comboBox1.Items.Add(item.MatName);
-            }
-            this.qC_Sample_VehBindingSource.DataSource = vehs;
+           
+            this.qC_Sample_VehBindingSource.DataSource = ches;
             this.qCSampleMixBindingSource.DataSource = mixs;
         }
-private void timer1_Tick(object sender, EventArgs e)
-{
-
-    vehs.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
-
-    for (int j = 0; j < vehs.Count; j++)
-    {
-        if (vehs[j].Sample_Mix_ID == 0)
-        {
-            bool cunzai = false;
-            for (int m = 0; m < mixs.Count; m++)
-            {
-                if (vehs[j].SupplierCode == mixs[m].SupplierCode && vehs[j].MatCode == mixs[m].MatCode && mixs[m].MixPlanCount > mixs[m].MixCount)
-                {
-                    cunzai = true;
-                    vehs[j].Sample_Mix_ID = mixs[m].Sample_Mix_ID;
-                    vehs[j].Save();
-                    mixs[m].MixCount++;
-                    mixs[m].Save();
-                }
-
-            }
-            if (cunzai == false)
-            {
-                QC_Material matInfo = QC_Material.GetByID(vehs[j].MatPK);
-                QC_Sample_Mix mix = new QC_Sample_Mix();
-
-                mix.WpCode = "0087";
-             
-                mix.MatCode = vehs[j].MatCode;
-                mix.MatPK = vehs[j].MatPK;
-                mix.MixCount = 1;
-                mix.MixPlanCount = matInfo.BatchNum;
-                mix.SupplierCode = vehs[j].SupplierCode;
-                mix.MixUser = LocalInfo.Current.user.ID;
-                mix.SampleState = SampleState.初始状态;
-                mix.SampleType = SampleType.普通样;
-                mix.WLLX = vehs[j].WLLX;
-                mix.CardID = Zhc.Data.DbContext.GetSeq("RJ" + DateTime.Now.Date.ToString("yyyyMMdd"), 2);
-                mix.Save();
-                mixs.Add(mix);
-
-                vehs[j].Sample_Mix_ID = mix.Sample_Mix_ID;
-                vehs[j].Save();
-
-            }
-        }
-    }
-    foreach (var item in mixs)
-    {
-        if (!comboBox1.Items.Contains(item.MatName))
-        comboBox1.Items.Add(item.MatName);
-    }
-}
-
-
-
 private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
 {
     QC_Sample_Mix mix = this.qCSampleMixBindingSource.Current as QC_Sample_Mix;
@@ -147,11 +86,9 @@ private void 完成取样_Click(object sender, EventArgs e)
             DbEntityTable<QC_Sample_Veh> itemvehs = new DbEntityTable<QC_Sample_Veh>();
             itemvehs.LoadDataByWhere("main.Sample_Mix_ID=@Sample_Mix_ID",item.Sample_Mix_ID);
            
-            item.Mix_Time = DateTime.Now;
-            item.FangTong_Time = DateTime.Now;
+            item.Mix_Time = DateTime.Now;           
             item.ShouTong_Time = DateTime.Now;
             item.ShouTong_User = LocalInfo.Current.user.ID;
-            item.FangTong_User = LocalInfo.Current.user.ID;
             item.MixUser = LocalInfo.Current.user.ID;
             item.SampleState = SampleState.组批完成;
             item.Save();
@@ -165,41 +102,82 @@ private void 完成取样_Click(object sender, EventArgs e)
             }
         }
     }
-    vehs.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
+    ches.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
     mixs.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
 
-}
-
-private void 查询_Click(object sender, EventArgs e)
-{
-    if (comboBox1.Text != "")
-    {
-        mixs.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState and mat.INVNAME=@INVNAME", SampleState.初始状态,comboBox1.Text);
-        foreach (var item in mixs)
-        { vehs.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState and main.Sample_Mix_ID=@Sample_Mix_ID", SampleState.初始状态, item.Sample_Mix_ID); }
-    }
 }
 
 private void 刷新_Click(object sender, EventArgs e)
 {
-    vehs.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
+    ches.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
     mixs.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
-    foreach (var item in mixs)
-    {
-        if (!comboBox1.Items.Contains(item.MatName))
-        comboBox1.Items.Add(item.MatName);
-    }
+   
 
 }
 
-private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+private void gridView1_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
 {
-    //GridView view = (GridView)sender;
-    //QC_Sample_Mix rowOb = view.GetRow(e.RowHandle) as QC_Sample_Mix;
-    //if (rowOb != null && rowOb.WCDY)
-    //{
-    //    e.Appearance.BackColor = Color.Red;
-    //}
+    QC_Sample_Mix mix = e.Row as QC_Sample_Mix;
+    if (mix != null)
+    { ches.LoadDataByWhere("main.Sample_mix_id=@Sample_mix_id", mix.Sample_Mix_ID); }
+
+}
+
+private void 查询组批_Click(object sender, EventArgs e)
+{
+    mixs.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
+    ches.LoadDataByWhere("main.WLLX='熔剂' and main.SampleState=@SampleState", SampleState.初始状态);
+    if (ches.Count > 0)
+    {
+        for (int j = 0; j < ches.Count; j++)
+        {
+            if (ches[j].Sample_Mix_ID == 0)
+            {
+                bool cunzai = false;
+                if (mixs.Count > 0)
+                {
+                    for (int m = 0; m < mixs.Count; m++)
+                    {
+                        if (ches[j].SupplierCode == mixs[m].SupplierCode && ches[j].MatCode == mixs[m].MatCode && mixs[m].MixPlanCount > mixs[m].MixCount)
+                        {
+                            cunzai = true;
+                            ches[j].Sample_Mix_ID = mixs[m].Sample_Mix_ID;
+                            ches[j].Save();
+                            mixs[m].MixCount++;
+                            mixs[m].Save();
+                        }
+
+                    }
+                }
+                if (cunzai == false)
+                {
+                    QC_Material matInfo = QC_Material.GetByID(ches[j].MatPK);
+                    QC_Sample_Mix mix = new QC_Sample_Mix();
+
+                    mix.WpCode = "0087";
+                    mix.FangTong_Time = DateTime.Now;
+                    mix.FangTong_User = LocalInfo.Current.user.ID;
+                    mix.MatCode = ches[j].MatCode;
+                    mix.MatPK = ches[j].MatPK;
+                    mix.MixCount = 1;
+                    mix.MixPlanCount = matInfo.BatchNum;
+                    mix.SupplierCode = ches[j].SupplierCode;
+                    mix.MixUser = LocalInfo.Current.user.ID;
+                    mix.SampleState = SampleState.初始状态;
+                    mix.SampleType = SampleType.普通样;
+                    mix.WLLX = ches[j].WLLX;
+                    mix.CardID = Zhc.Data.DbContext.GetSeq("RJ" + DateTime.Now.Date.ToString("yyyyMMdd"), 2);
+                    mix.Save();
+                    mixs.Add(mix);
+
+                    ches[j].Sample_Mix_ID = mix.Sample_Mix_ID;
+                    ches[j].Save();
+
+                }
+            }
+        }
+    }
+  
 }
 }
 }

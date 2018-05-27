@@ -11,6 +11,7 @@ using System.Text;
 using System.IO;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Xg.Lab.Sample.View;
 
 namespace Xg.Lab.Sample
 {
@@ -88,9 +89,6 @@ namespace Xg.Lab.Sample
                 }
             }
         }
-
-
-
        
         #region WLLX  物料类型
         private string _Ori_WLLX;
@@ -194,8 +192,6 @@ namespace Xg.Lab.Sample
         }
 
 
-
-
         #region StoreCode  样品单号
         private string _Ori_StoreCode = "";
         private string _StoreCode = "";
@@ -214,7 +210,6 @@ namespace Xg.Lab.Sample
                 //{
                 //    _StoreCode = DbContext.GetSeq("YP" + DateTime.Today.ToString("yyyyMMdd"), 3);
                 //}
-                
                 return _StoreCode;
             }
             set
@@ -1368,6 +1363,10 @@ namespace Xg.Lab.Sample
                 {
                     _FinishCommand = "上传NC";
                 }
+                else if (this.SampleType == SampleType.人工取样 || this.SampleType == SampleType.机器取样)
+                {
+                    _FinishCommand = "上传NC";
+                }
                 else if (this.SampleType == SampleType.抽查样 && this.IndependentReport)
                 {
                     _FinishCommand = "上传NC";
@@ -1413,9 +1412,9 @@ namespace Xg.Lab.Sample
         {
             bool result = false;
             DbEntityTable<QC_QualityRule> mixSample_QualityRules = new DbEntityTable<QC_QualityRule>();
-            if (this.WLLX == "外矿")
-            { mixSample_QualityRules.LoadDataByWhere("MatNcId=@MatNcId  and SupplierCode=@SupplierCode", this.MatPK,this.SupplierCode); }
-            else
+        
+             mixSample_QualityRules.LoadDataByWhere("MatNcId=@MatNcId  and SupplierCode=@SupplierCode", this.MatPK,this.SupplierCode); 
+            if (mixSample_QualityRules.Count==0)
             { mixSample_QualityRules.LoadDataByWhere("MatNcId=@MatNcId", this.MatPK); }
             foreach (var item in mixSample_QualityRules)
             {
@@ -1457,6 +1456,36 @@ namespace Xg.Lab.Sample
         public bool CreateReportVal()
         {
             DbEntityTable<QC_Sample_Mix> mixs = new DbEntityTable<QC_Sample_Mix>();
+
+
+            if (this.SampleType == SampleType.机器取样 || this.SampleType == SampleType.人工取样)
+            {
+                if (this.MainSampleMixId == 0)
+                {
+                    mixs.LoadDataByWhere("main.MainSampleMixId=@MainSampleMixId", this.Sample_Mix_ID);
+                    if (mixs.Count > 0)
+                    {
+                        foreach (var item in mixs)
+                        {
+                            if (item.SampleState < SampleState.化验审核完成)
+                            { throw new Exception(string.Format("次列车还有未化验审核完成的单据")); }
+                        }
+                    }
+                }
+                else
+                {
+                    mixs.LoadDataByWhere("main.MainSampleMixId=@MainSampleMixId or main.Sample_Mix_ID=@Sample_Mix_ID", this.MainSampleMixId, this.MainSampleMixId);
+                    if (mixs.Count > 0)
+                    {
+                        foreach (var item in mixs)
+                        {
+                            if (item.SampleState < SampleState.化验审核完成)
+                            { throw new Exception(string.Format("次列车还有未化验审核完成的单据")); }
+                        }
+                    }
+                }
+
+            }
             if (this.SampleType == SampleType.普通样&&this.WLLX=="合金")
             {
                 mixs.LoadDataByWhere("main.MainSampleMixId=@MainSampleMixId",this.Sample_Mix_ID);
@@ -1477,8 +1506,17 @@ namespace Xg.Lab.Sample
                 }
 
             }
-            int count1 = QC_CheckMaxMinVal.GetBatchNum(this.Riqi, this.SupplierCode, this.MatPK);
-            int count2 = QC_CheckMaxMinVal.GetCheckFinishBatchNum(this.Riqi, this.SupplierCode, this.MatPK);
+            int count1; int count2; 
+            if (this.WLLX == "火运")
+            {
+                 count1 = QC_CheckMaxMinVal.GetHYBatchNum(this.Riqi, this.SupplierCode, this.MatPK);
+                 count2 = QC_CheckMaxMinVal.GetHYCheckFinishBatchNum(this.Riqi, this.SupplierCode, this.MatPK);
+            }
+            else
+            {
+                 count1 = QC_CheckMaxMinVal.GetBatchNum(this.Riqi, this.SupplierCode, this.MatPK);
+                 count2 = QC_CheckMaxMinVal.GetCheckFinishBatchNum(this.Riqi, this.SupplierCode, this.MatPK);
+            }
             if (count2 != count1)
             {
                 throw new Exception(string.Format("还有{0}个没有制样完成.", count1 - count2));
@@ -1527,10 +1565,179 @@ namespace Xg.Lab.Sample
                     {
                         if ((Convert.ToDouble(SiO) + Convert.ToDouble(ALO)) != 0)
                             item.CheckVal = ((Convert.ToDouble(CaO) + Convert.ToDouble(MgO)) / (Convert.ToDouble(SiO) + Convert.ToDouble(ALO))).ToString("N2");
+                            item.Save();
+                    }
+                    
+                }
+
+                if (item.CheckItemCode == "10032")
+                {
+
+                    foreach (var it in this.CheckVals)
+                    {
+                        if (it.CheckItemCode == "10006")
+                            CaO = it.CheckVal;
+                        else if (it.CheckItemCode == "10004")
+                            MgO = it.CheckVal;
+                      
+                    }
+                    if (CaO != null && MgO != null && CaO != "" && MgO != "")
+                    {
+
+                        item.CheckVal = (Convert.ToDouble(CaO) + Convert.ToDouble(MgO)).ToString("N2");
+                    }
+                
+                
+                }
+
+                item.ReportVal = item.CheckVal;
+
+
+                if (this.SampleType == SampleType.机器取样 || this.SampleType == SampleType.人工取样)
+                   
+                {
+
+
+                    if (item.CheckItemCode == "10009")
+                    {
+                        string Ca = "";
+                        string Mg = "";
+                        string Si = "";
+                        string AL = "";
+                        DbEntityTable<QC_Sample_Mix> Rmixs = new DbEntityTable<QC_Sample_Mix>();
+                        if (this.MainSampleMixId == 0)
+                        { Rmixs.LoadDataByWhere("(main.sample_mix_id=@sample_mix_id or main.MainSampleMixId=@MainSampleMixId) and (main.SampleType=@SampleType or main.SampleType=@SampleType)", this.Sample_Mix_ID, this.Sample_Mix_ID, SampleType.人工取样, SampleType.机器取样); }
+                        else { Rmixs.LoadDataByWhere("(main.sample_mix_id=@sample_mix_id or main.MainSampleMixId=@MainSampleMixId) and (main.SampleType=@SampleType or main.SampleType=@SampleType)", this.Sample_Mix_ID, this.MainSampleMixId, SampleType.人工取样, SampleType.机器取样); }
+                        foreach (var rmix in Rmixs)
+                        {
+
+                            rmix.LoadDataDetailes();
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10006")
+                                    Ca = it.CheckVal;
+                                else if (it.CheckItemCode == "10004")
+                                    Mg = it.CheckVal;
+                                else if (it.CheckItemCode == "10005")
+                                    Si = it.CheckVal;
+                                else if (it.CheckItemCode == "10007")
+                                    AL = it.CheckVal;
+                            }
+
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10009")
+                                if (Ca != null && Mg != null && Si != null && AL != null && Ca != "" && Mg != "" && Si != "" && AL != "")
+                                {
+                                    if ((Convert.ToDouble(Si) + Convert.ToDouble(AL)) != 0)
+                                        it.CheckVal = ((Convert.ToDouble(Ca) + Convert.ToDouble(Mg)) / (Convert.ToDouble(Si) + Convert.ToDouble(AL))).ToString("N2");
+                                    it.Save();
+                                }
+                            }
+                        }
+                    }
+
+
+                    if (item.CheckItemCode == "10060")
+                    {
+                        string K = "";
+                        string NA = "";
+                        DbEntityTable<QC_Sample_Mix> Rmixs = new DbEntityTable<QC_Sample_Mix>();
+                        if (this.MainSampleMixId == 0)
+                        { Rmixs.LoadDataByWhere("(main.sample_mix_id=@sample_mix_id or main.MainSampleMixId=@MainSampleMixId) and (main.SampleType=@SampleType or main.SampleType=@SampleType)", this.Sample_Mix_ID, this.Sample_Mix_ID, SampleType.人工取样, SampleType.机器取样); }
+                        else { Rmixs.LoadDataByWhere("(main.sample_mix_id=@sample_mix_id or main.MainSampleMixId=@MainSampleMixId) and (main.SampleType=@SampleType or main.SampleType=@SampleType)", this.Sample_Mix_ID, this.MainSampleMixId, SampleType.人工取样, SampleType.机器取样); }
+                        foreach (var rmix in Rmixs)
+                        {
+
+                            rmix.LoadDataDetailes();
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10058")
+                                    K = it.CheckVal;
+                                else if (it.CheckItemCode == "10059")
+                                    NA = it.CheckVal;
+                                
+                            }
+
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10060")
+                                    if (K != null && K != "" && NA != null && NA != "")
+                                    {
+
+                                        it.CheckVal = (Convert.ToDouble(K) + Convert.ToDouble(NA)).ToString("N2");
+                                        it.Save();
+                                    }
+                            }
+                        }
+                       
+                    }
+
+                    if (item.CheckItemCode == "10032")
+                    {
+                        string CA = "";
+                        string MG = "";
+                        DbEntityTable<QC_Sample_Mix> Rmixs = new DbEntityTable<QC_Sample_Mix>();
+                        if (this.MainSampleMixId == 0)
+                        { Rmixs.LoadDataByWhere("(main.sample_mix_id=@sample_mix_id or main.MainSampleMixId=@MainSampleMixId) and (main.SampleType=@SampleType or main.SampleType=@SampleType)", this.Sample_Mix_ID, this.Sample_Mix_ID, SampleType.人工取样, SampleType.机器取样); }
+                        else { Rmixs.LoadDataByWhere("(main.sample_mix_id=@sample_mix_id or main.MainSampleMixId=@MainSampleMixId) and (main.SampleType=@SampleType or main.SampleType=@SampleType)", this.Sample_Mix_ID, this.MainSampleMixId, SampleType.人工取样, SampleType.机器取样); }
+                        foreach (var rmix in Rmixs)
+                        {
+
+                            rmix.LoadDataDetailes();
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10006")
+                                    CA = it.CheckVal;
+                                else if (it.CheckItemCode == "10004")
+                                    MG = it.CheckVal;
+
+                            }
+
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10032")
+                                    if (CA != null && CA != "" && MG != null && MG != "")
+                                    {
+
+                                        it.CheckVal = (Convert.ToDouble(CA) + Convert.ToDouble(MG)).ToString("N2");
+                                        it.Save();
+                                    }
+                            }
+                        }
 
                     }
+                    if (this.MainSampleMixId == 0)
+                    {
+                        object avg;
+                       
+                        int xiaoshuweishu = item.CheckVal.Length - item.CheckVal.IndexOf(".") - 1;
+                        if (!item.CheckVal.Contains("."))
+                            xiaoshuweishu = 0;
+                        //avg = DbContext.ExecuteScalar("  Select  cast(avg(cast(checkval as decimal(18," + xiaoshuweishu + "))) as decimal(18," + xiaoshuweishu + ")) From QC_Sample_cyavg Where   (sample_mix_id=@sample_mix_id or MainSampleMixId=@MainSampleMixId)  and  checkitemcode=@checkitemcode and (SampleType=@SampleType or SampleType=@SampleType)", this.Sample_Mix_ID, this.Sample_Mix_ID, item.CheckItemCode, 7, 8);
+                        string sql = "Select cast(avg(cast(checkval as decimal(18," + xiaoshuweishu + "))) as decimal(18," + xiaoshuweishu + ")) From QC_Sample_cyavg Where  (sample_mix_id=" + this.Sample_Mix_ID + " or MainSampleMixId=" + this.Sample_Mix_ID + ")  and  checkitemcode=" + item.CheckItemCode + " and (SampleType=" + 7 + " or SampleType=" + 8 + ")";
+                        avg = DbContext.ExecuteScalar(sql);
+                        
+                        item.ReportVal = Convert.ToString(avg);
+                    }
+                    else 
+                    {
+                        object avg;
+                        int xiaoshuweishu = item.CheckVal.Length - item.CheckVal.IndexOf(".") - 1;
+                        if (!item.CheckVal.Contains("."))
+                            xiaoshuweishu = 0;
+                     //   avg = DbContext.ExecuteScalar("  Select  count(checkval) From QC_Sample_cyavg Where  (sample_mix_id=@sample_mix_id or MainSampleMixId=@MainSampleMixId)  and  checkitemcode=@checkitemcode and (SampleType=@SampleType or SampleType=@SampleType)", this.MainSampleMixId, this.MainSampleMixId, item.CheckItemCode, SampleType.人工取样, SampleType.机器取样);
+                        string sql = "Select cast(avg(cast(checkval as decimal(18," + xiaoshuweishu + "))) as decimal(18," + xiaoshuweishu + ")) From QC_Sample_cyavg Where  (sample_mix_id=" + this.MainSampleMixId + " or MainSampleMixId=" + this.MainSampleMixId + ")  and  checkitemcode=" + item.CheckItemCode + " and (SampleType=" + 7 + " or SampleType=" + 8 + ")";
+                        avg = DbContext.ExecuteScalar(sql);
+                        item.ReportVal = Convert.ToString(avg);
+                    
+                    }
+
+                  
+                
+                
+                
                 }
-                item.ReportVal = item.CheckVal;
                 if (this.SampleType == SampleType.抽查样)
                 {
                     cys.LoadDataByWhere("main.VehNo=@VehNo and main.SampleType=@SampleType and main.mainsamplemixid=@mainsamplemixid", this.VehNo, SampleType.抽查样,this.MainSampleMixId);
@@ -1547,7 +1754,152 @@ namespace Xg.Lab.Sample
                     cys.Clear();
                 }
                 if (this.SampleType == SampleType.破包样  && this.WLLX == "合金")
+                {  if (item.CheckItemCode == "10009")
+                    {
+                        string Ca = "";
+                        string Mg = "";
+                        string Si = "";
+                        string AL = "";
+                        DbEntityTable<QC_Sample_Mix> Rmixs = new DbEntityTable<QC_Sample_Mix>();
+                        if (this.MainSampleMixId == 0)
+                        { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.Sample_Mix_ID + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        else { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.MainSampleMixId + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        foreach (var rmix in Rmixs)
+                        {
+
+                            rmix.LoadDataDetailes();
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10006")
+                                    Ca = it.CheckVal;
+                                else if (it.CheckItemCode == "10004")
+                                    Mg = it.CheckVal;
+                                else if (it.CheckItemCode == "10005")
+                                    Si = it.CheckVal;
+                                else if (it.CheckItemCode == "10007")
+                                    AL = it.CheckVal;
+                            }
+
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10009")
+                                if (Ca != null && Mg != null && Si != null && AL != null && Ca != "" && Mg != "" && Si != "" && AL != "")
+                                {
+                                    if ((Convert.ToDouble(Si) + Convert.ToDouble(AL)) != 0)
+                                        it.CheckVal = ((Convert.ToDouble(Ca) + Convert.ToDouble(Mg)) / (Convert.ToDouble(Si) + Convert.ToDouble(AL))).ToString("N2");
+                                    it.Save();
+                                }
+                            }
+                        }
+                    }
+                if (item.CheckItemCode == "10022" && item.ValSource == "正样")
                 {
+                    string SI = "";
+                    string MN = "";
+                    DbEntityTable<QC_Sample_Mix> Rmixs = new DbEntityTable<QC_Sample_Mix>();
+                    if (this.MainSampleMixId == 0)
+                    { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.Sample_Mix_ID + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                    else { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.MainSampleMixId + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                    foreach (var rmix in Rmixs)
+                    {
+
+                        rmix.LoadDataDetailes();
+                        foreach (var it in rmix.CheckVals)
+                        {
+                            if (it.CheckItemCode == "10017")
+                                SI = it.CheckVal;
+                            else if (it.CheckItemCode == "10018")
+                                MN = it.CheckVal;
+                            if (SI != null && SI != "" && MN != null && MN != "")
+                                break;
+                        }
+
+                        foreach (var it in rmix.CheckVals)
+                        {
+                          
+                                if (it.CheckItemCode == "10022")
+                                    if (SI != null && SI != "" && MN != null && MN != "")
+                                    {
+
+                                        it.CheckVal = (Convert.ToDouble(SI) + Convert.ToDouble(MN)).ToString("N2");
+                                        it.Save();
+                                        break;
+                                    }
+                            
+                        }
+                        SI = ""; MN = "";
+                    }
+
+                }
+
+                    if (item.CheckItemCode == "10060")
+                    {
+                        string K = "";
+                        string NA = "";
+                        DbEntityTable<QC_Sample_Mix> Rmixs = new DbEntityTable<QC_Sample_Mix>();
+                        if (this.MainSampleMixId == 0)
+                        { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.Sample_Mix_ID + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        else { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.MainSampleMixId + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        foreach (var rmix in Rmixs)
+                        {
+
+                            rmix.LoadDataDetailes();
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10058")
+                                    K = it.CheckVal;
+                                else if (it.CheckItemCode == "10059")
+                                    NA = it.CheckVal;
+                                
+                            }
+
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10060")
+                                    if (K != null && K != "" && NA != null && NA != "")
+                                    {
+
+                                        it.CheckVal = (Convert.ToDouble(K) + Convert.ToDouble(NA)).ToString("N2");
+                                        it.Save();
+                                    }
+                            }
+                        }
+                       
+                    }
+
+                    if (item.CheckItemCode == "10032")
+                    {
+                        string CA = "";
+                        string MG = "";
+                        DbEntityTable<QC_Sample_Mix> Rmixs = new DbEntityTable<QC_Sample_Mix>();
+                        if (this.MainSampleMixId == 0)
+                        { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.Sample_Mix_ID + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        else { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.MainSampleMixId + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType="+(int)SampleType.普通样+")"); }
+                        foreach (var rmix in Rmixs)
+                        {
+
+                            rmix.LoadDataDetailes();
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10006")
+                                    CA = it.CheckVal;
+                                else if (it.CheckItemCode == "10004")
+                                    MG = it.CheckVal;
+
+                            }
+
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10032")
+                                    if (CA != null && CA != "" && MG != null && MG != "")
+                                    {
+
+                                        it.CheckVal = (Convert.ToDouble(CA) + Convert.ToDouble(MG)).ToString("N2");
+                                        it.Save();
+                                    }
+                            }
+                        }
+                    }
 
                     object avg;
                     int xiaoshuweishu = item.CheckVal.Length - item.CheckVal.IndexOf(".")-1;
@@ -1560,27 +1912,199 @@ namespace Xg.Lab.Sample
                 }
                 if ( this.SampleType == SampleType.普通样 && this.WLLX == "合金")
                 {
+                    if (item.CheckItemCode == "10009")
+                    {
+                        string Ca = "";
+                        string Mg = "";
+                        string Si = "";
+                        string AL = "";
+                        DbEntityTable<QC_Sample_Mix> Rmixs = new DbEntityTable<QC_Sample_Mix>();
+                        if (this.MainSampleMixId == 0)
+                        { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.Sample_Mix_ID + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        else { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.MainSampleMixId + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        foreach (var rmix in Rmixs)
+                        {
 
+                            rmix.LoadDataDetailes();
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10006")
+                                    Ca = it.CheckVal;
+                                else if (it.CheckItemCode == "10004")
+                                    Mg = it.CheckVal;
+                                else if (it.CheckItemCode == "10005")
+                                    Si = it.CheckVal;
+                                else if (it.CheckItemCode == "10007")
+                                    AL = it.CheckVal;
+                            }
+
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10009")
+                                    if (Ca != null && Mg != null && Si != null && AL != null && Ca != "" && Mg != "" && Si != "" && AL != "")
+                                    {
+                                        if ((Convert.ToDouble(Si) + Convert.ToDouble(AL)) != 0)
+                                            it.CheckVal = ((Convert.ToDouble(Ca) + Convert.ToDouble(Mg)) / (Convert.ToDouble(Si) + Convert.ToDouble(AL))).ToString("N2");
+                                        it.Save();
+                                    }
+                            }
+                        }
+                    }
+
+
+                    if (item.CheckItemCode == "10060")
+                    {
+                        string K = "";
+                        string NA = "";
+                        DbEntityTable<QC_Sample_Mix> Rmixs = new DbEntityTable<QC_Sample_Mix>();
+                        if (this.MainSampleMixId == 0)
+                        { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.Sample_Mix_ID + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        else { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.MainSampleMixId + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        foreach (var rmix in Rmixs)
+                        {
+
+                            rmix.LoadDataDetailes();
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10058")
+                                    K = it.CheckVal;
+                                else if (it.CheckItemCode == "10059")
+                                    NA = it.CheckVal;
+
+                            }
+
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10060")
+                                    if (K != null && K != "" && NA != null && NA != "")
+                                    {
+
+                                        it.CheckVal = (Convert.ToDouble(K) + Convert.ToDouble(NA)).ToString("N2");
+                                        it.Save();
+                                    }
+                            }
+                        }
+
+                    }
+
+                    if (item.CheckItemCode == "10022" && item.ValSource=="正样")
+                    {
+                        string SI = "";
+                        string MN = "";
+                        DbEntityTable<QC_Sample_Mix> Rmixs = new DbEntityTable<QC_Sample_Mix>();
+                        if (this.MainSampleMixId == 0)
+                        { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.MainSampleMixId=" + this.Sample_Mix_ID + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        else { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.MainSampleMixId + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        foreach (var rmix in Rmixs)
+                        {
+
+                            rmix.LoadDataDetailes();
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10017")
+                                    SI = it.CheckVal;
+                                else if (it.CheckItemCode == "10018")
+                                    MN = it.CheckVal;
+                                if (SI != null && SI != "" && MN != null && MN != "")
+                                    break;
+                            }
+
+                            foreach (var i in rmix.CheckVals)
+                            {
+                                if (i.CheckItemCode == "10022")
+                                    if (SI != null && SI != "" && MN != null && MN != "")
+                                    {
+
+                                        i.CheckVal = (Convert.ToDouble(SI) + Convert.ToDouble(MN)).ToString("N2");
+                                        i.Save();
+                                        break;
+                                    }
+                            }
+                            SI = "";
+                            MN = "";
+                        }
+
+                    }
+                    if (item.CheckItemCode == "10032")
+                    {
+                        string CA = "";
+                        string MG = "";
+                        DbEntityTable<QC_Sample_Mix> Rmixs = new DbEntityTable<QC_Sample_Mix>();
+                        if (this.MainSampleMixId == 0)
+                        { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.Sample_Mix_ID + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        else { Rmixs.LoadDataByWhere("(main.sample_mix_id=" + this.Sample_Mix_ID + " or main.Sample_Mix_ID=" + this.MainSampleMixId + ") and (main.SampleType=" + (int)SampleType.破包样 + " or main.SampleType=" + (int)SampleType.普通样 + ")"); }
+                        foreach (var rmix in Rmixs)
+                        {
+
+                            rmix.LoadDataDetailes();
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10006")
+                                    CA = it.CheckVal;
+                                else if (it.CheckItemCode == "10004")
+                                    MG = it.CheckVal;
+
+                            }
+
+                            foreach (var it in rmix.CheckVals)
+                            {
+                                if (it.CheckItemCode == "10032")
+                                    if (CA != null && CA != "" && MG != null && MG != "")
+                                    {
+
+                                        it.CheckVal = (Convert.ToDouble(CA) + Convert.ToDouble(MG)).ToString("N2");
+                                        it.Save();
+                                    }
+                            }
+                        }
+                    }
                     object avg;
                     int xiaoshuweishu = item.CheckVal.Length - item.CheckVal.IndexOf(".")-1;
                     avg = DbContext.ExecuteScalar("  Select  cast(avg(cast(checkval as decimal(18," + xiaoshuweishu + "))) as decimal(18," + xiaoshuweishu + ")) From QC_Sample_cyavg Where   (sample_mix_id=@sample_mix_id or MainSampleMixId=@MainSampleMixId)  and  checkitemcode=@checkitemcode", this.Sample_Mix_ID, this.Sample_Mix_ID, item.CheckItemCode);
                     item.ReportVal = Convert.ToString(avg);
                 }
-                if (item.CheckItemCode == "10001"&&this.SupplierCode!="130401165")
-                {
-                    QC_CheckMaxMinVal maxmin = QC_CheckMaxMinVal.GetMaxMinVal(this.Riqi, this.SupplierCode, this.MatPK);
-                    if (maxmin != null)
-                    {
-                        if (maxmin.MaxVal - maxmin.MinVal <= 1)
-                        {
-                            item.ReportVal = maxmin.MaxVal.ToString("N2");
-                        }
-                    }
 
-                    QC_ChgWater chgWater = QC_ChgWater.GetByMatCust(this.MatPK, this.SupplierCode);
-                    if (chgWater != null && chgWater.ChgWater != null && item.ReportVal != "")
+                if (this.SampleType == SampleType.机器取样 || this.SampleType == SampleType.人工取样)
+                {
+
+                    if (item.CheckItemCode == "10001" && this.SupplierCode != "130401165")
                     {
-                        item.ReportVal = (Convert.ToDouble(item.ReportVal) + chgWater.ChgWater.Value).ToString();
+                        QC_CheckMaxMinVal maxmin = QC_CheckMaxMinVal.GetHYMaxMinVal(this.Riqi, this.SupplierCode, this.MatPK);
+                        if (maxmin != null)
+                        {
+                            if (maxmin.MaxVal - maxmin.MinVal <= 1)
+                            {
+                                item.ReportVal = maxmin.MaxVal.ToString("N2");
+                            }
+                        }
+
+                        QC_ChgWater chgWater = QC_ChgWater.GetByMatCust(this.MatPK, this.SupplierCode);
+                        if (chgWater != null && chgWater.ChgWater != null && item.ReportVal != "")
+                        {
+                            item.ReportVal = (Convert.ToDouble(item.ReportVal) + chgWater.ChgWater.Value).ToString();
+                        }
+                    }               
+                
+                }
+
+                else
+                {
+                    if (item.CheckItemCode == "10001" && this.SupplierCode != "130401165")
+                    {
+                        QC_CheckMaxMinVal maxmin = QC_CheckMaxMinVal.GetMaxMinVal(this.Riqi, this.SupplierCode, this.MatPK);
+                        if (maxmin != null)
+                        {
+                            if (maxmin.MaxVal - maxmin.MinVal <= 1)
+                            {
+                                item.ReportVal = maxmin.MaxVal.ToString("N2");
+                            }
+                        }
+
+                        QC_ChgWater chgWater = QC_ChgWater.GetByMatCust(this.MatPK, this.SupplierCode);
+                        if (chgWater != null && chgWater.ChgWater != null && item.ReportVal != "")
+                        {
+                            item.ReportVal = (Convert.ToDouble(item.ReportVal) + chgWater.ChgWater.Value).ToString();
+                        }
                     }
                 }
                 item.ReportValSource = "系统";
@@ -1703,14 +2227,37 @@ namespace Xg.Lab.Sample
         /// <returns></returns>
         public bool UploadToNc()
         {
+           
+            if (this.WLLX == "火运")
+            {
+                foreach (var item in this.VehSamples)
+                {
+                    DbEntityTable<v_train_weight> weights = new DbEntityTable<v_train_weight>();
+                    weights.LoadDataByWhere("carno=@carno", item.VehNo);
+                    foreach (var it in weights)
+                    {
+                        if (it.VARRORDERCODE == item.NcDhdHeadNo)
+                        {
+                            item.T1 = it.GROSS_DATETIME;
+                            item.T2 = it.TARE_DATETIME;
+                            item.Sjsl = Convert.ToDouble(it.TAREWEIGHT);
+                            item.Save();
+                        }
+
+
+                    }
+
+                }
+            }
             foreach (var item in this.VehSamples)
             {
-
-                if (item.Sjsl == 0 || item.Sjsl == null)
+                if (!(this.SampleType== SampleType.普通样&&  item.IndependentReport==true))
                 {
-                    return false;
+                    if (item.Sjsl == 0 || item.Sjsl == null)
+                    {
+                        return false;
+                    }
                 }
-
             }
             if (string.IsNullOrEmpty(this.QualityLevelID))
             {
@@ -1860,6 +2407,22 @@ namespace Xg.Lab.Sample
                 {
                     throw new Exception("保存失败");
                 }
+                if (this.WLLX == "火运")
+                {
+
+                    DbEntityTable<QC_Sample_Mix> mixs = new DbEntityTable<QC_Sample_Mix>();
+                    if (this.MainSampleMixId == 0)
+                    { mixs.LoadDataByWhere("main.MainSampleMixId=@MainSampleMixId and (main.SampleType=" + (int)SampleType.人工取样 + " or main.SampleType=" + (int)SampleType.机器取样 + ")", this.Sample_Mix_ID); }
+                    else { mixs.LoadDataByWhere("(main.sample_mix_id=@sample_mix_id or main.MainSampleMixId=@MainSampleMixId) and (main.SampleType=" + (int)SampleType.人工取样 + " or main.SampleType=" + (int)SampleType.机器取样 + ")", this.MainSampleMixId, this.MainSampleMixId); }
+                    foreach (var item in mixs)
+                    {
+                        if (item.Sample_Mix_ID != this.Sample_Mix_ID)
+                            item.SampleState = SampleState.处理完成;
+                        item.Save();
+                    }
+                }
+
+
             }
             return true;
         }
@@ -1956,8 +2519,8 @@ namespace Xg.Lab.Sample
                else if (veh.KouZa != null && kouza != null)
                 { kouza += veh.KouZa; }
             }
-            uf.bill.bill_head.header.vdef18 = koushui == null ? "" : koushui.Value.ToString("N2");
-            uf.bill.bill_head.header.vdef19 = kouza == null ? "" : kouza.Value.ToString("N2");
+            uf.bill.bill_head.header.vdef18 = koushui == null ? "" : koushui.Value.ToString("N3");
+            uf.bill.bill_head.header.vdef19 = kouza == null ? "" : kouza.Value.ToString("N3");
             this.CheckVals.DefaultSort();
             if (this.SampleType == SampleType.普通样)
             { this.CheckVals.DaoxuSort(); }
@@ -2040,15 +2603,36 @@ namespace Xg.Lab.Sample
              bool fujianchouyang = false;
             if (SampleType == SampleType.抽查样 )
             {
-                int parentId = InspectSampleParentId(this.Sample_Mix_ID);
-                this.VehSamples.LoadDataByNoticeBillId(this.NoticeBillId);
-                if (daycheck() == 0)
+                if (this.WLLX != "火运")
                 {
-                    this.CheckVals.LoadInspectSampleAllData(this.Sample_Mix_ID, parentId);
+                    int parentId = InspectSampleParentId(this.Sample_Mix_ID);
+                    this.VehSamples.LoadDataByNoticeBillId(this.NoticeBillId);
+                    if (daycheck() == 0)
+                    {
+                        this.CheckVals.LoadInspectSampleAllData(this.Sample_Mix_ID, parentId);
+                    }
+                    else
+                    {
+                        this.CheckVals.LoadInspectHotAllData(this.Sample_Mix_ID, parentId, daycheck(), "发热量1");
+                    }
                 }
                 else
                 {
-                    this.CheckVals.LoadInspectHotAllData( this.Sample_Mix_ID, parentId, daycheck(), "发热量1");
+                    int parentId = InspectSampleParentId(this.Sample_Mix_ID);
+                    //this.VehSamples.LoadDataByWhere("Sample_veh_id=@Sample_veh_id", this.NoticeBillId);
+                   // if (this.VehSamples.Count == 0)
+                     this.VehSamples.LoadDataByNoticeBillId(this.NoticeBillId); 
+                    if (daycheck() == 0)
+                    {
+                        this.CheckVals.LoadInspectSampleAllData(this.Sample_Mix_ID, parentId);
+                    }
+                    else
+                    {
+                        this.CheckVals.LoadInspectHotAllData(this.Sample_Mix_ID, parentId, daycheck(), "发热量1");
+                    }
+                
+                
+                
                 }
             }
             else if (SampleType == SampleType.破包样)
@@ -2126,6 +2710,49 @@ namespace Xg.Lab.Sample
 
                 // this.CheckVals.LoadHotData(daycheck(), this.MainSampleMixId, "发热量1");
             }
+            else if (SampleType == SampleType.人工取样 || SampleType == SampleType.机器取样)
+            {
+                if (this.MainSampleMixId == 0)
+                {
+                    this.VehSamples.LoadDataBySampleMixId(this.Sample_Mix_ID);
+
+                 
+                    //    this.CheckVals.LoadDataBySampleMixId(this.Sample_Mix_ID);
+
+                        if (daycheck() == 0)
+                        {
+                            this.CheckVals.LoadZhengSampleAllData(this.Sample_Mix_ID);
+                        }
+                        else
+                        {
+                            this.CheckVals.LoadHotData(daycheck(), this.Sample_Mix_ID, "发热量1");
+                        }
+                        this.InspectSamples.LoadInpsectSamples(this.Sample_Mix_ID);
+                        foreach (var item in this.InspectSamples)
+                        {
+                            item.CheckVals.LoadInspectSampleAllData(item.Sample_Mix_ID, this.Sample_Mix_ID);
+                        }
+                }
+                else 
+                
+                
+                {
+                    this.VehSamples.LoadDataBySampleMixId(this.MainSampleMixId);
+
+                    if (daycheck() == 0)
+                    {
+                        this.CheckVals.LoadZhengSampleAllData(this.Sample_Mix_ID);
+                    }
+                    else
+                    {
+                        this.CheckVals.LoadHotData(daycheck(), this.Sample_Mix_ID, "发热量1");
+                    }
+                
+                
+                }
+
+                
+            }
             else
             {
                 this.VehSamples.LoadDataBySampleMixId(this.Sample_Mix_ID);
@@ -2142,13 +2769,145 @@ namespace Xg.Lab.Sample
                 {
                     item.CheckVals.LoadInspectSampleAllData(item.Sample_Mix_ID, this.Sample_Mix_ID);
                 }
+
             }
 
 
             CheckGroupLabs.LoadDataBySql("select mck.CheckGroupName as CheckGroupName,IsNull(lab.StoreCode,mck.StoreCode) as YpDanHao,mck.MakeUser as SendUser,IsNull(lab.MakeTime,mck.MakeTime) as SendTime,lab.JyCode as JyCode,lab.JyUser,lab.JyTime,lab.LabState from qc_mixcheckgroup mck left join QC_Sample_Lab lab on lab.sample_lab_id=mck.sample_lab_id where mck.Sample_Mix_Id=" + this.Sample_Mix_ID);
+            bool cunzailidu = false;
+            bool cunzaifyx = false;
+
+            
+            if (this.WLLX == "焦炭")
+            {
+                foreach (var item in CheckGroupLabs)
+                {
+                    if (item.CheckGroupName == "粒度样")
+                    { cunzailidu = true; }
+                    if (item.CheckGroupName == "热反应性样")
+                    { cunzaifyx = true; }
+
+                }
+            
+                 DbEntityTable<QC_Sample_Mix> lishimixs = new DbEntityTable<QC_Sample_Mix>();
+                 lishimixs.LoadDataByWhere("main.MatCode=@MatCode and main.SupplierCode=@SupplierCode and main.mix_time>=@mix_time  and main.mix_time<@mixtime1 order by mix_time desc", this.MatCode, this.SupplierCode,this.Mix_Time.Value.AddDays(-3),this.Mix_Time);
+                 if (!cunzailidu)
+                {
+                   foreach (var item in lishimixs)
+                   {
+                       bool czld = false;
+                    DbEntityTable<QC_Sample_Lab> labs = new DbEntityTable<QC_Sample_Lab>();
+                    labs.LoadDataByWhere("main.Sample_Mix_ID=@Sample_Mix_ID", item.Sample_Mix_ID);
+                    foreach (var it in labs)
+                    {
+                        if (it.CheckGroupName == "粒度样")
+                        {
+                            DbEntityTable<QC_Sample_Value> vals = new DbEntityTable<QC_Sample_Value>();
+                            vals.LoadDataByWhere("main.Sample_Lab_ID=@Sample_Lab_ID",it.Sample_Lab_ID);
+                            foreach (var i in vals)
+                            {
+                                i.ValSource = "前样";
+                                this.CheckVals.Add(i);
+                            } 
+                            czld = true;
+                            break;
+                         }
+                      }
+                    if (czld) break;
+                    }
+            
+                 }
+         
+                if (!cunzaifyx)
+               {
+                  foreach (var item in lishimixs)
+                  {
+                      bool czfyx = false;
+                    DbEntityTable<QC_Sample_Lab> labs = new DbEntityTable<QC_Sample_Lab>();
+                    labs.LoadDataByWhere("main.Sample_Mix_ID=@Sample_Mix_ID", item.Sample_Mix_ID);
+                    foreach (var it in labs)
+                    {
+                        if (it.CheckGroupName == "热反应性样")
+                        {
+                            DbEntityTable<QC_Sample_Value> vals = new DbEntityTable<QC_Sample_Value>();
+
+                            vals.LoadDataByWhere("main.Sample_Lab_ID=@Sample_Lab_ID", it.Sample_Lab_ID);
+                            foreach (var i in vals)
+                            {
+                                i.ValSource = "前样";
+                                this.CheckVals.Add(i);
+                            }
+                            czfyx = true;
+                            break;
+                        }
+                    }
+                    if (czfyx) break;
+                    }
+                }
+             }
+            DbEntityTable<QC_MatAllCheckItem> matcheckitems = new DbEntityTable<QC_MatAllCheckItem>();
+
+            matcheckitems.LoadDataByWhere("MATNCID=@MATNCID",this.MatPK);
+
+            if (matcheckitems.Count > 0)
+            {
+                foreach (var item in matcheckitems)
+                {
+                    if (item.CheckGroupName == "可磨样")
+                    {
+                        bool czkm = false;
+                        foreach (var it in CheckGroupLabs)
+                        {
+                            if (it.CheckGroupName == "可磨样")
+                            { czkm = true; }
+                         
+
+                        }
+                        if (!czkm)
+                        {
+                            DbEntityTable<QC_Sample_Mix> lishimixs = new DbEntityTable<QC_Sample_Mix>();
+                            string SQL = "select * from QC_Sample_Mix where MatCode='" + this.MatCode + "' and SupplierCode='" + this.SupplierCode + "' and mix_time>='" + this.ZyRecvTime.Value.Date + "'  and mix_time<'" + this.ZyRecvTime + "' order by ZyRecvTime desc";
+                            lishimixs.LoadDataBySql(SQL);
+                            foreach (var i in lishimixs)
+                            {
+                                bool czkmy = false;
+                                DbEntityTable<QC_Sample_Lab> labs = new DbEntityTable<QC_Sample_Lab>();
+                                labs.LoadDataByWhere("main.Sample_Mix_ID=@Sample_Mix_ID", i.Sample_Mix_ID);
+                                foreach (var it in labs)
+                                {
+                                    if (it.CheckGroupName == "可磨样")
+                                    {
+                                        DbEntityTable<QC_Sample_Value> vals = new DbEntityTable<QC_Sample_Value>();
+                                        vals.LoadDataByWhere("main.Sample_Lab_ID=@Sample_Lab_ID", it.Sample_Lab_ID);
+                                        foreach (var va in vals)
+                                        {
+                                            va.ValSource = "前样";
+                                            this.CheckVals.Add(va);
+                                        }
+                                        czkmy = true;
+                                        break;
+                                    }
+                                }
+                                if (czkmy) break;
+
+                            }
+                        
+                        }
+                    
+                    
+                    
+                    }
+                
+                
+                
+                }
+            
+            
+            }
+
 
             this.CheckVals.DefaultSort();
-            if (this.SampleType == SampleType.普通样||fujianchouyang)
+            if (this.SampleType == SampleType.普通样 || this.SampleType == SampleType.人工取样 || this.SampleType == SampleType.机器取样 || fujianchouyang)
             { this.CheckVals.DaoxuSort(); fujianchouyang = false; }
             this.SaveEnable = false;
         }
@@ -2209,23 +2968,40 @@ namespace Xg.Lab.Sample
                 IcInfo.Save();
             }
 
-            if (this.SampleType == SampleType.普通样)
+            if (this.SampleType == SampleType.普通样 || this.SampleType == SampleType.人工取样 || this.SampleType == SampleType.机器取样)
             {
-                if (this.SaveVehSamples)
+                if (this.SampleType == SampleType.普通样)
                 {
-                    if (this.DataState == DataRowState.Deleted)
+                    if (this.SaveVehSamples)
                     {
-                       // DbContext.ExeSql("Delete From QC_Sample_Veh where Sample_Mix_ID=@Sample_Mix_ID", this.Sample_Mix_ID);
-                       // VehSamples.Empty();
-                    }
-                    else
-                    {
-                        foreach (var item in VehSamples)
+                        if (this.DataState == DataRowState.Deleted)
                         {
-                            item.Sample_Mix_ID = this.Sample_Mix_ID;
+                            // DbContext.ExeSql("Delete From QC_Sample_Veh where Sample_Mix_ID=@Sample_Mix_ID", this.Sample_Mix_ID);
+                            // VehSamples.Empty();
                         }
-                        VehSamples.Save(trans);
+                        else
+                        {
+                            foreach (var item in VehSamples)
+                            {
+                                item.Sample_Mix_ID = this.Sample_Mix_ID;
+                            }
+                            VehSamples.Save(trans);
+                        }
                     }
+                }
+                else if (this.SampleType == SampleType.人工取样 || this.SampleType == SampleType.机器取样)
+                {
+
+
+
+                    VehSamples.Save(trans);
+                
+                
+                
+                
+                
+                
+                
                 }
             }
 
@@ -2313,7 +3089,10 @@ namespace Xg.Lab.Sample
         /// </summary>
         public static int InspectSampleParentId(int InpsectSampleMixId)
         {
+           
             object parentId = DbContext.ExecuteScalar("select veh.Sample_Mix_ID from QC_Sample_Veh veh INNER JOIN QC_Sample_Mix mix on mix.NoticeBillId=veh.NoticeBillId and mix.SampleType=" + Convert.ToInt32(SampleType.抽查样) + " Where mix.Sample_Mix_ID=@Sample_Mix_ID", InpsectSampleMixId);
+            if (parentId == null)
+            { parentId = DbContext.ExecuteScalar("select veh.Sample_Mix_ID from QC_Sample_Veh veh INNER JOIN QC_Sample_Mix mix on mix.NoticeBillId=veh.Sample_veh_id and mix.SampleType=" + Convert.ToInt32(SampleType.抽查样) + " Where mix.Sample_Mix_ID=@Sample_Mix_ID", InpsectSampleMixId); }
             if (parentId != null)
             {
                 return Convert.ToInt32(parentId);

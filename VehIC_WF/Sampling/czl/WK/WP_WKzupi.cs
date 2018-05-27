@@ -35,9 +35,9 @@ namespace VehIC_WF.Sampling.czl.WorkPoint
         }
 private void timer1_Tick(object sender, EventArgs e)
 {
-
+    mixs.LoadDataByWhere("main.WLLX='外矿' and main.SampleState=@SampleState", SampleState.初始状态);
     vehs.LoadDataByWhere("main.WLLX='外矿' and main.SampleState=@SampleState", SampleState.初始状态);
-
+  
     for (int j = 0; j < vehs.Count; j++)
     {
         if (vehs[j].Sample_Mix_ID == 0)
@@ -71,7 +71,7 @@ private void timer1_Tick(object sender, EventArgs e)
                 mix.SampleState = SampleState.初始状态;
                 mix.SampleType = SampleType.普通样;
                 mix.WLLX = vehs[j].WLLX;
-                mix.CardID = Zhc.Data.DbContext.GetSeq("WK" + DateTime.Now.Date.ToString("yyyyMMdd"), 2);
+                mix.CardID = "WK" + Zhc.Data.DbContext.GetSeq(DateTime.Now.Date.ToString("yyyyMMdd"), 2);
                 mix.Save();
                 mixs.Add(mix);
 

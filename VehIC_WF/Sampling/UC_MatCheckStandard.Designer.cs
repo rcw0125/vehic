@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.cmsMatFl = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsMatFl = new System.Windows.Forms.ContextMenuStrip();
             this.设定分类标识ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.gridMaterial = new DevExpress.XtraGrid.GridControl();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.tsmBtnQuery = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcInvCode = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -44,7 +43,7 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
-            this.qCMaterialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qCMaterialBindingSource = new System.Windows.Forms.BindingSource();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -56,10 +55,10 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabAllCheckItem = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl4 = new DevExpress.XtraGrid.GridControl();
-            this.所有检验项目菜单 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.所有检验项目菜单 = new System.Windows.Forms.ContextMenuStrip();
             this.添加检验项目ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.删除检验项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.allCheckItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.allCheckItemBindingSource = new System.Windows.Forms.BindingSource();
             this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -67,10 +66,10 @@
             this.repositoryItemComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.tabCheckGroup = new DevExpress.XtraTab.XtraTabPage();
             this.gridCheckGroup = new DevExpress.XtraGrid.GridControl();
-            this.样品分类菜单 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.样品分类菜单 = new System.Windows.Forms.ContextMenuStrip();
             this.添加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.matCheckGroupViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.matCheckGroupViewBindingSource = new System.Windows.Forms.BindingSource();
             this.gvMatCheckGroup = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colCheckGroupCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCheckGroupName1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -81,20 +80,20 @@
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit2 = new DevExpress.XtraEditors.LookUpEdit();
-            this.matQualityLevelViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.matQualityLevelViewBindingSource = new System.Windows.Forms.BindingSource();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.gridQualityRule = new DevExpress.XtraGrid.GridControl();
-            this.判定规则菜单 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.判定规则菜单 = new System.Windows.Forms.ContextMenuStrip();
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.选择供应商 = new System.Windows.Forms.ToolStripMenuItem();
-            this.matQualityRuleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.matQualityRuleBindingSource = new System.Windows.Forms.BindingSource();
             this.gvQualityRule = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridCol_RuleContent = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemGridLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
-            this.qCMatQualityLevelViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qCMatQualityLevelViewBindingSource = new System.Windows.Forms.BindingSource();
             this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -106,10 +105,10 @@
             this.repositoryItemMemoExEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
-            this.判定标准内容菜单 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.判定标准内容菜单 = new System.Windows.Forms.ContextMenuStrip();
             this.添加检验项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除条件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ruleContentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ruleContentsBindingSource = new System.Windows.Forms.BindingSource();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colCheckItemCode1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCheckItemName1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -124,15 +123,15 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.组批规则菜单 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.组批规则菜单 = new System.Windows.Forms.ContextMenuStrip();
             this.删除ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.组批规则数据源 = new System.Windows.Forms.BindingSource(this.components);
+            this.组批规则数据源 = new System.Windows.Forms.BindingSource();
             this.gvComplexMixRule = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.qCSupplierDocBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qCSupplierDocBindingSource = new System.Windows.Forms.BindingSource();
             this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -140,7 +139,7 @@
             this.tabLabRule = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.角质层组批规则数据源 = new System.Windows.Forms.BindingSource(this.components);
+            this.角质层组批规则数据源 = new System.Windows.Forms.BindingSource();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -152,7 +151,7 @@
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.tabChgWater = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl5 = new DevExpress.XtraGrid.GridControl();
-            this.chgWatersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.chgWatersBindingSource = new System.Windows.Forms.BindingSource();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -645,7 +644,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox3.Items.AddRange(new object[] {
             "必检",
-            "可选",
             "每月",
             "每周",
             "每天"});

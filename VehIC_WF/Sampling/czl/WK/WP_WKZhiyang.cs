@@ -780,7 +780,7 @@ namespace VehIC_WF.WorkPoint
 
             zyMixSamples.Add(zySample);
 
-            lblRecvDanHao.Text = zySample.ZyShortDanHao;
+           // lblRecvDanHao.Text = zySample.ZyShortDanHao;
             this.gridView1.FocusedRowHandle = this.gridView1.GetRowHandle(zyMixSamples.Count - 1);
             LabTabs();
             hjmixs.LoadDataByWhere("main.SAMPLESTATE=@SAMPLESTATE and main.WLLX='外矿'", SampleState.组批完成);

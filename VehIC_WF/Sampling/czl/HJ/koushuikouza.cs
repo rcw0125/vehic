@@ -31,7 +31,7 @@ namespace VehIC_WF.Sampling.czl.HJ
         private void koushuikouza_Load(object sender, EventArgs e)
         {
             vehs.LoadDataByWhere("main.Sample_Mix_ID=@Sample_Mix_ID", samplemixid);
-            mixs.LoadDataByWhere("main.Sample_Mix_ID=@Sample_Mix_ID or MainSampleMixId=@MainSampleMixId", samplemixid, samplemixid);
+            mixs.LoadDataByWhere("main.Sample_Mix_ID=@Sample_Mix_ID or main.MainSampleMixId=@MainSampleMixId", samplemixid, samplemixid);
             foreach (var item in mixs)
             {
                 item.Memo = textBox1.Text;

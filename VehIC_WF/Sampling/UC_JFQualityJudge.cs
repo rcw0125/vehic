@@ -284,10 +284,21 @@ namespace VehIC_WF.Sampling
             {
 
                 DbEntityTable<QC_QualityRule_View> quality = new DbEntityTable<QC_QualityRule_View>();
-                    quality.LoadDataByWhere("MATNCID=@MATNCID and LocalQcLevel='一级'", SelectedMixSample.MatPK);
+                quality.LoadDataByWhere("MATNCID=@MATNCID and LocalQcLevel='一级' and  suppliercode=@suppliercode", SelectedMixSample.MatPK, SelectedMixSample.SupplierCode);
                 if (quality.Count == 0)
                 {
-                    quality.LoadDataByWhere("MATNCID=@MATNCID and QualityLevelName='合格'", SelectedMixSample.MatPK);
+                    quality.LoadDataByWhere("MATNCID=@MATNCID and QualityLevelName='合格' and  suppliercode=@suppliercode", SelectedMixSample.MatPK, SelectedMixSample.SupplierCode);
+
+                }
+                if (quality.Count == 0)
+                {
+
+                    quality.LoadDataByWhere("MATNCID=@MATNCID and LocalQcLevel='一级'", SelectedMixSample.MatPK);
+                    if (quality.Count == 0)
+                    {
+                        quality.LoadDataByWhere("MATNCID=@MATNCID and QualityLevelName='合格'", SelectedMixSample.MatPK);
+
+                    }
 
                 }
                 foreach (var it in SelectedMixSample.CheckVals)
@@ -553,13 +564,15 @@ namespace VehIC_WF.Sampling
 
         private void 清理_Click(object sender, EventArgs e)
         {
-            if (this.SelectedMixSample.JudgeTime != null)
-            {
-            DateTime t = Convert.ToDateTime(this.SelectedMixSample.JudgeTime);
+            //if (this.SelectedMixSample.JudgeTime != null)
+            //{
+            //DateTime t = Convert.ToDateTime(this.SelectedMixSample.JudgeTime);
 
-                if ((DateTime.Now - t).Days > 7)
-                {
+            //    if ((DateTime.Now - t).Days > 7)
+            //    {
                     this.SelectedMixSample.SampleState = SampleState.处理完成;
+                    this.SelectedMixSample.UploadNcUser = LocalInfo.Current.user.ID;
+                    this.SelectedMixSample.UploadNcTime = DateTime.Now;
                     this.SelectedMixSample.Save();
 
                     LoadData();
@@ -567,12 +580,12 @@ namespace VehIC_WF.Sampling
                    
                     gridView1.RefreshData();
                    
-                }
-                else
-                {
-                    MessageBox.Show("7天以内单据不能处理");
-                }
-            }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("7天以内单据不能处理");
+            //    }
+            //}
        }
         DbEntityTable<QC_Sample_zdpdyj> pdyjs = new DbEntityTable<QC_Sample_zdpdyj>();
         private void 自动判定上传_Click(object sender, EventArgs e)
@@ -667,7 +680,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "精粉抽样判定范围")
+                                        if (i.type == "抽样判定范围"&&i.WLLX=="精粉")
                                         {
                                             cypdfwhTFe = Convert.ToDouble(i.TFe);
                                         }
@@ -700,7 +713,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "精粉抽样判定范围")
+                                        if (i.type == "抽样判定范围" && i.WLLX == "精粉")
                                         {
                                             cypdfwSiO2 = Convert.ToDouble(i.SiO2);
                                         }
@@ -731,7 +744,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "精粉抽样判定范围")
+                                        if (i.type == "抽样判定范围" && i.WLLX == "精粉")
                                         {
                                             cypdfwS = Convert.ToDouble(i.sf);
                                         }
@@ -761,7 +774,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "精粉抽样判定范围")
+                                        if (i.type == "抽样判定范围" && i.WLLX == "精粉")
                                         {
                                             cypdfwS = Convert.ToDouble(i.sf);
                                         }
@@ -791,7 +804,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "精粉抽样判定范围")
+                                        if (i.type == "抽样判定范围" && i.WLLX == "精粉")
                                         {
                                             cypdfwP= Convert.ToDouble(i.P);
                                         }
@@ -822,7 +835,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "精粉抽样判定范围")
+                                        if (i.type == "抽样判定范围" && i.WLLX == "精粉")
                                         {
                                             cypdfwCu = Convert.ToDouble(i.Cu);
                                         }
@@ -848,7 +861,7 @@ namespace VehIC_WF.Sampling
                                     foreach (var i in pdyjs)
                                     {
 
-                                        if (i.type == "精粉抽样判定范围")
+                                        if (i.type == "抽样判定范围" && i.WLLX == "精粉")
                                         {
                                             cypdfwZn = Convert.ToDouble(i.Zn);
                                         }
@@ -930,7 +943,7 @@ namespace VehIC_WF.Sampling
                                         {
                                             foreach (var pdfw in pdyjs)
                                             {
-                                                if (pdfw.type == "精粉正样劣于标准范围")
+                                                if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX=="精粉")
                                                 {
                                                     if (pdfw.TFe != "")
                                                     {
@@ -951,7 +964,7 @@ namespace VehIC_WF.Sampling
                                                         }
                                                     }
                                                 }
-                                                if (pdfw.type == "精粉正样优于标准范围")
+                                                if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.TFe != "")
                                                     {
@@ -992,7 +1005,7 @@ namespace VehIC_WF.Sampling
                                         {
                                             foreach (var pdfw in pdyjs)
                                             {
-                                                if (pdfw.type == "精粉正样劣于标准范围")
+                                                if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.SiO2 != "")
                                                     {
@@ -1013,7 +1026,7 @@ namespace VehIC_WF.Sampling
                                                         }
                                                     }
                                                 }
-                                                if (pdfw.type == "精粉正样优于标准范围")
+                                                if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.SiO2 != "")
                                                     {
@@ -1055,7 +1068,7 @@ namespace VehIC_WF.Sampling
                                         {
                                             foreach (var pdfw in pdyjs)
                                             {
-                                                if (pdfw.type == "精粉正样劣于标准范围")
+                                                if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.sf != "")
                                                     {
@@ -1076,7 +1089,7 @@ namespace VehIC_WF.Sampling
                                                         }
                                                     }
                                                 }
-                                                if (pdfw.type == "精粉正样优于标准范围")
+                                                if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.sf != "")
                                                     {
@@ -1118,7 +1131,7 @@ namespace VehIC_WF.Sampling
                                         {
                                             foreach (var pdfw in pdyjs)
                                             {
-                                                if (pdfw.type == "精粉正样劣于标准范围")
+                                                if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.sf != "")
                                                     {
@@ -1139,7 +1152,7 @@ namespace VehIC_WF.Sampling
                                                         }
                                                     }
                                                 }
-                                                if (pdfw.type == "精粉正样优于标准范围")
+                                                if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.sf != "")
                                                     {
@@ -1181,9 +1194,9 @@ namespace VehIC_WF.Sampling
                                         {
                                             foreach (var pdfw in pdyjs)
                                             {
-                                               
-                                               
-                                                    if (pdfw.type == "精粉正样劣于标准范围")
+
+
+                                                if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX == "精粉")
                                                     {
                                                         if (pdfw.P != "")
                                                         {
@@ -1204,7 +1217,7 @@ namespace VehIC_WF.Sampling
                                                             }
                                                         }
                                                      }
-                                                if (pdfw.type == "精粉正样优于标准范围")
+                                                if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.P != "")
                                                     {
@@ -1246,7 +1259,7 @@ namespace VehIC_WF.Sampling
                                         {
                                             foreach (var pdfw in pdyjs)
                                             {
-                                                if (pdfw.type == "精粉正样劣于标准范围")
+                                                if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.Cu != "")
                                                     {
@@ -1267,7 +1280,7 @@ namespace VehIC_WF.Sampling
                                                         }
                                                     }
                                                 }
-                                                if (pdfw.type == "精粉正样优于标准范围")
+                                                if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.Cu != "")
                                                     {
@@ -1309,7 +1322,7 @@ namespace VehIC_WF.Sampling
                                         {
                                             foreach (var pdfw in pdyjs)
                                             {
-                                                if (pdfw.type == "精粉正样劣于标准范围")
+                                                if (pdfw.type == "正样劣于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.Zn != "")
                                                     {
@@ -1330,7 +1343,7 @@ namespace VehIC_WF.Sampling
                                                         }
                                                     }
                                                 }
-                                                if (pdfw.type == "精粉正样优于标准范围")
+                                                if (pdfw.type == "正样优于标准范围" && pdfw.WLLX == "精粉")
                                                 {
                                                     if (pdfw.Zn != "")
                                                     {
